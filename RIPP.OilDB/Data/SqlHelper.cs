@@ -39,7 +39,7 @@ namespace RIPP.OilDB.Data
                     }
                     catch
                     {
-                        _connectionString = "server=.;database = OilDataManage;Trusted_Connection=True;";
+                        _connectionString = "server=www.imetric.cn; database=OilDataManage;user id=ripp;password=ripp";
                     }
                 }
                 return _connectionString;
