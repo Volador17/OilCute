@@ -108,10 +108,6 @@
     <ApplicationIcon>chemo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\dll\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="MWArray, Version=2.12.0.0, Culture=neutral, PublicKeyToken=e1d84a0da19db86f, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\dll\MWArray.dll</HintPath>
@@ -1021,6 +1017,11 @@
   <ItemGroup>
     <Content Include="chemo.ico" />
     <None Include="Resources\2010070159145.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="log4net">
+      <Version>2.0.8</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

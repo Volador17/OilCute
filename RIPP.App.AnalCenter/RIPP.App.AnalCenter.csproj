@@ -78,10 +78,9 @@
     <ApplicationIcon>center.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\dll\log4net.dll</HintPath>
-    </Reference>
+    <PackageReference Include="log4net">
+      <Version>2.0.8</Version>
+    </PackageReference>
     <Reference Include="Nevron.Chart, Version=14.4.11.12, Culture=neutral, PublicKeyToken=2961c51bb98125d2, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\dll\Nevron.Chart.dll</HintPath>
