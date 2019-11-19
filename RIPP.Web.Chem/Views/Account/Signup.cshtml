@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "用户注册";
+    Layout = "~/Views/Shared/_LayoutFront.cshtml";
+}
+@model RIPP.Web.Chem.Models.RegisterModel
+@using RIPP.Web.Chem.Helpers;
+<link rel="stylesheet" href="/css/compiled/signin.css" type="text/css" media="screen" />
+<script type="text/javascript">
+    $(function () {
+        //$(".registerform").Validform();  //就这一行代码！;
+        $("form").Validform({
+            tiptype: 2
+        });
+    })
+</script>
+
+@using (Html.BeginForm())
+{
+    <div class="login-wrapper">
+        <br />
+        <br />
+        <br />
+        <div class="box" style="width: 600px;">
+            <div class="content-wrap form-horizontal">
+                <h6>注册</h6>
+                @if (ViewBag.Msg != null)
+                {
+                    <p class="alert alert-danger">
+                        @Html.Raw(ViewBag.Msg)
+                    </p>
+                }
+                <div class="row">
+                    <div class="col-md-6">@Html.TextBoxFor(m => m.Email, new { @class = "form-control", datatype = "e", errormsg = "您输入的电子邮箱格式有误！", placeholder = "电子邮箱", ajaxurl = "/Account/Ajax/" })</div>
+                    <div class="col-md-6" style="text-align: left;"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">@Html.TextBoxFor(m => m.RealName, new { @class = "form-control", datatype = "*2-8", errormsg = "真实名至少3个字符,最多8个字符！", placeholder = "真实名" })</div>
+                    <div class="col-md-6" style="text-align: left;"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">@Html.TextBoxFor(m => m.CellPhone, new { @class = "form-control", datatype = "m", errormsg = "手机号填写错误", placeholder = "手机号", ajaxurl = "/Account/AjaxCell/" })</div>
+                    <div class="col-md-6" style="text-align: left;"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">@Html.PasswordFor(m => m.Password, new { @class = "form-control", plugin = "passwordStrength", datatype = "*6-18", errormsg = "密码至少6个字符,最多18个字符！", placeholder = "密码" })</div>
+                    <div class="col-md-6" style="text-align: left;"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">@Html.PasswordFor(m => m.rePassword, new { @class = "form-control", recheck = "Password", datatype = "*6-18", errormsg = "两次输入的密码不一致！", placeholder = "重复输入密码" })
+                    </div>
+                    <div class="col-md-6" style="text-align: left;"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.DropDownListFor(m => m.GroupID, (List<SelectListItem>)ViewBag.Groups, new { @class = "form-control" })<br />
+                    </div>
+                    <div class="col-md-6" style="text-align: left;"></div>
+                </div>
+                <button class="btn-glow primary login">马上注册</button>
+            </div>
+        </div>
+        @*        <div class="no-account">
+            <p>我已经有账号了，</p>
+            <a href="/account/signin">马上登录</a>
+        </div>*@
+    </div>
+
+}
+<div class="clearfix" style="clear: both; height: 550px;"></div>
+

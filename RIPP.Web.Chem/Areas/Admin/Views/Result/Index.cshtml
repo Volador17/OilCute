@@ -1,0 +1,64 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    
+}
+@using RIPP.Web.Chem.Helpers;
+@using RIPP.Web.Chem.Tools;
+@using IMetric.Equ.Web.Helpers;
+@using RIPP.NIR;
+@model  RIPP.Web.Chem.Models.PaginatedList<RIPP.Web.Chem.Datas.results>
+
+<div class="content">
+    <div id="pad-wrapper">
+        <div class="row">
+            <h3 ">@ViewBag.Title</h3>
+        </div>
+        <div class="table-wrapper ">
+            <div class="row">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="col-md-3">光谱名称</th>
+                            <th class="col-md-1"><span class="line"></span>上传者</th>
+                            <th class="col-md-2"><span class="line"></span>上传时间</th>
+                            <th class="col-md-2"><span class="line"></span>模型</th>
+                            <th class="col-md-2"><span class="line"></span>模型类型</th>
+                            <th class="col-md-2"><span class="line"></span>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Count > 0)
+                        {
+                            foreach (var d in Model)
+                            {
+                            <tr>
+                                <td>@d.Spec.name</td>
+                                <td>@(d.Spec.AddUser != null ? d.Spec.AddUser.RealName : "")</td>
+                                <td>@d.Spec.addtime.ToString("MM-dd HH:mm")</td>
+                                <td><a href="/admin/model/detail/@d.mid">@d.Model.name</a></td>
+                                <td>@(((FileExtensionEnum)d.Model.type).GetDescription())</td>
+                                <td>
+                                    <button  class="btn btn-sm btn-default" data-toggle="tooltip" data-placement="left" data-original-title=" @Html.Partial("ComponentDL",d.Components)"  data-html="true">显示</button> |
+                                    <a href="#">删除</a>
+                                </td>
+                            </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6">暂无记录</td>
+                            </tr>   
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="text-center">
+            @Html.Raw(Html.Pager("page", Model.PageSize, Model.TotalCount))
+        </div>
+        </div>
+        
+
+    </div>
+</div>

@@ -1,0 +1,124 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "模型详细信息";
+    
+}
+@using RIPP.Web.Chem.Helpers;
+@using RIPP.Web.Chem.Tools;
+@using IMetric.Equ.Web.Helpers;
+@using RIPP.NIR;
+@model  RIPP.Web.Chem.Models.PaginatedList<RIPP.Web.Chem.Datas.results>
+@{
+    var m = (RIPP.Web.Chem.Datas.model)ViewBag.model;
+    var user = RIPP.Web.Chem.Tools.Common.Get_User;
+}
+<div class="content">
+    <div id="pad-wrapper">
+        <div class="row">
+            <h3 class="col-md-5">@ViewBag.Title</h3>
+            <div class="col-md-7">
+                <div class="btn-group pull-right ">
+                    @if(RIPP.Web.Chem.Tools.Common.UserCanPredict(user))
+                    {
+                    <a href="#" class="btn btn-default" data-toggle="modal" data-target="#myModal">预测</a>
+                    }
+                    <a href="/admin/Model/index/?t=m" class="btn btn-@( ViewBag.t == "m" ? "success" : "default")">我上传的模型</a>
+                    <a href="/admin/Model/index/?t=a" class="btn btn-@( ViewBag.t == "a" ? "success" : "default")">全部模型</a>
+
+                </div>
+            </div>
+        </div>
+        <form id="form" method="post" action="/admin/spec/predict">
+            <input type="hidden" name="modelid" id="modelid" value="@m.id" />
+            <input type="hidden" name="specid" id="specid" />
+
+        </form>
+
+        <div class="table-wrapper ">
+            <div class="row">
+                <br />
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-2 text-right">名称</label>
+                        <div class="col-sm-2">@m.name</div>
+                        <label class="col-sm-2 text-right">创建时间</label>
+                        <div class="col-sm-2 ">@(m.createtime.HasValue ? m.createtime.Value.ToString("yyyy-MM-dd HH:mm") : "")</div>
+                        <label class="col-sm-1 text-right">类型</label>
+                        <div class="col-sm-3">@(((FileExtensionEnum)m.type).GetDescription())</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 text-right">上传者</label>
+                        <div class="col-sm-2">@(m.AddUser != null ? m.AddUser.RealName : "")</div>
+                        <label class="col-sm-2 text-right">上传时间</label>
+                        <div class="col-sm-2">@m.addtime.ToString("yyyy-MM-dd HH:mm")</div>
+                        <label class="col-sm-1 text-right">操作</label>
+                        <div class="col-sm-3">
+                            <a href="/upload/UploadHandler.ashx?t=m&id=@m.id"  download="@(m.name + "." + (FileExtensionEnum)m.type)" >下载</a> |
+
+                                    <a href="/Admin/model/Delete/@m.id" class="confirm" title="是否删除模型？">删除</a>
+                        </div>
+                    </div>
+                </div>
+                <h4>预测结果</h4>
+                <div class="table-responsive">
+                    <table class="table table-hover" style="overflow: auto">
+                        <thead>
+                            <tr>
+                                <th>光谱</th>
+                                <th><span class="line"></span>预测时间</th>
+                                @Html.Partial("ComponentColumn", m.Components)
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var d in Model)
+                            {
+                                <tr>
+                                    <td>@d.Spec.name</td>
+                                    <td>@d.addtime.ToString("yyyy-MM-dd HH:mm")</td>
+                                    @Html.Partial("ComponentResult", d.Components)
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <div class="text-center">
+                @Html.Raw(Html.Pager("page", Model.PageSize, Model.TotalCount))
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<script type="text/javascript">
+    function choosespec(sids) {
+        $('#specid').val(sids);
+    }
+    $(function () {
+        $('#btnOk').click(function () {
+            $('#myModal').modal('hide');
+            var sids = $('#specid').val();
+            if (sids != null && sids != undefined && sids != '')
+                $('#form').submit();
+        });
+    });
+
+</script>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">选择光谱</h4>
+            </div>
+            <div class="modal-body">
+                <iframe src="/admin/spec/choose" style="width: 100%; border: none;"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="btnOk">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

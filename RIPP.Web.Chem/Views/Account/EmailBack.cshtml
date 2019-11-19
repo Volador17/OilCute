@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "EmailBack";
+    Layout = "~/Views/Shared/_LayoutFront.cshtml";
+}
+<link rel="stylesheet" href="/css/compiled/signin.css" type="text/css" media="screen" />
+@using (Html.BeginForm())
+{
+  
+    <div class="login-wrapper">
+        <br />
+        <br />
+        <br />
+        <div class="box">
+            <div class="content-wrap">
+                <h6>找回密码</h6>
+                @if (ViewBag.Msg != null)
+                {
+                    <p class="alert alert-danger">
+                        @Html.Raw(ViewBag.Msg)
+                    </p>
+                }
+                @if (ViewBag.hasval == true)
+                {
+                    <input class="form-control" type="text" name="secret" id="secret" placeholder="密钥" datatype="" nullmsg="请输入密钥！" errormsg="" />
+
+                    <button class="btn-glow primary login">提交</button>
+                }
+            </div>
+        </div>
+
+        <div class="no-account">
+            <p>我还没有账号，</p>
+            <a href="/account/signup">马上注册</a>
+            <br />
+            <p>我是校内用户,马上用</p>
+            <a href="/account/CASSignin">校内账户登录</a>
+        </div>
+    </div>
+}
+
+
+<div class="clearfix" style="clear: both; height: 500px;"></div>

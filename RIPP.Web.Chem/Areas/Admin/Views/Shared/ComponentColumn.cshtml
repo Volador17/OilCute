@@ -1,0 +1,12 @@
+﻿@{
+    Layout = null;
+}
+@model RIPP.NIR.ComponentList
+@foreach (var c in Model)
+{
+    <th><span class="line"></span>@c.Name 
+        @if(!string.IsNullOrWhiteSpace(c.Units))
+        {
+        <span class="units">(@c.Units)</span>
+        }
+    </th>                                  } 

@@ -1,0 +1,247 @@
+﻿@{
+    ViewBag.Title = "修改个人信息";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@model RIPP.Web.Chem.Datas.S_User
+@using RIPP.Web.Chem.Tools;
+@using RIPP.Web.Chem.Helpers;
+@using RIPP.Web.Chem.Datas;
+@{
+    ViewBag.Title = Model.ID > 0 ? "修改用户信息" : "添加用户信息";
+}
+<script type="text/javascript">
+    $(function () {
+        //$(".registerform").Validform();  //就这一行代码！;
+        $("form").Validform({
+            tiptype: 2
+        });
+        
+    })
+ 
+
+</script>
+<div class="content">
+    <div id="pad-wrapper">
+        <div class="row header">
+            <h3>@ViewBag.Title</h3>
+            <div class="col-md-10 col-sm-12 col-xs-12 pull-right">
+                <a href="/Admin/Users" class="btn-flat success pull-right">
+                    <i class="icon-group"></i>
+                    用户列表
+                </a>
+            </div>
+        </div>
+        @{
+            var user = Common.Get_User;
+            bool admin = user.HasRole(RoleEnum.Administrator);
+            var style = "style=\"display:none;\"";
+        }
+
+        @using (Html.BeginForm("Edit", "Users", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.HiddenFor(m => m.ID)
+
+            <div class="form-group">
+                <label for="Email" class="col-lg-2 control-label">Email</label>
+                <div class="col-lg-4">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", datatype = "e", errormsg = "邮箱地址" })
+                </div>
+                <div class="col-lg-6"></div>
+            </div>
+           
+            <div class="form-group" @if (!admin)
+                                    { @Html.Raw(style)} >
+                <label for="groupName" class="col-lg-2 control-label">所属上级单位</label>
+                <div class="col-lg-4">
+                    @Html.DropDownListFor(m => m.GroupID, (List<SelectListItem>)ViewBag.Groups, new { @class = "form-control" })
+                </div>
+                <div class="col-lg-6"></div>
+            </div>
+           
+
+            <div class="form-group">
+                <label for="Pwd" class="col-lg-2 control-label">密码</label>
+                <div class="col-lg-4">
+                    @if (Model.ID > 0)
+                    {
+                        @Html.PasswordFor(m => m.Pwd, new { @class = "form-control" })
+                    }
+                    else
+                    {
+                        @Html.PasswordFor(m => m.Pwd, new { datatype = "*", nullmsg = "请输入密码", @class = "form-control", errormsg = "密码不能为空" })
+                    }
+                </div>
+                <div class="col-lg-6"></div>
+            </div>
+            <div class="form-group">
+                <label for="RealName" class="col-lg-2 control-label">真实名</label>
+                <div class="col-lg-4">
+                    @Html.TextBoxFor(m => m.RealName, new Dictionary<string, object>() { { "class", "form-control" }, { "datatype", "*" }, { "nullmsg", "请输入真实名" }, { "errormsg", "真实名不能为空" } })
+
+                </div>
+                <div class="col-lg-6"></div>
+            </div>
+            <div class="form-group">
+                <label for="PhoneCell" class="col-lg-2 control-label">手机号</label>
+                <div class="col-lg-4">
+                    @Html.TextBoxFor(m => m.PhoneCell, new { @class = "form-control", datatype = "m", errormsg = "手机号填写错误" })
+                </div>
+                <div class="col-lg-6"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="PhoneCell" class="col-lg-2 control-label">默认模型</label>
+                <div class="col-lg-4">
+                    @Html.DropDownListFor(m => m.modelid, (List<SelectListItem>)ViewBag.Models, new { @class = "form-control" })
+                </div>
+                <div class="col-lg-6"></div>
+            </div>
+            <div class="form-group"  @if (!admin)
+                                     { @Html.Raw(style)}>
+                <label class="col-lg-2 control-label">审核</label>
+                <div class="col-lg-4">
+                    @{
+                                     string c1, c2;
+                                     if (!Model.ApplyState)
+                                     {
+                                         c1 = "checked=\"checked\"";
+                                         c2 = "";
+                                     }
+                                     else
+                                     {
+                                         c1 = "";
+                                         c2 = "checked=\"checked\"";
+                                     }
+                    }
+                    <input type="radio" name="ApplyState" value="False" id="ApplyState1" @Html.Raw(c1) />
+                    <label for="ApplyState1">待审核</label>
+                    <input type="radio" name="ApplyState" value="True" id="ApplyState2" @Html.Raw(c2) />
+                    <label for="ApplyState2">通过审核</label>
+                </div>
+                <div class="col-lg-6"></div>
+            </div>
+         
+            <div class="form-group">
+                <label for="Address" class="col-lg-2 control-label">工作地点</label>
+                <div class="col-lg-4">
+                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                </div>
+                <div class="col-lg-6"></div>
+            </div>
+            <div class="form-group">
+                <label for="PhoneOffice" class="col-lg-2 control-label">办公室电话</label>
+                <div class="col-lg-4">
+                    @Html.TextBoxFor(m => m.PhoneOffice, new { @class = "form-control" })
+                </div>
+                <div class="col-lg-6"></div>
+            </div>
+            <div class="form-group">
+                <label for="Remark" class="col-lg-2 control-label">备注</label>
+                <div class="col-lg-4">
+                    @Html.TextBoxFor(m => m.Remark, new { @class = "form-control" })
+                </div>
+                <div class="col-lg-6"></div>
+            </div>
+            <div class="form-group"   @if (!admin)
+                                      { @Html.Raw(style)}>
+                <label class="col-lg-2 control-label">角色</label>
+                <div class="col-lg-4">
+                    @{
+           
+            if (Model.HasRole(RoleEnum.Administrator))
+                                      {
+                                          c1 = "checked=\"checked\"";
+                                          c2 = "";
+                                      }
+                                      else
+                                      {
+                                          c1 = "";
+                                          c2 = "checked=\"checked\"";
+                                      }
+                    }
+
+                    @RoleEnum.Administrator.GetDescription()：
+                <input type="radio" name="@RoleEnum.Administrator" id="role11" value="1" @Html.Raw(c1) />
+                    <label for="role11">是</label>
+
+                    <input type="radio" name="@RoleEnum.Administrator" id="role12" value="0" @Html.Raw(c2) />
+                    <label for="role12">否</label><br />
+
+                    @{
+           
+            if (Model.HasRole(RoleEnum.GroupMaster))
+                                      {
+                                          c1 = "checked=\"checked\"";
+                                          c2 = "";
+                                      }
+                                      else
+                                      {
+                                          c1 = "";
+                                          c2 = "checked=\"checked\"";
+                                      }
+                    }
+
+                    @RoleEnum.GroupMaster.GetDescription()：
+                <input type="radio" name="@RoleEnum.GroupMaster" id="role21" value="1" @Html.Raw(c1) />
+                    <label for="role21">是</label>
+
+                    <input type="radio" name="@RoleEnum.GroupMaster" id="role22" value="0" @Html.Raw(c2) />
+                    <label for="role22">否</label><br />
+
+                    @{
+           
+            if (Model.HasRole(RoleEnum.Engineer))
+                                      {
+                                          c1 = "checked=\"checked\"";
+                                          c2 = "";
+                                      }
+                                      else
+                                      {
+                                          c1 = "";
+                                          c2 = "checked=\"checked\"";
+                                      }
+                    }
+
+                    @RoleEnum.Engineer.GetDescription()：
+                <input type="radio" name="@RoleEnum.Engineer" id="role31" value="1" @Html.Raw(c1) />
+                    <label for="role31">是</label>
+
+                    <input type="radio" name="@RoleEnum.Engineer" id="role32" value="0" @Html.Raw(c2) />
+                    <label for="role32">否</label><br />
+
+                    @{
+           
+            if (Model.HasRole(RoleEnum.Operator))
+                                      {
+                                          c1 = "checked=\"checked\"";
+                                          c2 = "";
+                                      }
+                                      else
+                                      {
+                                          c1 = "";
+                                          c2 = "checked=\"checked\"";
+                                      }
+                    }
+
+                    @RoleEnum.Operator.GetDescription()：
+                <input type="radio" name="@RoleEnum.Operator" id="role41" value="1" @Html.Raw(c1) />
+                    <label for="role41">是</label>
+
+                    <input type="radio" name="@RoleEnum.Operator" id="role42" value="0" @Html.Raw(c2) />
+                    <label for="role42">否</label><br />
+
+
+
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                    <button class="btn-glow primary login">马上提交</button>
+                </div>
+            </div>
+
+        }
+
+    </div>
+</div>

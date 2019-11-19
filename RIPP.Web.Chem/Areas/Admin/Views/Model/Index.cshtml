@@ -1,0 +1,302 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    
+}
+@using RIPP.Web.Chem.Helpers;
+@using RIPP.Web.Chem.Tools;
+@using IMetric.Equ.Web.Helpers;
+@using RIPP.NIR;
+@model  RIPP.Web.Chem.Models.PaginatedList<RIPP.Web.Chem.Datas.model>
+ <script src="/js/tmpl.min.js"></script>
+<script src="/js/jquery.iframe-transport.js"></script>
+<script src="/js/jquery.fileupload.js"></script>
+<script src="/js/jquery.fileupload-process.js"></script>
+<script src="/js/jquery.fileupload-validate.js"></script>
+<script src="/js/jquery.fileupload-ui.js"></script>
+<link rel="stylesheet" href="/css/jquery.fileupload.css">
+<link rel="stylesheet" href="/css/jquery.fileupload-ui.css">
+<div class="content">
+    <div id="pad-wrapper">
+        <div class="row">
+            <h3 class="col-md-5">@ViewBag.Title</h3>
+            <div class="col-md-7">
+                <div class="btn-group pull-right ">
+                        <a href="/Admin/Model/Edit/0" class="btn btn-default"  data-toggle="modal" data-target="#myUploadModal" >
+                            <span>+</span>
+                            上传模型
+                        </a>
+                    <a href="/admin/Model/index/?t=m" class="btn btn-@( ViewBag.t == "m" ? "success" : "default")">我上传的模型</a>
+                        <a href="/admin/Model/index/?t=a" class="btn btn-@( ViewBag.t == "a" ? "success" : "default")">全部模型</a>
+                   
+                </div>
+            </div>
+        </div>
+        <form id="form" method="post" action="/admin/spec/predict">
+            <input type="hidden" name="modelid" id="modelid"  />
+            <input type="hidden" name="specid" id="specid" />
+        </form>
+        <div class="table-wrapper ">
+            <div class="row">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="col-md-4">名称</th>
+                            <th class="col-md-1"><span class="line"></span>类型</th>
+                            <th class="col-md-2"><span class="line"></span>添加时间</th>
+                            <th class="col-md-2"><span class="line"></span>创建时间</th>
+                            <th class="col-md-1"><span class="line"></span>上传者</th>
+                            <th class="col-md-2"><span class="line"></span>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Count > 0)
+                        {
+                            foreach (var d in Model)
+                            {
+                            <tr>
+                                <td><a href="/admin/model/detail/@d.id"> @d.name</a></td>
+                                <td>@(((FileExtensionEnum)d.type).GetDescription())</td>
+                                <td>@d.addtime.ToString("yyyy-MM-dd HH:mm")</td>
+                                <td>@(d.createtime.HasValue?d.createtime.Value.ToString("yyyy-MM-dd HH:mm"):"")</td>
+                                <td>@(d.AddUser!=null?d.AddUser.RealName:"")</td>
+                                <td>
+                                    <a href="#" class="predict" data-id="@d.id">预测</a> | 
+                                    <a href="/upload/UploadHandler.ashx?t=m&id=@d.id"  download="@(d.name+"."+(FileExtensionEnum)d.type)" >下载</a> |
+                                     <a href="#" data-id="@d.id" class="confirm" title="是否删除模型？">删除</a>
+                                   
+                                </td>
+                            </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6">暂无记录</td>
+                            </tr>   
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="text-center">
+            @Html.Raw(Html.Pager("page", Model.PageSize, Model.TotalCount))
+        </div>
+        </div>
+        
+
+    </div>
+</div>
+<script type="text/javascript">
+    function choosespec(sids) {
+        $('#specid').val(sids);
+    }
+    $(function () {
+        'use strict';
+        // Initialize the jQuery File Upload widget:
+        $('#fileupload').fileupload();
+        // Initialize the jQuery File Upload widget:
+        $('.predict').click(function () {
+            $('#modelid').val($(this).data('id'));
+            $('#myModal').modal('show');
+        });
+        $('#btnOk').click(function () {
+            $('#myModal').modal('hide');
+            var sids = $('#specid').val();
+            if (sids != null && sids != undefined && sids != '')
+                $('#form').submit();
+        });
+
+        $('#myUploadModal').on('hidden.bs.modal', function (e) {
+            // do something...
+            window.location.reload();
+        });
+
+
+        $('#btndeleteOk').click(function (e) {
+            $.ajax({
+                url: '/upload/UploadHandler.ashx?t=m&id=' + $('#selectid').val(),
+                type: 'DELETE',
+                dataType: 'json',
+                success: function (result) {
+                    if (result.success == true)
+                        window.location.reload();
+                }
+            });
+        });
+
+
+        $('.confirm').click(function () {
+            $('#selectid').val($(this).data('id'));
+            $('#myDeleteModal').modal('show');
+        });
+    });
+
+</script>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">选择光谱</h4>
+            </div>
+            <div class="modal-body">
+                <iframe src="/admin/spec/choose" style="width: 100%; border: none;"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="btnOk">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="myUploadModal" tabindex="-1" role="dialog" aria-labelledby="myUoloadModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myUoloadModalLabel">上传新模型</h4>
+            </div>
+            <div class="modal-body">
+                <form id="fileupload" action="/Upload/UploadHandler.ashx" method="POST" enctype="multipart/form-data">
+        
+        <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+        <div class="row fileupload-buttonbar">
+            <div >
+                <!-- The fileinput-button span is used to style the file input field as button -->
+                <span class="btn btn-success fileinput-button">
+                    <i class="glyphicon glyphicon-plus"></i>
+                    <span>添加...</span>
+                    <input type="file" name="files[]" multiple>
+                </span>
+                <button type="submit" class="btn btn-primary start">
+                    <i class="glyphicon glyphicon-upload"></i>
+                    <span>开始</span>
+                </button>
+                <button type="reset" class="btn btn-warning cancel">
+                    <i class="glyphicon glyphicon-ban-circle"></i>
+                    <span>撤销</span>
+                </button>
+                <button type="button" class="btn btn-danger delete">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    <span>删除</span>
+                </button>
+                <input type="checkbox" class="toggle">
+                <!-- The global file processing state -->
+                <span class="fileupload-process"></span>
+            </div>
+            <!-- The global progress state -->
+            <div class="fileupload-progress fade">
+                <!-- The global progress bar -->
+                <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar progress-bar-success" style="width:0%;"></div>
+                </div>
+                <!-- The extended global progress state -->
+                <div class="progress-extended">&nbsp;</div>
+            </div>
+        </div>
+        <!-- The table listing the files available for upload/download -->
+        <table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
+                    <!-- The template to display files available for upload -->
+<script id="template-upload" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-upload fade">
+        
+        <td>
+            <p class="name">{%=file.name%}</p>
+            <strong class="error text-danger"></strong>
+        </td>
+        <td>
+            <p class="size">Processing...</p>
+            <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
+        </td>
+        <td>
+            {% if (!i && !o.options.autoUpload) { %}
+                <button class="btn btn-primary start" disabled>
+                    <i class="glyphicon glyphicon-upload"></i>
+                    <span>开始</span>
+                </button>
+            {% } %}
+            {% if (!i) { %}
+                <button class="btn btn-warning cancel">
+                    <i class="glyphicon glyphicon-ban-circle"></i>
+                    <span>撤消</span>
+                </button>
+            {% } %}
+        </td>
+    </tr>
+{% } %}
+</script>
+<!-- The template to display files available for download -->
+<script id="template-download" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-download fade">
+        
+        <td>
+            <p class="name">
+                {% if (file.url) { %}
+                    <a href="{%=file.url%}" title="{%=file.name%}">{%=file.name%}</a>
+                    {% if (file.description) { %}
+                        <br />{%=file.description%}
+                    {% } %}
+    
+                {% } else { %}
+                    <span>{%=file.name%}</span>
+                {% } %}
+            </p>
+            {% if (file.error) { %}
+                <div><span class="label label-danger">Error</span> {%=file.error%}</div>
+            {% } %}
+        </td>
+        <td>
+            <span class="size">{%=o.formatFileSize(file.size)%}</span>
+        </td>
+        <td>
+            {% if (file.deleteUrl) { %}
+                <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+                    <i class="glyphicon glyphicon-trash"></i>
+                    <span>删除</span>
+                </button>
+                <input type="checkbox" name="delete" value="1" class="toggle">
+            {% } else { %}
+                <button class="btn btn-warning cancel">
+                    <i class="glyphicon glyphicon-ban-circle"></i>
+                    <span>取消</span>
+                </button>
+            {% } %}
+        </td>
+    </tr>
+{% } %}
+</script>
+    </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade bs-modal-sm" id="myDeleteModal" tabindex="-1" role="dialog" aria-labelledby="myDelteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myDelteModalLabel">是否删除模型？</h4>
+            </div>
+            <div class="modal-body">
+                请确定是否删除该模型！
+            <input type="hidden" id="selectid" />
+                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="btndeleteOk">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

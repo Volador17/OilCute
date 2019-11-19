@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{236E6743-E19D-4330-8DF0-D4A7E685349F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RIPP.Lib</RootNamespace>
+    <AssemblyName>RIPP.Lib</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>..\bin\Debug\RIPP.Lib.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\RIPP.Lib.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;D:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Interop.Excel">
+      <HintPath>..\dll\Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\dll\log4net.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\ChineseToPinYin.cs" />
+    <Compile Include="Common\DataCheck.cs" />
+    <Compile Include="Common\ExtensionUtils.cs" />
+    <Compile Include="Common\HiPerfTimer.cs" />
+    <Compile Include="Common\PaginatedList.cs" />
+    <Compile Include="Common\Serialize.cs" />
+    <Compile Include="Common\Tool.cs" />
+    <Compile Include="Common\Log.cs" />
+    <Compile Include="MathLib\Argu.cs" />
+    <Compile Include="MathLib\Extention\Matlab.cs" />
+    <Compile Include="MathLib\Metrics\CosineDistance.cs" />
+    <Compile Include="MathLib\Metrics\CosineSimilarity.cs" />
+    <Compile Include="MathLib\Metrics\EuclidianDistance.cs" />
+    <Compile Include="MathLib\Metrics\EuclidianSimilarity.cs" />
+    <Compile Include="MathLib\Metrics\HammingDistance.cs" />
+    <Compile Include="MathLib\Metrics\IDistance.cs" />
+    <Compile Include="MathLib\Metrics\ISimilarity.cs" />
+    <Compile Include="MathLib\Metrics\JaccardDistance.cs" />
+    <Compile Include="MathLib\Metrics\JaccardSimilarity.cs" />
+    <Compile Include="MathLib\Metrics\ManhattanDistance.cs" />
+    <Compile Include="MathLib\Metrics\MoveWinCorr.cs" />
+    <Compile Include="MathLib\Metrics\NNRD.cs" />
+    <Compile Include="MathLib\Metrics\PearsonCorrelation.cs" />
+    <Compile Include="MathLib\Metrics\RIPPSimilarity.cs" />
+    <Compile Include="MathLib\Metrics\TanimotoCoefficient.cs" />
+    <Compile Include="MathLib\Mix\RIPPMix.cs" />
+    <Compile Include="MathLib\MLEnum.cs" />
+    <Compile Include="MathLib\Selector\ISampleSelector.cs" />
+    <Compile Include="MathLib\Selector\Kands.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ChemModel.cs" />
+    <Compile Include="Security\DESFile.cs" />
+    <Compile Include="Security\DESLicense.cs" />
+    <Compile Include="Security\MyLicenseProvider.cs" />
+    <Compile Include="Security\SecurityTool.cs" />
+    <Compile Include="UI\Controls\FlowControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\FlowControl.Designer.cs">
+      <DependentUpon>FlowControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\GuetPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\GuetPanel.Designer.cs">
+      <DependentUpon>GuetPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Pager.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Expander\TreeGridCell.cs" />
+    <Compile Include="UI\Expander\TreeGridEvents.cs" />
+    <Compile Include="UI\Expander\TreeGridNode.cs" />
+    <Compile Include="UI\Expander\TreeGridNodeCollection.cs" />
+    <Compile Include="UI\Expander\TreeGridView.cs" />
+    <Compile Include="UI\Grid\GuetGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Grid\GuetGrid.Designer.cs">
+      <DependentUpon>GuetGrid.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Numerics\Numerics.csproj">
+      <Project>{B7CAE5F4-A23F-4438-B5BE-41226618B695}</Project>
+      <Name>Numerics</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\FlowControl.resx">
+      <DependentUpon>FlowControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\GuetPanel.resx">
+      <DependentUpon>GuetPanel.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\BlueFlag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Flag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\linelineArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\linedashArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\linerightline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\linerightdash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\linelindash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lineDash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lineline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\direction_right_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\direction_left_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\resultset_previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\resultset_first.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\resultset_last.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\resultset_next.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

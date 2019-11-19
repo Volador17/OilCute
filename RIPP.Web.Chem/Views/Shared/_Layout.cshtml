@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- bootstrap -->
+    <link href="@Url.Content("~/css/bootstrap/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/bootstrap/bootstrap-overrides.css")" type="text/css" rel="stylesheet" />
+
+    <!-- libraries -->
+    <link href="@Url.Content("~/css/lib/jquery-ui-1.10.2.custom.css")"  rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/css/lib/font-awesome.css")"  type="text/css" rel="stylesheet" />
+
+    <!-- global styles -->
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/compiled/layout.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/compiled/elements.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/compiled/icons.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/compiled/tables.css")"  media="screen">
+    <link rel="stylesheet" href="@Url.Content("~/css/compiled/ui-elements.css")" type="text/css" media="screen" />
+
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/lib/fullcalendar.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/lib/fullcalendar.print.css")" media='print'>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/compiled/calendar.css")"  media="screen">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/css.css")"  media="screen">
+
+
+    <!-- this page specific styles -->
+    <link rel="stylesheet" href="@Url.Content("~/css/compiled/index.css")" type="text/css" media="screen" />
+
+@*    <!-- open sans font -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- lato font -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>*@
+
+    <!--[if lt IE 9]>
+      <script src="@Url.Content("~/js/html5.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/js/respond.min.js")" type="text/javascript"></script>
+    <![endif]-->
+
+    <script src="@Url.Content("~/js/jquery-1.10.2.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/js/bootstrap.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/js/jquery-ui-1.10.2.custom.min.js")" type="text/javascript"></script>
+
+    <!-- knob -->
+    <script src="@Url.Content("~/js/jquery.knob.js")" type="text/javascript"></script>
+    <!-- flot charts -->
+    <script src="@Url.Content("~/js/jquery.flot.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/js/jquery.flot.stack.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/js/jquery.flot.resize.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/js/theme.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/js/fullcalendar.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/js/Validform_v5.3.2.js")" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+    @RenderBody()
+</body>
+</html>

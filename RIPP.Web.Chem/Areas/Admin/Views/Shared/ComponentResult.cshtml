@@ -1,0 +1,9 @@
+﻿@{
+    Layout = null;
+}
+@model RIPP.NIR.ComponentList
+
+@foreach(var c in Model)
+{
+    <td>@(double.IsNaN(c.PredictedValue) ? "" : c.PredictedValue.ToString(c.EpsFormatString))</td>
+} 

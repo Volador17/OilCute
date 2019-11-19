@@ -1,0 +1,16 @@
+﻿@{
+    Layout = null;
+}
+@model RIPP.NIR.ComponentList
+<dl class='dl-horizontal' style='width:200px;text-align:left'>
+@foreach(var c in Model)
+{
+    <dt>@c.Name 
+        @if(!string.IsNullOrWhiteSpace(c.Units))
+        {
+        <span class='units'>(@c.Units)</span>
+        }
+    </dt>
+    <dd>@(double.IsNaN(c.PredictedValue) ? "" : c.PredictedValue.ToString(c.EpsFormatString))</dd>
+}  
+</dl>

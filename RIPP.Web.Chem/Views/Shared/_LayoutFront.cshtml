@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4">
+            <h3 style="line-height:120px;">RIPP网络版快评软件</h3>
+        </div>
+        <div class="col-xs-8">
+            <div style="height:45px; line-height:45px;" class="pull-right">
+                @Html.Partial("_LogOnPartial")
+            </div>
+            @*<ul class="nav nav-pills  nav-justified" style="clear:both;">
+                <li @Html.Raw(RIPP.Web.Chem.Helpers.LocationHelper.IsCurrentControllerAndAction("home", ViewContext) ? "class=\"active\"" : "")>@Html.ActionLink("网站首页", "Index", "Home")</li>
+                <li @Html.Raw(RIPP.Web.Chem.Helpers.LocationHelper.IsCurrentControllerAndAction("Instrument", ViewContext) ? "class=\"active\"" : "")>@Html.ActionLink("仪器列表", "Index", "Instrument")</li>
+                <li @Html.Raw(RIPP.Web.Chem.Helpers.LocationHelper.IsCurrentControllerAndAction("News", ViewContext) ? "class=\"active\"" : "")>@Html.ActionLink("通知公告", "Index", "News")</li>
+                <li @Html.Raw(RIPP.Web.Chem.Helpers.LocationHelper.IsCurrentControllerAndAction("rules", ViewContext) ? "class=\"active\"" : "")>@Html.ActionLink("规章制度", "Index", "rules")</li>
+                <li @Html.Raw(RIPP.Web.Chem.Helpers.LocationHelper.IsCurrentControllerAndAction("Download", ViewContext) ? "class=\"active\"" : "")>@Html.ActionLink("资料下载", "Index", "Download")</li>
+                <li @Html.Raw(RIPP.Web.Chem.Helpers.LocationHelper.IsCurrentControllerAndAction("Account", ViewContext) ? "class=\"active\"" : "")>@Html.ActionLink("个人中心", "Home", "Admin")</li>
+            </ul>*@
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+     @RenderBody()
+</div>
+<div class="text-center" style="margin:10px">
+    &copy;2014 中国石化石油化工科学研究院<br />
+    地址：北京市海淀区学院路18号 &nbsp;  &nbsp; 邮政编码：100083  &nbsp;  &nbsp; 电话：86-10-62327551   
+
+</div>

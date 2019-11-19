@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{06DB8F61-326A-42D9-86A8-7419F6B8EE0A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RIPP.NIR</RootNamespace>
+    <AssemblyName>RIPP.NIR</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>..\bin\Debug\RIPP.NIR.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\RIPP.NIR.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MWArray, Version=2.12.0.0, Culture=neutral, PublicKeyToken=e1d84a0da19db86f, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\MWArray.dll</HintPath>
+    </Reference>
+    <Reference Include="Nevron.Chart, Version=14.4.11.12, Culture=neutral, PublicKeyToken=2961c51bb98125d2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\Nevron.Chart.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nevron.Chart.WinForm, Version=14.4.11.12, Culture=neutral, PublicKeyToken=c9bd8998e981e4ee, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\Nevron.Chart.WinForm.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nevron.GraphicsGL, Version=14.4.11.12, Culture=neutral, PublicKeyToken=2f17c6a71f852d32, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\Nevron.GraphicsGL.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nevron.Presentation, Version=14.4.11.12, Culture=neutral, PublicKeyToken=6656c5d1103e75cc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\Nevron.Presentation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nevron.System, Version=14.4.11.12, Culture=neutral, PublicKeyToken=6a987feae5e496fd, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\Nevron.System.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RIPPMatlab, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\matlabm\RIPPMatlab\distrib\RIPPMatlab.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common.cs" />
+    <Compile Include="Controls\AllMethodDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\AllMethodDetail.designer.cs">
+      <DependentUpon>AllMethodDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ArgusControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ArgusControl.Designer.cs">
+      <DependentUpon>ArgusControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FittingGridView.cs" />
+    <Compile Include="Controls\FrmChooseSpecs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\FrmChooseSpecs.Designer.cs">
+      <DependentUpon>FrmChooseSpecs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FrmIntPropertyDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\FrmIntPropertyDetail.Designer.cs">
+      <DependentUpon>FrmIntPropertyDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\IdentifyGridView.cs" />
+    <Compile Include="Controls\IdentifyItemDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\IdentifyItemDetail.Designer.cs">
+      <DependentUpon>IdentifyItemDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SpecGraphOld.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SpecGraph.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SpecGraph.Designer.cs">
+      <DependentUpon>SpecGraph.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SpecGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\DlgComponent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\DlgComponent.Designer.cs">
+      <DependentUpon>DlgComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SpecGraphForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\SpecGraphForm.Designer.cs">
+      <DependentUpon>SpecGraphForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SpecDataGridViewRow.cs" />
+    <Compile Include="Controls\StyleTool.cs" />
+    <Compile Include="Data\Argu.cs" />
+    <Compile Include="Data\Filter\AtScale.cs" />
+    <Compile Include="Data\Filter\Deriate1.cs" />
+    <Compile Include="Data\Filter\Deriate2.cs" />
+    <Compile Include="Data\Filter\Detrend.cs" />
+    <Compile Include="Data\Filter\IFilter.cs" />
+    <Compile Include="Data\Filter\LLE.cs" />
+    <Compile Include="Data\Filter\MCent.cs" />
+    <Compile Include="Data\Filter\MSC.cs" />
+    <Compile Include="Data\Filter\NormPathLength.cs" />
+    <Compile Include="Data\Filter\SavitzkyGolay.cs" />
+    <Compile Include="Data\Filter\Sgdiff.cs" />
+    <Compile Include="Data\Filter\SNV.cs" />
+    <Compile Include="Data\Filter\Spliter.cs" />
+    <Compile Include="Data\Filter\VarRegionManu.cs" />
+    <Compile Include="Data\Preprocesser.cs" />
+    <Compile Include="Data\RIPPMix.cs" />
+    <Compile Include="Data\Tools.cs" />
+    <Compile Include="Enum\DataProcess.cs" />
+    <Compile Include="Enum\Spectrum.cs" />
+    <Compile Include="Enum\FileExtension.cs" />
+    <Compile Include="Models\BindModel.cs" />
+    <Compile Include="Models\IntegrateModel.cs" />
+    <Compile Include="Models\FittingModel.cs" />
+    <Compile Include="Models\IdentifyModel.cs" />
+    <Compile Include="Models\IModel.cs" />
+    <Compile Include="Models\PLSModel.cs" />
+    <Compile Include="Models\PLSSubModel.cs" />
+    <Compile Include="Models\SpecSimulator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SpecBase.cs" />
+    <Compile Include="Spec\Component.cs" />
+    <Compile Include="Spec\ComponentList.cs" />
+    <Compile Include="Spec\Spectrum.cs" />
+    <Compile Include="Spec\SpectrumData.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RIPP.Lib\RIPP.Lib.csproj">
+      <Project>{236E6743-E19D-4330-8DF0-D4A7E685349F}</Project>
+      <Name>RIPP.Lib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZedGraph\ZedGraph.csproj">
+      <Project>{2541686b-1673-43bf-af89-3163945db009}</Project>
+      <Name>ZedGraph</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\AllMethodDetail.resx">
+      <DependentUpon>AllMethodDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ArgusControl.resx">
+      <DependentUpon>ArgusControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DlgComponent.resx">
+      <DependentUpon>DlgComponent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FrmChooseSpecs.resx">
+      <DependentUpon>FrmChooseSpecs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FrmIntPropertyDetail.resx">
+      <DependentUpon>FrmIntPropertyDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\IdentifyItemDetail.resx">
+      <DependentUpon>IdentifyItemDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SpecGraphForm.resx">
+      <DependentUpon>SpecGraphForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SpecGraph.resx">
+      <DependentUpon>SpecGraph.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\direction_down_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\direction_left_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\direction_right_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\direction_up_16.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

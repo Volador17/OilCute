@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutFront.cshtml";
+}
+
+<div class="clearfix"></div>
+<div style="margin: 10px 0 10px 0">
+    当前位置：<a href="/">网站首页</a> >> @Html.Raw(ViewBag.Nav)
+</div>
+<div class="row">
+    <div class="col-xs-3">
+         @Html.Action("LoginPanel", "Home")
+        @Html.Action("GroupList", "Home")
+    </div>
+    <div class="col-xs-9">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="icon icon-list-ul "></i> @ViewBag.Nav</div>
+            <div class="panel-body" style="padding: 0">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</div>
+
+

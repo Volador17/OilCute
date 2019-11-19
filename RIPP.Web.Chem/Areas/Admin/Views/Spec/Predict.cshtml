@@ -1,0 +1,53 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    
+}
+@using RIPP.Web.Chem.Helpers;
+@using RIPP.Web.Chem.Tools;
+@using IMetric.Equ.Web.Helpers;
+@using RIPP.NIR;
+@model  List<RIPP.Web.Chem.Datas.results>
+<div class="content">
+    <div id="pad-wrapper">
+        <div class="row">
+            <h3 class="col-md-5">@ViewBag.Title</h3>
+            <div class="col-md-7">
+                <div class="btn-group pull-right ">
+                        <a href="/Admin/spec/Edit/0" class="btn btn-default">
+                            <span>+</span>
+                            上传光谱
+                        </a>
+                    <a href="/admin/spec/index/?t=m" class="btn btn-@( ViewBag.t == "m" ? "success" : "default")">我上传的光谱</a>
+                        <a href="/admin/spec/index/?t=a" class="btn btn-@( ViewBag.t == "a" ? "success" : "default")">全部光谱</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="table-wrapper ">
+            <div class="table-responsive">
+                <table class="table table-hover" style="overflow: auto">
+                    <thead>
+                        <tr>
+                            <th>光谱名称</th>
+                             @Html.Partial("ComponentColumn", Model.First().Components)
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                            @foreach (var d in Model)
+                            {
+                           <tr>
+                               <td>@d.Spec.name</td>
+                               @Html.Partial("ComponentResult",d.Components)
+                           </tr>
+                            }
+                        
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+       
+    </div>
+</div>

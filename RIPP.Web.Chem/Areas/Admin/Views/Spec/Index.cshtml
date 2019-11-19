@@ -1,0 +1,325 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    
+}
+@using RIPP.Web.Chem.Helpers;
+@using RIPP.Web.Chem.Tools;
+@using IMetric.Equ.Web.Helpers;
+@using RIPP.NIR;
+@model  RIPP.Web.Chem.Models.PaginatedList<RIPP.Web.Chem.Datas.spec>
+<script src="/js/tmpl.min.js"></script>
+<script src="/js/jquery.iframe-transport.js"></script>
+<script src="/js/jquery.fileupload.js"></script>
+<script src="/js/jquery.fileupload-process.js"></script>
+<script src="/js/jquery.fileupload-validate.js"></script>
+<script src="/js/jquery.fileupload-ui.js"></script>
+<link rel="stylesheet" href="/css/jquery.fileupload.css">
+<link rel="stylesheet" href="/css/jquery.fileupload-ui.css">
+<div class="content">
+    <div id="pad-wrapper">
+        <form id="form" role="form" action="/admin/spec/predict" method="post">
+            <div class="row">
+                <h3 class="col-md-5">@ViewBag.Title</h3>
+                <div class="col-md-7">
+                    <div class="btn-group pull-right ">
+                        <a href="/Admin/spec/Edit/0" class="btn btn-default" data-toggle="modal" data-target="#myUploadModal">
+                            <span>+</span>
+                            上传光谱
+                        </a>
+                        <a href="/admin/spec/index/?t=m" class="btn btn-@( ViewBag.t == "m" ? "success" : "default")">我上传的光谱</a>
+                        <a href="/admin/spec/index/?t=a" class="btn btn-@( ViewBag.t == "a" ? "success" : "default")">全部光谱</a>
+                    </div>
+                </div>
+            </div>
+            @if (RIPP.Web.Chem.Tools.Common.UserCanPredict(RIPP.Web.Chem.Tools.Common.Get_User))
+            {
+                <div style="margin: 10px 0">
+                    <input type="hidden" name="modelid" id="modelid" />
+                    <div class="btn-group">
+                        <label class="btn btn-default" id="labelmodel">未选模型</label>
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">选择模型</button>
+                        <button type="submit" class="btn btn-primary">预测</button>
+                    </div>
+
+                    <div class="alert alert-warning fade  alertinfo">
+                        &nbsp;
+                    </div>
+
+
+                </div>
+            }
+
+            <div class="table-wrapper ">
+                <div class="row">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th class="col-md-1">
+                                    <label for="checkall" class="checkbox-inline">
+                                        <input type="checkbox" id="checkall" />全选</label>
+                                </th>
+                                <th class="col-md-5"><span class="line"></span>名称</th>
+                                <th class="col-md-2"><span class="line"></span>上传时间</th>
+                                <th class="col-md-1"><span class="line"></span>上传者</th>
+                                <th class="col-md-1"><span class="line"></span>类型</th>
+                                <th class="col-md-2"><span class="line"></span>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.Count > 0)
+                            {
+                                foreach (var d in Model)
+                                {
+                                <tr>
+                                    <td>
+                                        <input name="specid" value="@d.id" type="checkbox" /></td>
+                                    <td><a href="/admin/spec/detail/@d.id">@d.name</a></td>
+                                    <td>@d.addtime.ToString("yyyy-MM-dd HH:mm")</td>
+                                    <td>@(d.AddUser != null ? d.AddUser.RealName : "")</td>
+                                    <td>@d.ext</td>
+                                    <td>
+                                        <a href="/upload/UploadHandler.ashx?t=s&id=@d.id" download="@d.name" >下载</a> |
+                                    <a href="#" data-id="@d.id" class="confirm" title="是否删除光谱？">删除</a>
+                                    </td>
+                                </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="6">暂无记录</td>
+                                </tr>   
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <div class="text-center">
+                @Html.Raw(Html.Pager("page", Model.PageSize, Model.TotalCount))
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    function choosemodel(id, title) {
+        $('#modelid').val(id);
+        $('#modeltext').text(title);
+        $('#labelmodel').text(title);
+        $(".alert").removeClass('in');
+    }
+    $(function () {
+        'use strict';
+        // Initialize the jQuery File Upload widget:
+        $('#fileupload').fileupload();
+        $('#myUploadModal').on('hidden.bs.modal', function (e) {
+            // do something...
+            window.location.reload();
+        });
+        $('form').submit(function () {
+            var id = $('#modelid').val();
+            var sids = new Array();
+            $("input[name='specid']:checked").each(function () {
+                sids.push($(this).val());
+            });
+            var alertinfo = '';
+            if (id == undefined || id == null || id == '') {
+                alertinfo += '请先选择模型。';
+            }
+            if (sids.length < 1)
+                alertinfo += '您未选择需要预测的光谱。';
+            if (alertinfo != '') {
+                $('.alertinfo').text(alertinfo);
+                $(".alert").addClass('in');
+                return false;
+            }
+            return true;
+
+        });
+        $('#btndeleteOk').click(function (e) {
+            $.ajax({
+                url: '/upload/UploadHandler.ashx?t=s&id=' + $('#selectid').val(),
+                type: 'DELETE',
+                dataType: 'json',
+                success: function (result) {
+                    if (result.success == true)
+                        window.location.reload();
+                }
+            });
+        });
+
+
+        $('.confirm').click(function () {
+            $('#selectid').val($(this).data('id'));
+            $('#myDeleteModal').modal('show');
+        });
+    });
+</script>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">选择模型</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    已选择模型：<label id="modeltext"></label>
+                </p>
+                <iframe src="/admin/model/choose" style="width: 100%; border: none;"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="myUploadModal" tabindex="-1" role="dialog" aria-labelledby="myUoloadModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myUoloadModalLabel">上传新光谱</h4>
+            </div>
+            <div class="modal-body">
+                <form id="fileupload" action="/Upload/UploadHandler.ashx" method="POST" enctype="multipart/form-data">
+
+                    <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+                    <div class="row fileupload-buttonbar">
+                        <div>
+                            <!-- The fileinput-button span is used to style the file input field as button -->
+                            <span class="btn btn-success fileinput-button">
+                                <i class="glyphicon glyphicon-plus"></i>
+                                <span>添加...</span>
+                                <input type="file" name="files[]" multiple>
+                            </span>
+                            <button type="submit" class="btn btn-primary start">
+                                <i class="glyphicon glyphicon-upload"></i>
+                                <span>开始</span>
+                            </button>
+                            <button type="reset" class="btn btn-warning cancel">
+                                <i class="glyphicon glyphicon-ban-circle"></i>
+                                <span>撤销</span>
+                            </button>
+                            <button type="button" class="btn btn-danger delete">
+                                <i class="glyphicon glyphicon-trash"></i>
+                                <span>删除</span>
+                            </button>
+                            <input type="checkbox" class="toggle">
+                            <!-- The global file processing state -->
+                            <span class="fileupload-process"></span>
+                        </div>
+                        <!-- The global progress state -->
+                        <div class="fileupload-progress fade">
+                            <!-- The global progress bar -->
+                            <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar progress-bar-success" style="width: 0%;"></div>
+                            </div>
+                            <!-- The extended global progress state -->
+                            <div class="progress-extended">&nbsp;</div>
+                        </div>
+                    </div>
+                    <!-- The table listing the files available for upload/download -->
+                    <table role="presentation" class="table table-striped">
+                        <tbody class="files"></tbody>
+                    </table>
+                    <!-- The template to display files available for upload -->
+                    <script id="template-upload" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-upload fade">
+        
+        <td>
+            <p class="name">{%=file.name%}</p>
+            <strong class="error text-danger"></strong>
+        </td>
+        <td>
+            <p class="size">Processing...</p>
+            <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
+        </td>
+        <td>
+            {% if (!i && !o.options.autoUpload) { %}
+                <button class="btn btn-primary start" disabled>
+                    <i class="glyphicon glyphicon-upload"></i>
+                    <span>开始</span>
+                </button>
+            {% } %}
+            {% if (!i) { %}
+                <button class="btn btn-warning cancel">
+                    <i class="glyphicon glyphicon-ban-circle"></i>
+                    <span>撤消</span>
+                </button>
+            {% } %}
+        </td>
+    </tr>
+{% } %}
+                    </script>
+                    <!-- The template to display files available for download -->
+                    <script id="template-download" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-download fade">
+        
+        <td>
+            <p class="name">
+                {% if (file.url) { %}
+                    <a href="{%=file.url%}" title="{%=file.name%}">{%=file.name%}</a>
+                    {% if (file.description) { %}
+                        <br />{%=file.description%}
+                    {% } %}
+    
+                {% } else { %}
+                    <span>{%=file.name%}</span>
+                {% } %}
+            </p>
+            {% if (file.error) { %}
+                <div><span class="label label-danger">Error</span> {%=file.error%}</div>
+            {% } %}
+        </td>
+        <td>
+            <span class="size">{%=o.formatFileSize(file.size)%}</span>
+        </td>
+        <td>
+            {% if (file.deleteUrl) { %}
+                <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+                    <i class="glyphicon glyphicon-trash"></i>
+                    <span>删除</span>
+                </button>
+                <input type="checkbox" name="delete" value="1" class="toggle">
+            {% } else { %}
+                <button class="btn btn-warning cancel">
+                    <i class="glyphicon glyphicon-ban-circle"></i>
+                    <span>取消</span>
+                </button>
+            {% } %}
+        </td>
+    </tr>
+{% } %}
+                    </script>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bs-modal-sm" id="myDeleteModal" tabindex="-1" role="dialog" aria-labelledby="myDelteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myDelteModalLabel">是否删除光谱？</h4>
+            </div>
+            <div class="modal-body">
+                请确定是否删除该光谱！
+            <input type="hidden" id="selectid" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="btndeleteOk">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

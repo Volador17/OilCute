@@ -1,0 +1,51 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@model RIPP.Web.Chem.Datas.model
+@using RIPP.Web.Chem.Tools;
+@using RIPP.Web.Chem.Helpers;
+@{
+    ViewBag.Title = Model.id < 1 ? "添加模型" : "修改模型";
+}
+<script type="text/javascript">
+    $(function () {
+        //$(".registerform").Validform();  //就这一行代码！;
+        $("form").Validform({
+            tiptype: 2
+        });
+       
+    })
+</script>
+
+<div class="content">
+    <div id="pad-wrapper">
+        <div class="row header">
+            <h3>修改模型</h3>
+            <div class="col-md-10 col-sm-12 col-xs-12 pull-right">
+                <a href="/Admin/model" class="btn-flat success pull-right">
+                    <i class="icon-group"></i>
+                    模型列表
+                </a>
+            </div>
+        </div>
+
+        @using (Html.BeginForm("Edit", "model", FormMethod.Post, new { id = "crateform", @class = "form-horizontal", enctype = "multipart/form-data" }))
+        {
+            @Html.HiddenFor(m => m.id)
+            <div class="form-group">
+                <label for="Email" class="col-sm-2 control-label">仪器名称</label>
+                <div class="col-sm-10">@Html.TextBoxFor(m => m.name, new { @class = "form-control", datatype = "*" })</div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn-glow primary login">马上提交</button>
+                </div>
+            </div>
+
+        }
+
+    </div>
+</div>
+
+
+@Html.Action("Users", "Choose")

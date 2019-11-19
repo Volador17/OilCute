@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AEC7556A-E997-4B1D-9EB6-3EA4251EE7C1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RIPP.OilDB</RootNamespace>
+    <AssemblyName>RIPP.OilDB</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>..\bin\Debug\RIPP.OilDB.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\RIPP.OilDB.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Interop.Excel">
+      <HintPath>..\dll\Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="MathNet.Numerics, Version=2011.4.17.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Numerics\obj\Debug\MathNet.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\ConfigBll.cs" />
+    <Compile Include="BLL\ExcelClass\DataToExcelBll.cs" />
+    <Compile Include="BLL\ExcelClass\ExcelToRIPP.cs" />
+    <Compile Include="BLL\ExcelClass\ExcelToZhenHai.cs" />
+    <Compile Include="BLL\FixFraQueBll.cs" />
+    <Compile Include="BLL\OilDataCumulationBll.cs" />
+    <Compile Include="BLL\QueryBaseBll.cs" />
+    <Compile Include="BLL\ToolBox\IOutputCurves.cs" />
+    <Compile Include="BLL\ToolBox\OutputCurvesBll.cs" />
+    <Compile Include="BLL\ToolBox\ToolCusFraQueBll.cs" />
+    <Compile Include="BLL\UnitConvert.cs" />
+    <Compile Include="Data\AbstractDB.cs" />
+    <Compile Include="Data\BaseFunction.cs" />
+    <Compile Include="Data\CruCodeMapBll.cs" />
+    <Compile Include="Data\Curve\CurveParmTypeBll.cs" />
+    <Compile Include="Data\Curve\CurveSubTypeBll.cs" />
+    <Compile Include="Data\DataArray.cs" />
+    <Compile Include="Data\DataCheck\OilDataAccountCheck.cs" />
+    <Compile Include="Data\DataCheck\OilDataCheck.cs" />
+    <Compile Include="Data\DataCheck\OilDataLinkCheck.cs" />
+    <Compile Include="Data\DataCheck\OilDataRangeCheck.cs" />
+    <Compile Include="Data\DataCheck\OilDataTrendCheck.cs" />
+    <Compile Include="Data\DataSupplement\FrmResiduDataSupplementDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Data\DataSupplement\FrmResiduDataSupplementDialog.Designer.cs">
+      <DependentUpon>FrmResiduDataSupplementDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DataSupplement\OilDataSupplement.cs" />
+    <Compile Include="Data\ExcelTool.cs" />
+    <Compile Include="Data\GCBLL\GCInput.cs" />
+    <Compile Include="Data\GridOilDataEdit.cs" />
+    <Compile Include="Data\LibManage.cs" />
+    <Compile Include="Data\LibManageBll.cs" />
+    <Compile Include="Data\OilApply\OilApplySupplement.cs" />
+    <Compile Include="Data\OilApply\OilCApplyBll.cs" />
+    <Compile Include="Data\OilB\OilBBll.cs" />
+    <Compile Include="Data\SummaryBll.cs" />
+    <Compile Include="Model\AccountAuditEntity.cs" />
+    <Compile Include="Model\AccountParmTableEntity.cs" />
+    <Compile Include="Model\CrudeIndexIDAEntity.cs" />
+    <Compile Include="Model\CrudeIndexIDBEntity.cs" />
+    <Compile Include="Model\CurveParmTypeEntity.cs" />
+    <Compile Include="Model\EnumEntity.cs" />
+    <Compile Include="Model\Excel\WCell.cs" />
+    <Compile Include="Model\Excel\WCol.cs" />
+    <Compile Include="Model\ListBoxBandingEntity.cs" />
+    <Compile Include="Model\OilAToolQueryEntity.cs" />
+    <Compile Include="Model\OilB\OilBEntitiy.cs" />
+    <Compile Include="Model\OilC\OilCEntitiy.cs" />
+    <Compile Include="Model\OilDataBEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Model\OutputAxisEntity.cs" />
+    <Compile Include="Model\OutputCurveEntity.cs" />
+    <Compile Include="Model\Query\RangeQurey\DisplayHeaderBaseEntity.cs" />
+    <Compile Include="Model\Query\RangeQurey\OilBToolDisplayEntity.cs" />
+    <Compile Include="Model\Query\RangeQurey\OilBToolDisplayHeaderEntity.cs" />
+    <Compile Include="Model\Query\QueryBaseEntity.cs" />
+    <Compile Include="Model\Query\RangeQurey\RangeQureyBaseEntity.cs" />
+    <Compile Include="Model\Query\RangeQurey\ToolCusFraRanQueListItemEntity.cs" />
+    <Compile Include="Model\OilSearchConditionOutEntity.cs" />
+    <Compile Include="Model\OilTipTableEntity.cs" />
+    <Compile Include="Model\QueryEntity.cs" />
+    <Compile Include="Model\Query\SimilarQuery\SimilarQureyBaseEntity.cs" />
+    <Compile Include="Model\Query\SimilarQuery\ToolCusFraSimQueListItemEntity.cs" />
+    <Compile Include="Model\RemarkEntity.cs" />
+    <Compile Include="Model\ShowCurveEntity.cs" />
+    <Compile Include="Model\CutDataEntity.cs" />
+    <Compile Include="Model\LevelValueEntity.cs" />
+    <Compile Include="Model\LightCurveParmTableEntity.cs" />
+    <Compile Include="Model\LinkSupplementParmEntity.cs" />
+    <Compile Include="Data\MyComparable.cs" />
+    <Compile Include="Data\OilApply\OilApplyAPIBll.cs" />
+    <Compile Include="Data\OilBll.cs" />
+    <Compile Include="Data\OilDataB.cs" />
+    <Compile Include="Data\OilDataSearchBll.cs" />
+    <Compile Include="Data\OilTools.cs" />
+    <Compile Include="Data\OilApply\OilApplyBll.cs" />
+    <Compile Include="Data\OilInfoBll.cs" />
+    <Compile Include="Data\SplineLineInterpolate.cs" />
+    <Compile Include="Data\S_ParmBll.cs" />
+    <Compile Include="Data\S_UserBll.cs" />
+    <Compile Include="Model\CruCodeMapEntity.cs" />
+    <Compile Include="Model\CurveAEntity.cs" />
+    <Compile Include="Model\CurveDataBEntity.cs" />
+    <Compile Include="Model\CurveEntity.cs" />
+    <Compile Include="Model\CurveDataEntity.cs" />
+    <Compile Include="Model\CurveSubTypeEntity.cs" />
+    <Compile Include="Model\CurveTypeEntity.cs" />
+    <Compile Include="Model\CutMothedAPIEntity.cs" />
+    <Compile Include="Model\CutMothedEntity.cs" />
+    <Compile Include="Model\CutOilRateEntity.cs" />
+    <Compile Include="Model\OilRangeSearchEntity.cs" />
+    <Compile Include="Model\DataObjectExtend.cs" />
+    <Compile Include="Data\Access.cs" />
+    <Compile Include="Data\SqlHelper.cs" />
+    <Compile Include="Data\OilTableColBll.cs" />
+    <Compile Include="Data\OilTableRowBll.cs" />
+    <Compile Include="Data\OilTableTypeBll.cs" />
+    <Compile Include="Model\GCMatch1Entity.cs" />
+    <Compile Include="Model\GCMatch2Entity.cs" />
+    <Compile Include="Model\OilDataSearchColEntity.cs" />
+    <Compile Include="Model\OilDataEntity.cs" />
+    <Compile Include="Model\OilDataSearchRowEntity.cs" />
+    <Compile Include="Model\OilDataSearchEntity.cs" />
+    <Compile Include="Model\OilDataTableBAPIEntity.cs" />
+    <Compile Include="Model\OilDataTableBEntity.cs" />
+    <Compile Include="Model\OilInfoBEntity.cs" />
+    <Compile Include="Model\OilInfoEntity.cs" />
+    <Compile Include="Model\OilPropertyAPIEntity.cs" />
+    <Compile Include="Model\OilSimilarSearchEntity.cs" />
+    <Compile Include="Model\OutLib.cs" />
+    <Compile Include="Model\OilTableColEntity.cs" />
+    <Compile Include="Model\OilTableRowEntity.cs" />
+    <Compile Include="Model\OilTableTypeEntity.cs" />
+    <Compile Include="Model\SummaryEntity.cs" />
+    <Compile Include="Model\S_MoudleEntity.cs" />
+    <Compile Include="Model\S_ParmEntity.cs" />
+    <Compile Include="Model\S_ParmTypeEntity.cs" />
+    <Compile Include="Model\S_UserEntity.cs" />
+    <Compile Include="Model\TargetedValueColEntity.cs" />
+    <Compile Include="Model\TargetedValueEntity.cs" />
+    <Compile Include="Model\TargetedValueRowEntity.cs" />
+    <Compile Include="Model\TrendParmTableEntity.cs" />
+    <Compile Include="Model\OilTableTypeComparisonTableEntity.cs" />
+    <Compile Include="Model\VT.cs" />
+    <Compile Include="Model\WCutTypeEntity.cs" />
+    <Compile Include="Model\ZedGraphOilDataEntity.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\DateCheckControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\DateCheckControl.Designer.cs">
+      <DependentUpon>DateCheckControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmWaiting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmWaiting.Designer.cs">
+      <DependentUpon>FrmWaiting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GraphOil\PropertyGraph.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\GraphOil\PropertyGraph.Designer.cs">
+      <DependentUpon>PropertyGraph.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GraphOil\PropertyGraphA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\GraphOil\PropertyGraphA.Designer.cs">
+      <DependentUpon>PropertyGraphA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GridOil\DgvHeader.cs" />
+    <Compile Include="UI\GridOil\FrmExperienceCalCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\GridOil\FrmExperienceCalCheck.designer.cs">
+      <DependentUpon>FrmExperienceCalCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GridOil\frmLightDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\GridOil\frmLightDialog.Designer.cs">
+      <DependentUpon>frmLightDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GridOil\GridLibList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\GridOil\GridLibList.Designer.cs">
+      <DependentUpon>GridLibList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GridOil\GridOilCell.cs" />
+    <Compile Include="UI\GridOil\GridOilListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\GridOil\GridOilListView.Designer.cs">
+      <DependentUpon>GridOilListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GridOil\myStyle.cs" />
+    <Compile Include="UI\GridOil\FillMode.cs" />
+    <Compile Include="UI\GridOil\GridList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\GridOil\GridList.Designer.cs">
+      <DependentUpon>GridList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GridOil\GridOilCol.cs" />
+    <Compile Include="UI\GridOil\GridOilList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\GridOil\GridOilList.Designer.cs">
+      <DependentUpon>GridOilList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GridOil\GridOilRow.cs" />
+    <Compile Include="UI\GridOil\ToolStripCeckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\GridOil\ToolStripCeckBox.Designer.cs">
+      <DependentUpon>ToolStripCeckBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GridOil\V2\DataGridViewUndoRedoManager.cs" />
+    <Compile Include="UI\GridOil\V2\GCGridOilView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\GridOil\V2\GridOilCellGroup.cs" />
+    <Compile Include="UI\GridOil\V2\GridOilCellItem.cs" />
+    <Compile Include="UI\GridOil\V2\GridOilColumnGroup.cs" />
+    <Compile Include="UI\GridOil\V2\GridOilColumnItem.cs" />
+    <Compile Include="UI\GridOil\V2\GridOilColumnList.cs" />
+    <Compile Include="UI\GridOil\V2\GridOilColumnType.cs" />
+    <Compile Include="UI\GridOil\V2\IGridOilInfo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\GridOil\V2\IGridOilInfo.Designer.cs">
+      <DependentUpon>IGridOilInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GridOil\V2\GridOilViewA.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\GridOil\V2\GridOilViewB.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\GridOil\V2\IGridOilView.Editor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\GridOil\V2\Model\IGridOilEditor.cs" />
+    <Compile Include="UI\GridOil\V2\Model\IOilDataEntity.cs" />
+    <Compile Include="UI\GridOil\V2\Model\IOilInfoEntity.cs" />
+    <Compile Include="UI\GridOil\V2\SDGridOilView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\GridOil\V2\IGridOilView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\GridOil\V2\IGridOilView.Designer.cs">
+      <DependentUpon>IGridOilView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GridOil\V2\IGridOilView.Interface.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\GridOil\V2\GridOilInfoA.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\GridOil\V2\GridOilInfoB.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\GridOil\V2\WaitingPanel.cs" />
+    <Compile Include="UI\MergeCellsDataGridView\DataGridViewCellExHelper.cs" />
+    <Compile Include="UI\MergeCellsDataGridView\DataGridViewHelper.cs" />
+    <Compile Include="UI\MergeCellsDataGridView\DataGridViewTextBoxMergeCells.cs" />
+    <Compile Include="UI\MergeCellsDataGridView\DataGridViewTextBoxMergeCellsColumn.cs" />
+    <Compile Include="UI\MergeCellsDataGridView\ISpannedCell.cs" />
+    <Compile Include="UI\MultiColumnListBox.cs" />
+    <Compile Include="UI\MultiColumnListBox.Designer.cs">
+      <DependentUpon>MultiColumnListBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pager\Pager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Pager\Pager.Designer.cs">
+      <DependentUpon>Pager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TabControlEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\TabControlEx.Designer.cs">
+      <DependentUpon>TabControlEx.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\DataSupplement\FrmResiduDataSupplementDialog.resx">
+      <DependentUpon>FrmResiduDataSupplementDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\DateCheckControl.resx">
+      <DependentUpon>DateCheckControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmWaiting.resx">
+      <DependentUpon>FrmWaiting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\GraphOil\PropertyGraph.resx">
+      <DependentUpon>PropertyGraph.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\GraphOil\PropertyGraphA.resx">
+      <DependentUpon>PropertyGraphA.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\GridOil\FrmExperienceCalCheck.resx">
+      <DependentUpon>FrmExperienceCalCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\GridOil\frmLightDialog.resx">
+      <DependentUpon>frmLightDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\GridOil\GridOilList.resx">
+      <DependentUpon>GridOilList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\GridOil\V2\IGridOilInfo.resx">
+      <DependentUpon>IGridOilInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\GridOil\V2\IGridOilView.resx">
+      <DependentUpon>IGridOilView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Pager\Pager.resx">
+      <DependentUpon>Pager.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Numerics\Numerics.csproj">
+      <Project>{B7CAE5F4-A23F-4438-B5BE-41226618B695}</Project>
+      <Name>Numerics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RIPP.Lib\RIPP.Lib.csproj">
+      <Project>{236E6743-E19D-4330-8DF0-D4A7E685349F}</Project>
+      <Name>RIPP.Lib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZedGraph\ZedGraph.csproj">
+      <Project>{2541686B-1673-43BF-AF89-3163945DB009}</Project>
+      <Name>ZedGraph</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\ToolBox\" />
+    <Folder Include="Model\OilA\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram3.cd" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

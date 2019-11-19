@@ -1,0 +1,1033 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{24F5EA68-3FC3-4B0B-8899-EDCC811061B2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RIPP.App.Chem</RootNamespace>
+    <AssemblyName>RIPP.App.Chem</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\li\Desktop\Chem\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>E1FDDF95B180EBC65FF05467B8EA110C2764B92B</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>RIPP.App.Chem_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\RIPP.App.Chem.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\RIPP.App.Chem.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;D:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>chemo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MWArray, Version=2.12.0.0, Culture=neutral, PublicKeyToken=e1d84a0da19db86f, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\MWArray.dll</HintPath>
+    </Reference>
+    <Reference Include="Nevron.Chart, Version=14.4.11.12, Culture=neutral, PublicKeyToken=2961c51bb98125d2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\Nevron.Chart.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nevron.Chart.WinForm, Version=14.4.11.12, Culture=neutral, PublicKeyToken=c9bd8998e981e4ee, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\Nevron.Chart.WinForm.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nevron.GraphicsGL, Version=14.4.11.12, Culture=neutral, PublicKeyToken=2f17c6a71f852d32, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\Nevron.GraphicsGL.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nevron.Presentation, Version=14.4.11.12, Culture=neutral, PublicKeyToken=6656c5d1103e75cc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\Nevron.Presentation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nevron.System, Version=14.4.11.12, Culture=neutral, PublicKeyToken=6a987feae5e496fd, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\Nevron.System.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RIPPMatlab, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\matlabm\RIPPMatlab\distrib\RIPPMatlab.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Busi\Common.cs" />
+    <Compile Include="Busi\Config.cs" />
+    <Compile Include="Busi\RoleEnum.cs" />
+    <Compile Include="Busi\UserEntity.cs" />
+    <Compile Include="Forms\Bind\IntegrateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Bind\IntegrateForm.Designer.cs">
+      <DependentUpon>IntegrateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Bind\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Bind\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Configuration\ArgusForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Configuration\ArgusForm.Designer.cs">
+      <DependentUpon>ArgusForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Configuration\frmUserDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Configuration\frmUserDetail.Designer.cs">
+      <DependentUpon>frmUserDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Configuration\RoleFrom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Configuration\RoleFrom.Designer.cs">
+      <DependentUpon>RoleFrom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Configuration\UserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Configuration\UserForm.Designer.cs">
+      <DependentUpon>UserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Fitting\CalibResultForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Fitting\CalibResultForm.Designer.cs">
+      <DependentUpon>CalibResultForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Fitting\CVResultForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Fitting\CVResultForm.Designer.cs">
+      <DependentUpon>CVResultForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Fitting\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Fitting\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Fitting\SetIdParams.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Fitting\SetIdParams.Designer.cs">
+      <DependentUpon>SetIdParams.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Identify\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Identify\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Identify\CVResultForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Identify\CVResultForm.Designer.cs">
+      <DependentUpon>CVResultForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Identify\SetTQ.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Identify\SetTQ.Designer.cs">
+      <DependentUpon>SetTQ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Identify\CalibResultForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Identify\CalibResultForm.Designer.cs">
+      <DependentUpon>CalibResultForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\IMDIForm.cs" />
+    <Compile Include="Forms\LicenseManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LicenseManager.Designer.cs">
+      <DependentUpon>LicenseManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Maintain\FrmFitting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Maintain\FrmFitting.Designer.cs">
+      <DependentUpon>FrmFitting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Maintain\FrmIdentify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Maintain\FrmIdentify.Designer.cs">
+      <DependentUpon>FrmIdentify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Maintain\FrmPLS1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Maintain\FrmPLS1.Designer.cs">
+      <DependentUpon>FrmPLS1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Mix\FrmMixPredict.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mix\FrmMixPredict.Designer.cs">
+      <DependentUpon>FrmMixPredict.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Mix\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mix\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Model\Controls\PLSSetControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Model\Controls\PLSSetControl.Designer.cs">
+      <DependentUpon>PLSSetControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Model\Controls\PLS1Form.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Model\Controls\PLS1Form.Designer.cs">
+      <DependentUpon>PLS1Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Model\Controls\PLS1CVResult.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Model\Controls\PLS1CVResult.Designer.cs">
+      <DependentUpon>PLS1CVResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Model\Controls\UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Model\Controls\UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Model\Controls\ValidationGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Model\Controls\ValidationGrid.Designer.cs">
+      <DependentUpon>ValidationGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Model\Controls\ValidationResult.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Model\Controls\ValidationResult.Designer.cs">
+      <DependentUpon>ValidationResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Model\Dialog\GraphForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Model\Dialog\GraphForm.Designer.cs">
+      <DependentUpon>GraphForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Model\Dialog\ModelBindForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Model\Dialog\ModelBindForm.Designer.cs">
+      <DependentUpon>ModelBindForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Model\Dialog\OutlierFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Model\Dialog\OutlierFrm.Designer.cs">
+      <DependentUpon>OutlierFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Model\Dialog\SavePanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Model\Dialog\SavePanel.Designer.cs">
+      <DependentUpon>SavePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Model\Dialog\SetAllMethod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Model\Dialog\SetAllMethod.Designer.cs">
+      <DependentUpon>SetAllMethod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Model\Dialog\ShowLib.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Model\Dialog\ShowLib.Designer.cs">
+      <DependentUpon>ShowLib.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Model\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Model\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Predicter\Controls\AllResult.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Predicter\Controls\AllResult.Designer.cs">
+      <DependentUpon>AllResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Predicter\Controls\IdResult.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Predicter\Controls\IdResult.Designer.cs">
+      <DependentUpon>IdResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Predicter\Controls\IPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Predicter\Controls\ItgResult.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Predicter\Controls\ItgResult.Designer.cs">
+      <DependentUpon>ItgResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Predicter\Controls\PLS1Result.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Predicter\Controls\PLS1Result.Designer.cs">
+      <DependentUpon>PLS1Result.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Predicter\Controls\PLSBindReslut.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Predicter\Controls\PLSBindReslut.Designer.cs">
+      <DependentUpon>PLSBindReslut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Predicter\Controls\FitResult.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Predicter\Controls\FitResult.Designer.cs">
+      <DependentUpon>FitResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Predicter\Controls\UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Predicter\Controls\UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Predicter\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Predicter\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Preprocess\ArgusForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Preprocess\ArgusForm.Designer.cs">
+      <DependentUpon>ArgusForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Preprocess\Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Preprocess\Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Preprocess\PreprocessControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Preprocess\PreprocessControl.Designer.cs">
+      <DependentUpon>PreprocessControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Preprocess\VarRegionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Preprocess\VarRegionControl.Designer.cs">
+      <DependentUpon>VarRegionControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Preprocess\VarRegionSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Preprocess\VarRegionSet.Designer.cs">
+      <DependentUpon>VarRegionSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RegionEdit\RegionSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RegionEdit\RegionSet.Designer.cs">
+      <DependentUpon>RegionSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Spec\FrmKS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Spec\FrmKS.Designer.cs">
+      <DependentUpon>FrmKS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Spec\KSSetControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Spec\KSSetControl.Designer.cs">
+      <DependentUpon>KSSetControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Spec\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Spec\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Spec\PropertyAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Spec\PropertyAddForm.Designer.cs">
+      <DependentUpon>PropertyAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Spec\ToolForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Spec\ToolForm.Designer.cs">
+      <DependentUpon>ToolForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Welcome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Welcome.Designer.cs">
+      <DependentUpon>Welcome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmWaiting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmWaiting.Designer.cs">
+      <DependentUpon>FrmWaiting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Bind\IntegrateForm.resx">
+      <DependentUpon>IntegrateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Bind\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Configuration\ArgusForm.resx">
+      <DependentUpon>ArgusForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Configuration\frmUserDetail.resx">
+      <DependentUpon>frmUserDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Configuration\RoleFrom.resx">
+      <DependentUpon>RoleFrom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Configuration\UserForm.resx">
+      <DependentUpon>UserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Fitting\CalibResultForm.resx">
+      <DependentUpon>CalibResultForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Fitting\CVResultForm.resx">
+      <DependentUpon>CVResultForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Fitting\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Fitting\SetIdParams.resx">
+      <DependentUpon>SetIdParams.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Identify\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Identify\CVResultForm.resx">
+      <DependentUpon>CVResultForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Identify\SetTQ.resx">
+      <DependentUpon>SetTQ.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Identify\CalibResultForm.resx">
+      <DependentUpon>CalibResultForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LicenseManager.resx">
+      <DependentUpon>LicenseManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Maintain\FrmFitting.resx">
+      <DependentUpon>FrmFitting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Maintain\FrmIdentify.resx">
+      <DependentUpon>FrmIdentify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Maintain\FrmPLS1.resx">
+      <DependentUpon>FrmPLS1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Mix\FrmMixPredict.resx">
+      <DependentUpon>FrmMixPredict.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Mix\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Model\Controls\PLSSetControl.resx">
+      <DependentUpon>PLSSetControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Model\Controls\PLS1Form.resx">
+      <DependentUpon>PLS1Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Model\Controls\PLS1CVResult.resx">
+      <DependentUpon>PLS1CVResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Model\Controls\UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Model\Controls\ValidationGrid.resx">
+      <DependentUpon>ValidationGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Model\Controls\ValidationResult.resx">
+      <DependentUpon>ValidationResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Model\Dialog\GraphForm.resx">
+      <DependentUpon>GraphForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Model\Dialog\ModelBindForm.resx">
+      <DependentUpon>ModelBindForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Model\Dialog\OutlierFrm.resx">
+      <DependentUpon>OutlierFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Model\Dialog\SavePanel.resx">
+      <DependentUpon>SavePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Model\Dialog\SetAllMethod.resx">
+      <DependentUpon>SetAllMethod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Model\Dialog\ShowLib.resx">
+      <DependentUpon>ShowLib.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Model\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Predicter\Controls\IdResult.resx">
+      <DependentUpon>IdResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Predicter\Controls\ItgResult.resx">
+      <DependentUpon>ItgResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Predicter\Controls\PLS1Result.resx">
+      <DependentUpon>PLS1Result.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Predicter\Controls\PLSBindReslut.resx">
+      <DependentUpon>PLSBindReslut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Predicter\Controls\FitResult.resx">
+      <DependentUpon>FitResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Predicter\Controls\UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Predicter\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Preprocess\ArgusForm.resx">
+      <DependentUpon>ArgusForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Preprocess\Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Preprocess\PreprocessControl.resx">
+      <DependentUpon>PreprocessControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Preprocess\VarRegionControl.resx">
+      <DependentUpon>VarRegionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Preprocess\VarRegionSet.resx">
+      <DependentUpon>VarRegionSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RegionEdit\RegionSet.resx">
+      <DependentUpon>RegionSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Spec\FrmKS.resx">
+      <DependentUpon>FrmKS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Spec\KSSetControl.resx">
+      <DependentUpon>KSSetControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Spec\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Spec\PropertyAddForm.resx">
+      <DependentUpon>PropertyAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Spec\ToolForm.resx">
+      <DependentUpon>ToolForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Welcome.resx">
+      <DependentUpon>Welcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmWaiting.resx">
+      <DependentUpon>FrmWaiting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="log4net.config" />
+    <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_add_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calculator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calculator_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\computer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\computer_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\direction_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\direction_down_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\direction_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\direction_left_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\direction_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\direction_right_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\direction_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\direction_up_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diskette.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diskette_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document_add_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_add_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_delete_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_edit_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_search_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder_add_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ks_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\load_upload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\load_upload_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notification_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notification_add_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notification_done.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notification_done_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notification_error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notification_error_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\piechart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\piechart_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player_fastforward.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player_fastforward_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player_pause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player_pause_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player_play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player_play_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player_rewind.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player_rewind_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\property.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\property_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\property_del.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_as_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\security_lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\security_lock_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spec.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\property_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_as.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RIPP.Lib\RIPP.Lib.csproj">
+      <Project>{236E6743-E19D-4330-8DF0-D4A7E685349F}</Project>
+      <Name>RIPP.Lib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RIPP.NIR\RIPP.NIR.csproj">
+      <Project>{06DB8F61-326A-42D9-86A8-7419F6B8EE0A}</Project>
+      <Name>RIPP.NIR</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZedGraph\ZedGraph.csproj">
+      <Project>{2541686b-1673-43bf-af89-3163945db009}</Project>
+      <Name>ZedGraph</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spec.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spec_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spec_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spec_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder_del.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spec_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\recog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lib_m.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lib_f.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lib_r.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lib_i.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lib_p.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\main.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\old_go_next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\00003.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\receipts_text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\load.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dial_in.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\toggle_expand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_in.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_switch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sql_join_outer_exclude.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sql_join_outer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\main.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\201007015914.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_expand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="chemo.ico" />
+    <None Include="Resources\2010070159145.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

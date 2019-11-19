@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RIPPWebModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="RIPPWebModelStoreContainer">
+          <EntitySet Name="model" EntityType="RIPPWebModel.Store.model" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="results" EntityType="RIPPWebModel.Store.results" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="S_FindPWD" EntityType="RIPPWebModel.Store.S_FindPWD" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="S_Group" EntityType="RIPPWebModel.Store.S_Group" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="S_User" EntityType="RIPPWebModel.Store.S_User" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="S_UserInRole" EntityType="RIPPWebModel.Store.S_UserInRole" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="spec" EntityType="RIPPWebModel.Store.spec" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="model">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="uid" Type="int" Nullable="false" />
+          <Property Name="addtime" Type="datetime" Nullable="false" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="path" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="type" Type="int" Nullable="false" />
+          <Property Name="createtime" Type="datetime" />
+          <Property Name="gid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="results">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="uid" Type="int" Nullable="false" />
+          <Property Name="addtime" Type="datetime" Nullable="false" />
+          <Property Name="mid" Type="int" Nullable="false" />
+          <Property Name="sid" Type="int" Nullable="false" />
+          <Property Name="contents" Type="varbinary(max)" Nullable="false" />
+          <Property Name="componts" Type="varbinary(max)" Nullable="false" />
+          <Property Name="gid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="S_FindPWD">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="uid" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Secret" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="Guid" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="SubmitDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="S_Group">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Names" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="MasterUserID" Type="int" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="S_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="GroupID" Type="int" Nullable="false" />
+          <Property Name="Pwd" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="RealName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="SexIsMan" Type="bit" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" />
+          <Property Name="PhoneCell" Type="nvarchar" MaxLength="200" />
+          <Property Name="PhoneOffice" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="200" />
+          <Property Name="QQ" Type="int" />
+          <Property Name="ApplyState" Type="bit" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="LastLoginTime" Type="datetime" Nullable="false" />
+          <Property Name="AddTime" Type="datetime" Nullable="false" />
+          <Property Name="modelid" Type="int" />
+          <Property Name="watchFolder" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="S_UserInRole">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="spec">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="uid" Type="int" Nullable="false" />
+          <Property Name="addtime" Type="datetime" Nullable="false" />
+          <Property Name="contents" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ext" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="path" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="gid" Type="int" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RIPPWebModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="RIPPWebEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="model" EntityType="RIPPWebModel.model" />
+          <EntitySet Name="results" EntityType="RIPPWebModel.results" />
+          <EntitySet Name="S_FindPWD" EntityType="RIPPWebModel.S_FindPWD" />
+          <EntitySet Name="S_Group" EntityType="RIPPWebModel.S_Group" />
+          <EntitySet Name="S_User" EntityType="RIPPWebModel.S_User" />
+          <EntitySet Name="S_UserInRole" EntityType="RIPPWebModel.S_UserInRole" />
+          <EntitySet Name="spec" EntityType="RIPPWebModel.spec" />
+        </EntityContainer>
+        <EntityType Name="model">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uid" Type="Int32" Nullable="false" />
+          <Property Name="addtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="path" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="type" Type="Int32" Nullable="false" />
+          <Property Name="createtime" Type="DateTime" Precision="3" />
+          <Property Name="gid" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="results">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uid" Type="Int32" Nullable="false" />
+          <Property Name="addtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="mid" Type="Int32" Nullable="false" />
+          <Property Name="sid" Type="Int32" Nullable="false" />
+          <Property Name="contents" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="componts" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="gid" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="S_FindPWD">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uid" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Secret" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Guid" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="SubmitDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="S_Group">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Names" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="MasterUserID" Type="Int32" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="S_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="Pwd" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="RealName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SexIsMan" Type="Boolean" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="PhoneCell" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="PhoneOffice" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="QQ" Type="Int32" />
+          <Property Name="ApplyState" Type="Boolean" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="LastLoginTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AddTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modelid" Type="Int32" />
+          <Property Name="watchFolder" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="S_UserInRole">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="spec">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uid" Type="Int32" Nullable="false" />
+          <Property Name="addtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="contents" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ext" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="path" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="gid" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RIPPWebModelStoreContainer" CdmEntityContainer="RIPPWebEntities">
+          <EntitySetMapping Name="model">
+            <EntityTypeMapping TypeName="RIPPWebModel.model">
+              <MappingFragment StoreEntitySet="model">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="path" ColumnName="path" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="createtime" ColumnName="createtime" />
+                <ScalarProperty Name="gid" ColumnName="gid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="results">
+            <EntityTypeMapping TypeName="RIPPWebModel.results">
+              <MappingFragment StoreEntitySet="results">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="mid" ColumnName="mid" />
+                <ScalarProperty Name="sid" ColumnName="sid" />
+                <ScalarProperty Name="contents" ColumnName="contents" />
+                <ScalarProperty Name="componts" ColumnName="componts" />
+                <ScalarProperty Name="gid" ColumnName="gid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_FindPWD">
+            <EntityTypeMapping TypeName="RIPPWebModel.S_FindPWD">
+              <MappingFragment StoreEntitySet="S_FindPWD">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Secret" ColumnName="Secret" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="SubmitDate" ColumnName="SubmitDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_Group">
+            <EntityTypeMapping TypeName="RIPPWebModel.S_Group">
+              <MappingFragment StoreEntitySet="S_Group">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Names" ColumnName="Names" />
+                <ScalarProperty Name="MasterUserID" ColumnName="MasterUserID" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_User">
+            <EntityTypeMapping TypeName="RIPPWebModel.S_User">
+              <MappingFragment StoreEntitySet="S_User">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+                <ScalarProperty Name="RealName" ColumnName="RealName" />
+                <ScalarProperty Name="SexIsMan" ColumnName="SexIsMan" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneCell" ColumnName="PhoneCell" />
+                <ScalarProperty Name="PhoneOffice" ColumnName="PhoneOffice" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="QQ" ColumnName="QQ" />
+                <ScalarProperty Name="ApplyState" ColumnName="ApplyState" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="LastLoginTime" ColumnName="LastLoginTime" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="modelid" ColumnName="modelid" />
+                <ScalarProperty Name="watchFolder" ColumnName="watchFolder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_UserInRole">
+            <EntityTypeMapping TypeName="RIPPWebModel.S_UserInRole">
+              <MappingFragment StoreEntitySet="S_UserInRole">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spec">
+            <EntityTypeMapping TypeName="RIPPWebModel.spec">
+              <MappingFragment StoreEntitySet="spec">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="contents" ColumnName="contents" />
+                <ScalarProperty Name="ext" ColumnName="ext" />
+                <ScalarProperty Name="path" ColumnName="path" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="gid" ColumnName="gid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

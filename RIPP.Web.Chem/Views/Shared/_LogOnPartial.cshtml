@@ -1,0 +1,21 @@
+﻿@{
+    var user = RIPP.Web.Chem.Tools.Common.Get_User;
+}
+@if (user != null)
+{
+    <text>欢迎 <a href="/Admin/Home"><strong>@user.RealName</strong></a>  ! 
+   
+    @if (!user.ApplyState)
+    {
+        @:您的账号未审核
+    }
+    [ <a href="/Account/LogOff">退出</a> ] 
+    </text>
+}
+else
+{
+    @:[ <a href="/Account/Signin">登录</a> ] &nbsp; &nbsp;
+   @:[ <a href="/Account/Signup">注册</a> ] &nbsp; &nbsp;
+ 
+
+}

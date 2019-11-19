@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OilDataManageModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="OilDataManageModelStoreContainer">
+          <EntitySet Name="OilData" EntityType="OilDataManageModel.Store.OilData" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OilInfo" EntityType="OilDataManageModel.Store.OilInfo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OilTableCol" EntityType="OilDataManageModel.Store.OilTableCol" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OilTableRow" EntityType="OilDataManageModel.Store.OilTableRow" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OilTableType" EntityType="OilDataManageModel.Store.OilTableType" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_OilData_OilInfo" Association="OilDataManageModel.Store.FK_OilData_OilInfo">
+            <End Role="OilInfo" EntitySet="OilInfo" />
+            <End Role="OilData" EntitySet="OilData" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="OilData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="oilInfoID" Type="int" Nullable="false" />
+          <Property Name="oilTableColID" Type="int" Nullable="false" />
+          <Property Name="oilTableRowID" Type="int" Nullable="false" />
+          <Property Name="labData" Type="varchar" MaxLength="20" />
+          <Property Name="calData" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="OilInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="crudeName" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="englishName" Type="varchar" MaxLength="40" />
+          <Property Name="crudeIndex" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="country" Type="varchar" MaxLength="40" />
+          <Property Name="region" Type="varchar" MaxLength="40" />
+          <Property Name="fieldBlock" Type="varchar" MaxLength="40" />
+          <Property Name="sampleDate" Type="datetime" />
+          <Property Name="receiveDate" Type="datetime" />
+          <Property Name="sampleSite" Type="varchar" MaxLength="80" />
+          <Property Name="assayDate" Type="datetime" />
+          <Property Name="updataDate" Type="datetime" />
+          <Property Name="sourceRef" Type="varchar" MaxLength="40" />
+          <Property Name="assayLab" Type="varchar" MaxLength="50" />
+          <Property Name="assayer" Type="varchar" MaxLength="20" />
+          <Property Name="assayCustomer" Type="varchar" MaxLength="50" />
+          <Property Name="reportIndex" Type="varchar" MaxLength="20" />
+          <Property Name="summary" Type="varchar" MaxLength="500" />
+          <Property Name="type" Type="varchar" MaxLength="20" />
+          <Property Name="classification" Type="varchar" MaxLength="20" />
+          <Property Name="sulfurLevel" Type="varchar" MaxLength="20" />
+          <Property Name="acidLevel" Type="varchar" MaxLength="20" />
+          <Property Name="corrosionLevel" Type="varchar" MaxLength="20" />
+          <Property Name="processingIndex" Type="varchar" MaxLength="20" />
+          <Property Name="isLibraryA" Type="bit" />
+          <Property Name="isLibraryB" Type="bit" />
+        </EntityType>
+        <EntityType Name="OilTableCol">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="oilTableTypeID" Type="int" Nullable="false" />
+          <Property Name="colName" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="colOrder" Type="int" Nullable="false" />
+          <Property Name="isDisplay" Type="bit" />
+          <Property Name="descript" Type="varchar" MaxLength="200" />
+          <Property Name="isSystem" Type="bit" />
+        </EntityType>
+        <EntityType Name="OilTableRow">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="oilTableTypeID" Type="int" Nullable="false" />
+          <Property Name="itemOrder" Type="int" Nullable="false" />
+          <Property Name="itemName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="itemEnName" Type="varchar" MaxLength="50" />
+          <Property Name="itemUnit" Type="varchar" MaxLength="20" />
+          <Property Name="itemCode" Type="varchar" MaxLength="20" />
+          <Property Name="dataType" Type="varchar" MaxLength="20" />
+          <Property Name="decNumber" Type="int" />
+          <Property Name="valDigital" Type="int" />
+          <Property Name="isKey" Type="bit" />
+          <Property Name="isDisplay" Type="bit" />
+          <Property Name="errDownLimit" Type="float" />
+          <Property Name="errUpLimit" Type="float" />
+          <Property Name="alertDownLimit" Type="float" />
+          <Property Name="alertUpLimit" Type="float" />
+          <Property Name="evalDownLimit" Type="float" />
+          <Property Name="evalUpLimit" Type="float" />
+          <Property Name="descript" Type="varchar" MaxLength="200" />
+          <Property Name="subItemName" Type="varchar" MaxLength="50" />
+          <Property Name="isSystem" Type="bit" />
+        </EntityType>
+        <EntityType Name="OilTableType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="tableName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="dataStoreTable" Type="varchar" MaxLength="50" />
+          <Property Name="tableOrder" Type="int" Nullable="false" />
+          <Property Name="descript" Type="varchar" MaxLength="200" />
+          <Property Name="libraryA" Type="bit" Nullable="false" />
+          <Property Name="libraryB" Type="bit" Nullable="false" />
+          <Property Name="libraryC" Type="bit" Nullable="false" />
+          <Property Name="itemNameShow" Type="bit" Nullable="false" />
+          <Property Name="itemEnShow" Type="bit" Nullable="false" />
+          <Property Name="itemUnitShow" Type="bit" Nullable="false" />
+          <Property Name="itemCodeShow" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_OilData_OilInfo">
+          <End Role="OilInfo" Type="OilDataManageModel.Store.OilInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OilData" Type="OilDataManageModel.Store.OilData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OilInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OilData">
+              <PropertyRef Name="oilInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OilDataManageModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="OilDataManageEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="OilData" EntityType="OilDataManageModel.OilData" />
+          <EntitySet Name="OilInfo" EntityType="OilDataManageModel.OilInfo" />
+          <EntitySet Name="OilTableCol" EntityType="OilDataManageModel.OilTableCol" />
+          <EntitySet Name="OilTableRow" EntityType="OilDataManageModel.OilTableRow" />
+          <EntitySet Name="OilTableType" EntityType="OilDataManageModel.OilTableType" />
+          <AssociationSet Name="FK_OilData_OilInfo" Association="OilDataManageModel.FK_OilData_OilInfo">
+            <End Role="OilInfo" EntitySet="OilInfo" />
+            <End Role="OilData" EntitySet="OilData" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="OilData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="oilInfoID" Type="Int32" Nullable="false" />
+          <Property Name="oilTableColID" Type="Int32" Nullable="false" />
+          <Property Name="oilTableRowID" Type="Int32" Nullable="false" />
+          <Property Name="labData" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="calData" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="OilInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="crudeName" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="englishName" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="crudeIndex" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="country" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="region" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="fieldBlock" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="sampleDate" Type="DateTime" />
+          <Property Name="receiveDate" Type="DateTime" />
+          <Property Name="sampleSite" Type="String" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="assayDate" Type="DateTime" />
+          <Property Name="updataDate" Type="DateTime" />
+          <Property Name="sourceRef" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="assayLab" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="assayer" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="assayCustomer" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="reportIndex" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="summary" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="type" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="classification" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="sulfurLevel" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="acidLevel" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="corrosionLevel" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="processingIndex" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="isLibraryA" Type="Boolean" />
+          <Property Name="isLibraryB" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="OilTableCol">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="oilTableTypeID" Type="Int32" Nullable="false" />
+          <Property Name="colName" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="colOrder" Type="Int32" Nullable="false" />
+          <Property Name="isDisplay" Type="Boolean" />
+          <Property Name="descript" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="isSystem" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="OilTableRow">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="oilTableTypeID" Type="Int32" Nullable="false" />
+          <Property Name="itemOrder" Type="Int32" Nullable="false" />
+          <Property Name="itemName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="itemEnName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="itemUnit" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="itemCode" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="dataType" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="decNumber" Type="Int32" />
+          <Property Name="valDigital" Type="Int32" />
+          <Property Name="isKey" Type="Boolean" />
+          <Property Name="isDisplay" Type="Boolean" />
+          <Property Name="errDownLimit" Type="Double" />
+          <Property Name="errUpLimit" Type="Double" />
+          <Property Name="alertDownLimit" Type="Double" />
+          <Property Name="alertUpLimit" Type="Double" />
+          <Property Name="evalDownLimit" Type="Double" />
+          <Property Name="evalUpLimit" Type="Double" />
+          <Property Name="descript" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="subItemName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="isSystem" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="OilTableType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tableName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="dataStoreTable" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="tableOrder" Type="Int32" Nullable="false" />
+          <Property Name="descript" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="libraryA" Type="Boolean" Nullable="false" />
+          <Property Name="libraryB" Type="Boolean" Nullable="false" />
+          <Property Name="libraryC" Type="Boolean" Nullable="false" />
+          <Property Name="itemNameShow" Type="Boolean" Nullable="false" />
+          <Property Name="itemEnShow" Type="Boolean" Nullable="false" />
+          <Property Name="itemUnitShow" Type="Boolean" Nullable="false" />
+          <Property Name="itemCodeShow" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_OilData_OilInfo">
+          <End Type="OilDataManageModel.OilInfo" Role="OilInfo" Multiplicity="1" />
+          <End Type="OilDataManageModel.OilData" Role="OilData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OilInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OilData">
+              <PropertyRef Name="oilInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OilDataManageModelStoreContainer" CdmEntityContainer="OilDataManageEntities">
+          <EntitySetMapping Name="OilData"><EntityTypeMapping TypeName="OilDataManageModel.OilData"><MappingFragment StoreEntitySet="OilData">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="oilInfoID" ColumnName="oilInfoID" />
+            <ScalarProperty Name="oilTableColID" ColumnName="oilTableColID" />
+            <ScalarProperty Name="oilTableRowID" ColumnName="oilTableRowID" />
+            <ScalarProperty Name="labData" ColumnName="labData" />
+            <ScalarProperty Name="calData" ColumnName="calData" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="OilInfo"><EntityTypeMapping TypeName="OilDataManageModel.OilInfo"><MappingFragment StoreEntitySet="OilInfo">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="crudeName" ColumnName="crudeName" />
+            <ScalarProperty Name="englishName" ColumnName="englishName" />
+            <ScalarProperty Name="crudeIndex" ColumnName="crudeIndex" />
+            <ScalarProperty Name="country" ColumnName="country" />
+            <ScalarProperty Name="region" ColumnName="region" />
+            <ScalarProperty Name="fieldBlock" ColumnName="fieldBlock" />
+            <ScalarProperty Name="sampleDate" ColumnName="sampleDate" />
+            <ScalarProperty Name="receiveDate" ColumnName="receiveDate" />
+            <ScalarProperty Name="sampleSite" ColumnName="sampleSite" />
+            <ScalarProperty Name="assayDate" ColumnName="assayDate" />
+            <ScalarProperty Name="updataDate" ColumnName="updataDate" />
+            <ScalarProperty Name="sourceRef" ColumnName="sourceRef" />
+            <ScalarProperty Name="assayLab" ColumnName="assayLab" />
+            <ScalarProperty Name="assayer" ColumnName="assayer" />
+            <ScalarProperty Name="assayCustomer" ColumnName="assayCustomer" />
+            <ScalarProperty Name="reportIndex" ColumnName="reportIndex" />
+            <ScalarProperty Name="summary" ColumnName="summary" />
+            <ScalarProperty Name="type" ColumnName="type" />
+            <ScalarProperty Name="classification" ColumnName="classification" />
+            <ScalarProperty Name="sulfurLevel" ColumnName="sulfurLevel" />
+            <ScalarProperty Name="acidLevel" ColumnName="acidLevel" />
+            <ScalarProperty Name="corrosionLevel" ColumnName="corrosionLevel" />
+            <ScalarProperty Name="processingIndex" ColumnName="processingIndex" />
+            <ScalarProperty Name="isLibraryA" ColumnName="isLibraryA" />
+            <ScalarProperty Name="isLibraryB" ColumnName="isLibraryB" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="OilTableCol"><EntityTypeMapping TypeName="OilDataManageModel.OilTableCol"><MappingFragment StoreEntitySet="OilTableCol">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="oilTableTypeID" ColumnName="oilTableTypeID" />
+            <ScalarProperty Name="colName" ColumnName="colName" />
+            <ScalarProperty Name="colOrder" ColumnName="colOrder" />
+            <ScalarProperty Name="isDisplay" ColumnName="isDisplay" />
+            <ScalarProperty Name="descript" ColumnName="descript" />
+            <ScalarProperty Name="isSystem" ColumnName="isSystem" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="OilTableRow"><EntityTypeMapping TypeName="OilDataManageModel.OilTableRow"><MappingFragment StoreEntitySet="OilTableRow">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="oilTableTypeID" ColumnName="oilTableTypeID" />
+            <ScalarProperty Name="itemOrder" ColumnName="itemOrder" />
+            <ScalarProperty Name="itemName" ColumnName="itemName" />
+            <ScalarProperty Name="itemEnName" ColumnName="itemEnName" />
+            <ScalarProperty Name="itemUnit" ColumnName="itemUnit" />
+            <ScalarProperty Name="itemCode" ColumnName="itemCode" />
+            <ScalarProperty Name="dataType" ColumnName="dataType" />
+            <ScalarProperty Name="decNumber" ColumnName="decNumber" />
+            <ScalarProperty Name="valDigital" ColumnName="valDigital" />
+            <ScalarProperty Name="isKey" ColumnName="isKey" />
+            <ScalarProperty Name="isDisplay" ColumnName="isDisplay" />
+            <ScalarProperty Name="errDownLimit" ColumnName="errDownLimit" />
+            <ScalarProperty Name="errUpLimit" ColumnName="errUpLimit" />
+            <ScalarProperty Name="alertDownLimit" ColumnName="alertDownLimit" />
+            <ScalarProperty Name="alertUpLimit" ColumnName="alertUpLimit" />
+            <ScalarProperty Name="evalDownLimit" ColumnName="evalDownLimit" />
+            <ScalarProperty Name="evalUpLimit" ColumnName="evalUpLimit" />
+            <ScalarProperty Name="descript" ColumnName="descript" />
+            <ScalarProperty Name="subItemName" ColumnName="subItemName" />
+            <ScalarProperty Name="isSystem" ColumnName="isSystem" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="OilTableType"><EntityTypeMapping TypeName="OilDataManageModel.OilTableType"><MappingFragment StoreEntitySet="OilTableType">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="tableName" ColumnName="tableName" />
+            <ScalarProperty Name="dataStoreTable" ColumnName="dataStoreTable" />
+            <ScalarProperty Name="tableOrder" ColumnName="tableOrder" />
+            <ScalarProperty Name="descript" ColumnName="descript" />
+            <ScalarProperty Name="libraryA" ColumnName="libraryA" />
+            <ScalarProperty Name="libraryB" ColumnName="libraryB" />
+            <ScalarProperty Name="libraryC" ColumnName="libraryC" />
+            <ScalarProperty Name="itemNameShow" ColumnName="itemNameShow" />
+            <ScalarProperty Name="itemEnShow" ColumnName="itemEnShow" />
+            <ScalarProperty Name="itemUnitShow" ColumnName="itemUnitShow" />
+            <ScalarProperty Name="itemCodeShow" ColumnName="itemCodeShow" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="OilDataManageModel.OilData" Width="1.5" PointX="3" PointY="3" Height="2.1610522460937496" IsExpanded="true" />
+        <EntityTypeShape EntityType="OilDataManageModel.OilInfo" Width="1.5" PointX="0.75" PointY="1.125" Height="5.9814461263020826" IsExpanded="true" />
+        <EntityTypeShape EntityType="OilDataManageModel.OilTableCol" Width="1.5" PointX="5.75" PointY="0.75" Height="2.3520719401041656" IsExpanded="true" />
+        <EntityTypeShape EntityType="OilDataManageModel.OilTableRow" Width="1.5" PointX="5.75" PointY="4.75" Height="5.02634765625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OilDataManageModel.OilTableType" Width="1.5" PointX="2.75" PointY="6.75" Height="3.3071704101562496" IsExpanded="true" />
+        <AssociationConnector Association="OilDataManageModel.FK_OilData_OilInfo" >
+          <ConnectorPoint PointX="2.25" PointY="4.0805261230468748" />
+          <ConnectorPoint PointX="3" PointY="4.0805261230468748" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,563 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NIRCeneterModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="NIRCeneterModelStoreContainer">
+          <EntitySet Name="AllMethod" EntityType="NIRCeneterModel.Store.AllMethod" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CalcData" EntityType="NIRCeneterModel.Store.CalcData" store:Type="Tables" store:Schema="dbo" store:Name="CalcData">
+            <DefiningQuery>SELECT 
+      [CalcData].[SpecID] AS [SpecID], 
+      [CalcData].[Name] AS [Name], 
+      [CalcData].[Name1] AS [Name1], 
+      [CalcData].[Code] AS [Code], 
+      [CalcData].[Units] AS [Units], 
+      [CalcData].[Idx] AS [Idx], 
+      [CalcData].[ColumnIdx] AS [ColumnIdx], 
+      [CalcData].[TableID] AS [TableID], 
+      [CalcData].[Value] AS [Value]
+      FROM [dbo].[CalcData] AS [CalcData]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CutResult" EntityType="NIRCeneterModel.Store.CutResult" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OilData" EntityType="NIRCeneterModel.Store.OilData" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Properties" EntityType="NIRCeneterModel.Store.Properties" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="S_Moudle" EntityType="NIRCeneterModel.Store.S_Moudle" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="S_User" EntityType="NIRCeneterModel.Store.S_User" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Specs" EntityType="NIRCeneterModel.Store.Specs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="YDResult" EntityType="NIRCeneterModel.Store.YDResult" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="AllMethod">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AddTime" Type="datetime" Nullable="false" />
+          <Property Name="FullPath" Type="varchar" Nullable="false" MaxLength="800" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="MD5Str" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Contents" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“NIRCenter.dbo.CalcData”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="CalcData">
+          <Key>
+            <PropertyRef Name="SpecID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Idx" />
+            <PropertyRef Name="ColumnIdx" />
+            <PropertyRef Name="TableID" />
+            <PropertyRef Name="Value" />
+          </Key>
+          <Property Name="SpecID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Name1" Type="varchar" MaxLength="200" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="Units" Type="varchar" MaxLength="50" />
+          <Property Name="Idx" Type="int" Nullable="false" />
+          <Property Name="ColumnIdx" Type="int" Nullable="false" />
+          <Property Name="TableID" Type="int" Nullable="false" />
+          <Property Name="Value" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CutResult">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SpecID" Type="int" Nullable="false" />
+          <Property Name="AddTime" Type="datetime" Nullable="false" />
+          <Property Name="Contents" Type="text" />
+        </EntityType>
+        <EntityType Name="OilData">
+          <Key>
+            <PropertyRef Name="SID" />
+          </Key>
+          <Property Name="SID" Type="int" Nullable="false" />
+          <Property Name="Data" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Properties">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Name1" Type="varchar" MaxLength="200" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Units" Type="varchar" MaxLength="50" />
+          <Property Name="Idx" Type="int" Nullable="false" />
+          <Property Name="ColumnIdx" Type="int" Nullable="false" />
+          <Property Name="Value" Type="float" Nullable="false" />
+          <Property Name="TableID" Type="int" Nullable="false" />
+          <Property Name="Eps" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="S_Moudle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="text" Type="varchar" MaxLength="50" />
+          <Property Name="pID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="role1" Type="bit" Nullable="false" />
+          <Property Name="role2" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="S_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="loginName" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="password" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="realName" Type="varchar" MaxLength="20" />
+          <Property Name="sex" Type="bit" />
+          <Property Name="tel" Type="varchar" MaxLength="20" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="addTime" Type="datetime" />
+          <Property Name="roleID" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Specs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AddTime" Type="datetime" Nullable="false" />
+          <Property Name="Contents" Type="varbinary(max)" />
+          <Property Name="LIMSID" Type="varchar" MaxLength="20" />
+          <Property Name="MethodID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Result" Type="varbinary(max)" />
+          <Property Name="SamplePlace" Type="varchar" MaxLength="100" />
+          <Property Name="SampleTime" Type="datetime" />
+          <Property Name="OilName" Type="varchar" MaxLength="100" />
+          <Property Name="AnalyTime" Type="datetime" />
+          <Property Name="Remark" Type="text" />
+          <Property Name="ResultType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="YDResult">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ADDDATE" Type="datetime" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="text" Nullable="false" />
+          <Property Name="SAMPLEDATE" Type="datetime" Nullable="false" />
+          <Property Name="SAMPLING_POINT" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="SAMPLEID" Type="int" Nullable="false" />
+          <Property Name="LMISID" Type="int" Nullable="false" />
+          <Property Name="YD_VALUE1" Type="float" />
+          <Property Name="YD_VALUE2" Type="float" />
+          <Property Name="YD_VALUE3" Type="float" />
+          <Property Name="YD_VALUE4" Type="float" />
+          <Property Name="YD_VALUE5" Type="float" />
+          <Property Name="YD_VALUE6" Type="float" />
+          <Property Name="YD_VALUE7" Type="float" />
+          <Property Name="YD_VALUE8" Type="float" />
+          <Property Name="YD_VALUE9" Type="float" />
+          <Property Name="YD_VALUE10" Type="float" />
+          <Property Name="YD_VALUE11" Type="float" />
+          <Property Name="YD_VALUE12" Type="float" />
+          <Property Name="YD_VALUE13" Type="float" />
+          <Property Name="YD_VALUE14" Type="float" />
+          <Property Name="YD_VALUE15" Type="float" />
+          <Property Name="YD_VALUE16" Type="float" />
+          <Property Name="YD_VALUE17" Type="float" />
+          <Property Name="YD_VALUE18" Type="float" />
+          <Property Name="YD_VALUE19" Type="float" />
+          <Property Name="YD_VALUE20" Type="float" />
+          <Property Name="YD_VALUE21" Type="float" />
+          <Property Name="YD_VALUE22" Type="float" />
+          <Property Name="YD_VALUE23" Type="float" />
+          <Property Name="YD_VALUE24" Type="float" />
+          <Property Name="YD_VALUE25" Type="float" />
+          <Property Name="YD_VALUE26" Type="float" />
+          <Property Name="YD_VALUE27" Type="float" />
+          <Property Name="YD_VALUE28" Type="float" />
+          <Property Name="YD_VALUE29" Type="float" />
+          <Property Name="YD_VALUE30" Type="float" />
+          <Property Name="YD_VALUE31" Type="float" />
+          <Property Name="YD_VALUE32" Type="float" />
+          <Property Name="YD_VALUE33" Type="float" />
+          <Property Name="YD_VALUE34" Type="float" />
+          <Property Name="YD_VALUE35" Type="float" />
+          <Property Name="YD_VALUE36" Type="float" />
+          <Property Name="YD_VALUE37" Type="float" />
+          <Property Name="YD_VALUE38" Type="float" />
+          <Property Name="YD_VALUE39" Type="float" />
+          <Property Name="YD_VALUE40" Type="float" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NIRCeneterModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="NIRCeneterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AllMethod" EntityType="NIRCeneterModel.AllMethod" />
+          <EntitySet Name="CalcData" EntityType="NIRCeneterModel.CalcData" />
+          <EntitySet Name="CutResult" EntityType="NIRCeneterModel.CutResult" />
+          <EntitySet Name="OilData" EntityType="NIRCeneterModel.OilData" />
+          <EntitySet Name="Properties" EntityType="NIRCeneterModel.Properties" />
+          <EntitySet Name="S_Moudle" EntityType="NIRCeneterModel.S_Moudle" />
+          <EntitySet Name="S_User" EntityType="NIRCeneterModel.S_User" />
+          <EntitySet Name="Specs" EntityType="NIRCeneterModel.Specs" />
+          <EntitySet Name="YDResult" EntityType="NIRCeneterModel.YDResult" />
+        </EntityContainer>
+        <EntityType Name="AllMethod">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="AddTime" Nullable="false" />
+          <Property Type="String" Name="FullPath" Nullable="false" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="MD5Str" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Binary" Name="Contents" Nullable="false" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="CalcData">
+          <Key>
+            <PropertyRef Name="SpecID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Idx" />
+            <PropertyRef Name="ColumnIdx" />
+            <PropertyRef Name="TableID" />
+            <PropertyRef Name="Value" />
+          </Key>
+          <Property Type="Int32" Name="SpecID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name1" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Code" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Units" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Idx" Nullable="false" />
+          <Property Type="Int32" Name="ColumnIdx" Nullable="false" />
+          <Property Type="Int32" Name="TableID" Nullable="false" />
+          <Property Type="Double" Name="Value" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CutResult">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="SpecID" Nullable="false" />
+          <Property Type="DateTime" Name="AddTime" Nullable="false" />
+          <Property Type="String" Name="Contents" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OilData">
+          <Key>
+            <PropertyRef Name="SID" />
+          </Key>
+          <Property Type="Int32" Name="SID" Nullable="false" />
+          <Property Type="Binary" Name="Data" Nullable="false" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Properties">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name1" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Units" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Idx" Nullable="false" />
+          <Property Type="Int32" Name="ColumnIdx" Nullable="false" />
+          <Property Type="Double" Name="Value" Nullable="false" />
+          <Property Type="Int32" Name="TableID" Nullable="false" />
+          <Property Type="Int32" Name="Eps" Nullable="false" />
+        </EntityType>
+        <EntityType Name="S_Moudle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="text" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="pID" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="role1" Nullable="false" />
+          <Property Type="Boolean" Name="role2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="S_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="loginName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="password" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="realName" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="sex" />
+          <Property Type="String" Name="tel" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="email" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="addTime" />
+          <Property Type="Int32" Name="roleID" Nullable="false" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Specs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="AddTime" Nullable="false" />
+          <Property Type="Binary" Name="Contents" MaxLength="Max" FixedLength="false" />
+          <Property Type="String" Name="LIMSID" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="MethodID" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Binary" Name="Result" MaxLength="Max" FixedLength="false" />
+          <Property Type="String" Name="SamplePlace" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="SampleTime" />
+          <Property Type="String" Name="OilName" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="AnalyTime" />
+          <Property Type="String" Name="Remark" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ResultType" Nullable="false" />
+        </EntityType>
+        <EntityType Name="YDResult">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="ADDDATE" Nullable="false" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="SAMPLEDATE" Nullable="false" />
+          <Property Type="String" Name="SAMPLING_POINT" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="SAMPLEID" Nullable="false" />
+          <Property Type="Int32" Name="LMISID" Nullable="false" />
+          <Property Type="Double" Name="YD_VALUE1" />
+          <Property Type="Double" Name="YD_VALUE2" />
+          <Property Type="Double" Name="YD_VALUE3" />
+          <Property Type="Double" Name="YD_VALUE4" />
+          <Property Type="Double" Name="YD_VALUE5" />
+          <Property Type="Double" Name="YD_VALUE6" />
+          <Property Type="Double" Name="YD_VALUE7" />
+          <Property Type="Double" Name="YD_VALUE8" />
+          <Property Type="Double" Name="YD_VALUE9" />
+          <Property Type="Double" Name="YD_VALUE10" />
+          <Property Type="Double" Name="YD_VALUE11" />
+          <Property Type="Double" Name="YD_VALUE12" />
+          <Property Type="Double" Name="YD_VALUE13" />
+          <Property Type="Double" Name="YD_VALUE14" />
+          <Property Type="Double" Name="YD_VALUE15" />
+          <Property Type="Double" Name="YD_VALUE16" />
+          <Property Type="Double" Name="YD_VALUE17" />
+          <Property Type="Double" Name="YD_VALUE18" />
+          <Property Type="Double" Name="YD_VALUE19" />
+          <Property Type="Double" Name="YD_VALUE20" />
+          <Property Type="Double" Name="YD_VALUE21" />
+          <Property Type="Double" Name="YD_VALUE22" />
+          <Property Type="Double" Name="YD_VALUE23" />
+          <Property Type="Double" Name="YD_VALUE24" />
+          <Property Type="Double" Name="YD_VALUE25" />
+          <Property Type="Double" Name="YD_VALUE26" />
+          <Property Type="Double" Name="YD_VALUE27" />
+          <Property Type="Double" Name="YD_VALUE28" />
+          <Property Type="Double" Name="YD_VALUE29" />
+          <Property Type="Double" Name="YD_VALUE30" />
+          <Property Type="Double" Name="YD_VALUE31" />
+          <Property Type="Double" Name="YD_VALUE32" />
+          <Property Type="Double" Name="YD_VALUE33" />
+          <Property Type="Double" Name="YD_VALUE34" />
+          <Property Type="Double" Name="YD_VALUE35" />
+          <Property Type="Double" Name="YD_VALUE36" />
+          <Property Type="Double" Name="YD_VALUE37" />
+          <Property Type="Double" Name="YD_VALUE38" />
+          <Property Type="Double" Name="YD_VALUE39" />
+          <Property Type="Double" Name="YD_VALUE40" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NIRCeneterModelStoreContainer" CdmEntityContainer="NIRCeneterEntities">
+          <EntitySetMapping Name="AllMethod">
+            <EntityTypeMapping TypeName="NIRCeneterModel.AllMethod">
+              <MappingFragment StoreEntitySet="AllMethod">
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="MD5Str" ColumnName="MD5Str" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FullPath" ColumnName="FullPath" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CalcData">
+            <EntityTypeMapping TypeName="NIRCeneterModel.CalcData">
+              <MappingFragment StoreEntitySet="CalcData">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="TableID" ColumnName="TableID" />
+                <ScalarProperty Name="ColumnIdx" ColumnName="ColumnIdx" />
+                <ScalarProperty Name="Idx" ColumnName="Idx" />
+                <ScalarProperty Name="Units" ColumnName="Units" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name1" ColumnName="Name1" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SpecID" ColumnName="SpecID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CutResult">
+            <EntityTypeMapping TypeName="NIRCeneterModel.CutResult">
+              <MappingFragment StoreEntitySet="CutResult">
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="SpecID" ColumnName="SpecID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OilData">
+            <EntityTypeMapping TypeName="NIRCeneterModel.OilData">
+              <MappingFragment StoreEntitySet="OilData">
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Properties">
+            <EntityTypeMapping TypeName="NIRCeneterModel.Properties">
+              <MappingFragment StoreEntitySet="Properties">
+                <ScalarProperty Name="Eps" ColumnName="Eps" />
+                <ScalarProperty Name="TableID" ColumnName="TableID" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ColumnIdx" ColumnName="ColumnIdx" />
+                <ScalarProperty Name="Idx" ColumnName="Idx" />
+                <ScalarProperty Name="Units" ColumnName="Units" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name1" ColumnName="Name1" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_Moudle">
+            <EntityTypeMapping TypeName="NIRCeneterModel.S_Moudle">
+              <MappingFragment StoreEntitySet="S_Moudle">
+                <ScalarProperty Name="role2" ColumnName="role2" />
+                <ScalarProperty Name="role1" ColumnName="role1" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="pID" ColumnName="pID" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_User">
+            <EntityTypeMapping TypeName="NIRCeneterModel.S_User">
+              <MappingFragment StoreEntitySet="S_User">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="roleID" ColumnName="roleID" />
+                <ScalarProperty Name="addTime" ColumnName="addTime" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="realName" ColumnName="realName" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="loginName" ColumnName="loginName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Specs">
+            <EntityTypeMapping TypeName="NIRCeneterModel.Specs">
+              <MappingFragment StoreEntitySet="Specs">
+                <ScalarProperty Name="ResultType" ColumnName="ResultType" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="AnalyTime" ColumnName="AnalyTime" />
+                <ScalarProperty Name="OilName" ColumnName="OilName" />
+                <ScalarProperty Name="SampleTime" ColumnName="SampleTime" />
+                <ScalarProperty Name="SamplePlace" ColumnName="SamplePlace" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="MethodID" ColumnName="MethodID" />
+                <ScalarProperty Name="LIMSID" ColumnName="LIMSID" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YDResult">
+            <EntityTypeMapping TypeName="NIRCeneterModel.YDResult">
+              <MappingFragment StoreEntitySet="YDResult">
+                <ScalarProperty Name="YD_VALUE40" ColumnName="YD_VALUE40" />
+                <ScalarProperty Name="YD_VALUE39" ColumnName="YD_VALUE39" />
+                <ScalarProperty Name="YD_VALUE38" ColumnName="YD_VALUE38" />
+                <ScalarProperty Name="YD_VALUE37" ColumnName="YD_VALUE37" />
+                <ScalarProperty Name="YD_VALUE36" ColumnName="YD_VALUE36" />
+                <ScalarProperty Name="YD_VALUE35" ColumnName="YD_VALUE35" />
+                <ScalarProperty Name="YD_VALUE34" ColumnName="YD_VALUE34" />
+                <ScalarProperty Name="YD_VALUE33" ColumnName="YD_VALUE33" />
+                <ScalarProperty Name="YD_VALUE32" ColumnName="YD_VALUE32" />
+                <ScalarProperty Name="YD_VALUE31" ColumnName="YD_VALUE31" />
+                <ScalarProperty Name="YD_VALUE30" ColumnName="YD_VALUE30" />
+                <ScalarProperty Name="YD_VALUE29" ColumnName="YD_VALUE29" />
+                <ScalarProperty Name="YD_VALUE28" ColumnName="YD_VALUE28" />
+                <ScalarProperty Name="YD_VALUE27" ColumnName="YD_VALUE27" />
+                <ScalarProperty Name="YD_VALUE26" ColumnName="YD_VALUE26" />
+                <ScalarProperty Name="YD_VALUE25" ColumnName="YD_VALUE25" />
+                <ScalarProperty Name="YD_VALUE24" ColumnName="YD_VALUE24" />
+                <ScalarProperty Name="YD_VALUE23" ColumnName="YD_VALUE23" />
+                <ScalarProperty Name="YD_VALUE22" ColumnName="YD_VALUE22" />
+                <ScalarProperty Name="YD_VALUE21" ColumnName="YD_VALUE21" />
+                <ScalarProperty Name="YD_VALUE20" ColumnName="YD_VALUE20" />
+                <ScalarProperty Name="YD_VALUE19" ColumnName="YD_VALUE19" />
+                <ScalarProperty Name="YD_VALUE18" ColumnName="YD_VALUE18" />
+                <ScalarProperty Name="YD_VALUE17" ColumnName="YD_VALUE17" />
+                <ScalarProperty Name="YD_VALUE16" ColumnName="YD_VALUE16" />
+                <ScalarProperty Name="YD_VALUE15" ColumnName="YD_VALUE15" />
+                <ScalarProperty Name="YD_VALUE14" ColumnName="YD_VALUE14" />
+                <ScalarProperty Name="YD_VALUE13" ColumnName="YD_VALUE13" />
+                <ScalarProperty Name="YD_VALUE12" ColumnName="YD_VALUE12" />
+                <ScalarProperty Name="YD_VALUE11" ColumnName="YD_VALUE11" />
+                <ScalarProperty Name="YD_VALUE10" ColumnName="YD_VALUE10" />
+                <ScalarProperty Name="YD_VALUE9" ColumnName="YD_VALUE9" />
+                <ScalarProperty Name="YD_VALUE8" ColumnName="YD_VALUE8" />
+                <ScalarProperty Name="YD_VALUE7" ColumnName="YD_VALUE7" />
+                <ScalarProperty Name="YD_VALUE6" ColumnName="YD_VALUE6" />
+                <ScalarProperty Name="YD_VALUE5" ColumnName="YD_VALUE5" />
+                <ScalarProperty Name="YD_VALUE4" ColumnName="YD_VALUE4" />
+                <ScalarProperty Name="YD_VALUE3" ColumnName="YD_VALUE3" />
+                <ScalarProperty Name="YD_VALUE2" ColumnName="YD_VALUE2" />
+                <ScalarProperty Name="YD_VALUE1" ColumnName="YD_VALUE1" />
+                <ScalarProperty Name="LMISID" ColumnName="LMISID" />
+                <ScalarProperty Name="SAMPLEID" ColumnName="SAMPLEID" />
+                <ScalarProperty Name="SAMPLING_POINT" ColumnName="SAMPLING_POINT" />
+                <ScalarProperty Name="SAMPLEDATE" ColumnName="SAMPLEDATE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="ADDDATE" ColumnName="ADDDATE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1" ZoomLevel="82">
+        <EntityTypeShape EntityType="NIRCeneterModel.AllMethod" Width="1.5" PointX="0.75" PointY="0.75" Height="2.1610522460937496" />
+        <EntityTypeShape EntityType="NIRCeneterModel.CalcData" Width="1.5" PointX="2.75" PointY="0.75" Height="2.7341113281249996" />
+        <EntityTypeShape EntityType="NIRCeneterModel.CutResult" Width="1.5" PointX="4.75" PointY="0.75" Height="1.7790128580729174" />
+        <EntityTypeShape EntityType="NIRCeneterModel.OilData" Width="1.5" PointX="0.75" PointY="4.75" Height="1.3969734700520853" />
+        <EntityTypeShape EntityType="NIRCeneterModel.Properties" Width="1.5" PointX="2.75" PointY="4.75" Height="2.9251310221354174" />
+        <EntityTypeShape EntityType="NIRCeneterModel.S_Moudle" Width="1.5" PointX="4.75" PointY="3.75" Height="2.1610522460937531" />
+        <EntityTypeShape EntityType="NIRCeneterModel.S_User" Width="1.5" PointX="6.75" PointY="0.75" Height="2.9251310221354174" />
+        <EntityTypeShape EntityType="NIRCeneterModel.Specs" Width="1.5" PointX="6.75" PointY="4.75" Height="3.4981901041666674" />
+        <EntityTypeShape EntityType="NIRCeneterModel.YDResult" Width="1.5" PointX="8.75" PointY="0.75" Height="9.9928597005208317" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
