@@ -12,6 +12,7 @@ using System.Threading;
 using RIPP.OilDB.UI;
 using RIPP.OilDB.Data;
 using RIPP.Lib;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace RIPP.OilDB.BLL
 {
@@ -77,7 +78,7 @@ namespace RIPP.OilDB.BLL
         /// <param name="oilInfo">一条原油</param>
         /// <param name="excelModelFilePath">模版路径</param>
         /// <returns></returns>
-        public static int DataToExcel(OilInfoEntity oilInfo, OilInfoBEntity oilInfoB,string excelModelFilePath,List<CutMothedEntity> _cutMotheds,string AppType)
+        public static int DataToExcel(OilInfoEntity oilInfo, OilInfoBEntity oilInfoB, string excelModelFilePath, List<CutMothedEntity> _cutMotheds, string AppType)
         {
             int result = 0;
             bool isBusy = true;
@@ -112,7 +113,7 @@ namespace RIPP.OilDB.BLL
                         case "B":
                             excelModelIsRight = appCutDataToExcel(app, wSheets, oilInfoB, excelModelFilePath, _cutMotheds);//应用模块切割数据输出数据到Excel
                             break;
-                     }
+                    }
 
                     StopWaiting();
                     isBusy = false;
@@ -164,7 +165,7 @@ namespace RIPP.OilDB.BLL
                         {
                             RIPP.Lib.Log.Error("原油导出EXCEL错误：" + ex.ToString());
                             result = 0;
-                        }                      
+                        }
                     }
                 }
                 else
@@ -193,7 +194,7 @@ namespace RIPP.OilDB.BLL
         /// <param name="dataGridView"></param>
         /// <param name="filePath"></param>
         /// <returns></returns>
-        public static int DataToExcelWithoutModel(DataGridView dataGridView,string filePath)
+        public static int DataToExcelWithoutModel(DataGridView dataGridView, string filePath)
         {
             int result = 0;
             bool isBusy = true;
@@ -216,8 +217,8 @@ namespace RIPP.OilDB.BLL
 
                 Excel.Workbooks wBooks = app.Workbooks;
                 Excel.Workbook wBook = wBooks.Add(true);
-            
-               
+
+
                 #endregion
 
                 if (dataGridView != null)
@@ -225,15 +226,15 @@ namespace RIPP.OilDB.BLL
                     #region 
                     int colCount = dataGridView.Columns.Count;
                     int RowCount = dataGridView.Rows.Count;
-                    
+
                     int maxCol = 255;//Excel表格的最大列
 
                     int res = colCount % maxCol;
                     int num = colCount / maxCol;
 
-                    while (wBook.Worksheets.Count < num+2)
+                    while (wBook.Worksheets.Count < num + 2)
                         wBook.Worksheets.Add(Missing.Value, Missing.Value, Missing.Value, Missing.Value);//向一个工作表集合添加一个新工作表
-                    
+
                     Excel.Worksheet worksheet = null;//1代表是sheet1
                     int gSheetIndex = 0;
 
@@ -246,7 +247,7 @@ namespace RIPP.OilDB.BLL
                             worksheet = (Excel.Worksheet)wBook.Worksheets.get_Item(sheetIndex + 1);//取出需要进行操作的工作表
                             worksheet.Activate();
                             // 获取列标题
-                            int colIndex = 0 ;
+                            int colIndex = 0;
 
                             // 获取数据
                             for (int RowIndex = 1; RowIndex <= RowCount; RowIndex++)
@@ -272,37 +273,37 @@ namespace RIPP.OilDB.BLL
 
                         #endregion
                     }
-                    
+
                     #region
                     int lColIndex = 0;
-                        worksheet = (Excel.Worksheet)wBook.Worksheets.get_Item(gSheetIndex + 1);//取出需要进行操作的工作表
-                        worksheet.Activate();
-                        
-                        // 获取数据
-                        for (int RowIndex = 1; RowIndex <= RowCount; RowIndex++)
+                    worksheet = (Excel.Worksheet)wBook.Worksheets.get_Item(gSheetIndex + 1);//取出需要进行操作的工作表
+                    worksheet.Activate();
+
+                    // 获取数据
+                    for (int RowIndex = 1; RowIndex <= RowCount; RowIndex++)
+                    {
+                        lColIndex = 1;
+                        if (RowIndex == 1)
                         {
-                            lColIndex = 1;
-                            if (RowIndex == 1)
+                            for (int i = gSheetIndex * maxCol; i < (gSheetIndex * maxCol + res); i++)//dataGridView中的第一列为ID，隐藏未显示
                             {
-                                for (int i = gSheetIndex * maxCol; i < (gSheetIndex * maxCol+ res); i++)//dataGridView中的第一列为ID，隐藏未显示
-                                {
-                                    string he = dataGridView.Columns[i].HeaderText;
-                                    worksheet.Cells[RowIndex, lColIndex++] = dataGridView.Columns[i].HeaderText;
-                                }
-                            }
-                            else
-                            {
-                                for (int i = gSheetIndex * maxCol; i < (gSheetIndex * maxCol + res); i++)//第1列为ID列，隐藏
-                                {
-                                    worksheet.Cells[RowIndex, lColIndex++] = dataGridView[i, RowIndex - 1].Value == null ? string.Empty : dataGridView[i, RowIndex - 1].Value.ToString();//必须ToString();不然后面赋值时会报错
-                                }
+                                string he = dataGridView.Columns[i].HeaderText;
+                                worksheet.Cells[RowIndex, lColIndex++] = dataGridView.Columns[i].HeaderText;
                             }
                         }
-                        #endregion
-                     
+                        else
+                        {
+                            for (int i = gSheetIndex * maxCol; i < (gSheetIndex * maxCol + res); i++)//第1列为ID列，隐藏
+                            {
+                                worksheet.Cells[RowIndex, lColIndex++] = dataGridView[i, RowIndex - 1].Value == null ? string.Empty : dataGridView[i, RowIndex - 1].Value.ToString();//必须ToString();不然后面赋值时会报错
+                            }
+                        }
+                    }
+                    #endregion
+
 
                     #endregion
- 
+
                     isBusy = false;
                     StopWaiting();
                 }
@@ -317,7 +318,7 @@ namespace RIPP.OilDB.BLL
                 app.DisplayAlerts = false;
                 app.AlertBeforeOverwriting = false;
 
-                 
+
                 wBook.SaveAs(filePath,
                 Excel.XlFileFormat.xlWorkbookNormal,
                 null,
@@ -359,7 +360,7 @@ namespace RIPP.OilDB.BLL
             }
             return result;
         }
- 
+
         /// <summary>
         /// 按固定模版将数据输出到Excel
         /// </summary>
@@ -370,7 +371,7 @@ namespace RIPP.OilDB.BLL
         /// <param name="outPath">模版路径</param>
         /// <param name="_cutMotheds">切割方案</param>
         /// <returns></returns>
-        private static bool manageDataToExcel(Excel.Application app, Excel.Sheets sheets,  OilInfoEntity oilInfo, string outPath)
+        private static bool manageDataToExcel(Excel.Application app, Excel.Sheets sheets, OilInfoEntity oilInfo, string outPath)
         {
             bool result = true;//用来标记模版是否正确
 
@@ -970,7 +971,7 @@ namespace RIPP.OilDB.BLL
                             {
                                 calDataList = cutDataList.Where(o => o.CutName == cutName && o.YItemCode == itemCode).FirstOrDefault();//从计算的切割数据中取值
                                 if (calDataList != null)//切割数据不为空
-                                {                                    
+                                {
                                     excelData = calDataList.ShowCutData;
                                 }
                             }
@@ -1028,10 +1029,10 @@ namespace RIPP.OilDB.BLL
                 result = false;
 
             return result;
-        }  
+        }
 
-        private static bool DataToExcel(Excel.Application app, Excel.Sheets sheets, 
-            List<OilInfoEntity> oilAList, string outPath,string itemCode = "TWY")
+        private static bool DataToExcel(Excel.Application app, Excel.Sheets sheets,
+            List<OilInfoEntity> oilAList, string outPath, string itemCode = "TWY")
         {
             bool result = true;//用来标记模版是否正确
 
@@ -1056,7 +1057,7 @@ namespace RIPP.OilDB.BLL
             }
             catch (Exception ex)
             {
-                Log.Error("输出数据："+ex.ToString());
+                Log.Error("输出数据：" + ex.ToString());
                 result = false;
             }
             finally
@@ -1067,7 +1068,7 @@ namespace RIPP.OilDB.BLL
             return result;
         }
 
-        
+
 
         //判断窄馏分、宽馏分、渣油表的某一列是否有数据
         /// <summary>

@@ -10,6 +10,8 @@ using RIPP.OilDB.Model;
 using System.Text.RegularExpressions;
 using System.Threading;
 using RIPP.OilDB.UI;
+using Excel = Microsoft.Office.Interop.Excel;
+
 namespace RIPP.OilDB.Data
 {
     /// <summary>

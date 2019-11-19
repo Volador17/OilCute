@@ -70,10 +70,6 @@
     <OutputPath>bin\x64\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Interop.Excel">
-      <HintPath>..\dll\Interop.Excel.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
     <PackageReference Include="log4net">
       <Version>2.0.8</Version>
     </PackageReference>
