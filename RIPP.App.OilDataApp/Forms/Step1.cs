@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using RIPP.OilDB.Model;
-using RIPP.OilDB.Data;
+﻿using RIPP.App.OilDataManager.Forms.FrmBase;
 using RIPP.Lib;
-using RIPP.OilDB.UI.GridOil;
-using RIPP.OilDB.UI.GridOil.V2;
-using RIPP.OilDB.Data.DataCheck;
-using RIPP.App.OilDataManager.Forms.FrmBase;
+using RIPP.OilDB.Data;
+using RIPP.OilDB.Model;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-
+using System.Linq;
+using System.Windows.Forms;
 
 namespace RIPP.App.OilDataApp.Forms
 {
@@ -22,17 +17,21 @@ namespace RIPP.App.OilDataApp.Forms
     public partial class FrmMain
     {
         #region "私有变量"
+
         /// <summary>
         /// 显示的日期格式
         /// </summary>
         private const string dateFormat = "yyyy-MM-dd";
+
         /// <summary>
         /// 显示的长日期格式
         /// </summary>
         private const string LongDateFormat = "yyyy-MM-dd HH:mm:ss";
-        #endregion 
+
+        #endregion "私有变量"
 
         #region "添加原油，刷新和删除原油"
+
         /// <summary>
         /// 显示所有原油
         /// </summary>
@@ -55,7 +54,6 @@ namespace RIPP.App.OilDataApp.Forms
             this.gridListSelect.Refresh();
         }
 
-
         /// <summary>
         /// 从源列表中选出原油添加到选择列表中
         /// </summary>
@@ -63,46 +61,50 @@ namespace RIPP.App.OilDataApp.Forms
         /// <param name="e"></param>
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            //选中记录是否已经存在于选择表格中
-            bool flag = false; //假设不存在
-            if (this.gridList.SelectedCells.Count <= 0)
-                return;
-            
-            #region "镇海演示"     
-            if (BZH)
+            var rows = new List<DataGridViewRow>();
+            foreach (DataGridViewRow row in this.gridList.Rows)
             {
-                if (this.gridListSelect.Rows.Count == 1)
+                if ((bool?)row.Cells["Check"].Value == true)
                 {
-                    MessageBox.Show("只能选择一条原油！");
-                    return;
+                    rows.Add(row);
                 }
             }
-            #endregion
 
+            if (rows.Any() != true)
+            {
+                MessageBox.Show("请先勾选原油！");
+                return;
+            }
+
+            //已经存在的原油
+            var exists = new List<string>();
             foreach (DataGridViewRow rowSlect in gridListSelect.Rows)
             {
-                if (rowSlect.Cells["原油编号"].Value.ToString() == gridList.CurrentRow.Cells["原油编号"].Value.ToString())
-                {
-                    flag = true;
-                    break;
-                }
+                exists.Add(rowSlect.Cells["ID"].Value.ToString());
             }
-            //如果在选中表格中没找到则添加到选中表格中
-            if (flag == false)
+            foreach (var r in rows)
             {
+                var id = r.Cells["ID"].Value?.ToString();
+                if (exists.Contains(id))
+                    continue;
+
                 DataGridViewRow row = new DataGridViewRow();
-                for (int i = 0; i < this.gridListSelect.ColumnCount; i++)
+                foreach (DataGridViewCell c in r.Cells)
                 {
-                    DataGridViewTextBoxCell cell = new DataGridViewTextBoxCell();
-                    cell.Value = this.gridList.CurrentRow.Cells[i].Value;
-                    row.Cells.Add(cell);
+                    if (c.OwningColumn.Name == "Check")
+                        continue;
+                    var c2 = c.Clone() as DataGridViewCell;
+                    c2.Value = c.Value;
+                    row.Cells.Add(c2);
                 }
                 this.gridListSelect.Rows.Add(row);
             }
         }
-        #endregion 
+
+        #endregion "添加原油，刷新和删除原油"
 
         #region "范围查找"
+
         /// <summary>
         /// cmbRangeFraction下拉菜单的变化显示
         ///范围查询馏分段的Combox的选择事件处理
@@ -115,7 +117,7 @@ namespace RIPP.App.OilDataApp.Forms
             OilDataSearchRowAccess oilDataRowAccess = new OilDataSearchRowAccess();
             List<OilDataSearchRowEntity> oilDataRowEntityList = oilDataRowAccess.Get("1=1");
 
-            var selectedItem = (OilDataSearchColEntity)this.cmbRangeFraction.SelectedItem;//确定当前菜单中的数据           
+            var selectedItem = (OilDataSearchColEntity)this.cmbRangeFraction.SelectedItem;//确定当前菜单中的数据
             List<OilDataSearchRowEntity> cmb_OilDataRowList = oilDataRowEntityList.Where(o => o.OilDataColID == selectedItem.ID && o.BelongsToB == true).ToList();
 
             if ("原油信息".Equals(cmbRangeFraction.Text))
@@ -157,7 +159,7 @@ namespace RIPP.App.OilDataApp.Forms
             {
                 if (null != this.cmbRangeItem.Items)
                 {
-                    this.cmbRangeItem.Items.Clear();//将上一次所选择的内容清零                
+                    this.cmbRangeItem.Items.Clear();//将上一次所选择的内容清零
                     this.cmbRangeItem.DisplayMember = "ItemName";//设置显示名称
                     this.cmbRangeItem.ValueMember = "ItemCode";//设置保存代码
                 }
@@ -178,9 +180,10 @@ namespace RIPP.App.OilDataApp.Forms
                 }
             }
         }
+
         /// <summary>
         /// 范围查询中的确定按钮事件，目的进行数据范围查询
-        /// </summary>    
+        /// </summary>
         public void btnRangeSubmit_Click(object sender, EventArgs e)
         {
             if (this.rangeListView.Items.Count <= 0)
@@ -209,7 +212,7 @@ namespace RIPP.App.OilDataApp.Forms
                         rangeSearch.IsAnd = item.SubItems[9].Tag.ToString() == "And" ? true : false;
                     this._rangeSearchList.Add(rangeSearch);
                 }
-                #endregion
+                #endregion "显示条件集合"
 
                 #region "当前显示原油的集合"
                 List<CrudeIndexIDAEntity> currentCrudeIndexIDList = new List<CrudeIndexIDAEntity>();
@@ -221,7 +224,7 @@ namespace RIPP.App.OilDataApp.Forms
                     tempCrudeIndexIDAEntity.crudeName = row.Cells["原油名称"].Value.ToString();
                     currentCrudeIndexIDList.Add(tempCrudeIndexIDAEntity);
                 }
-                #endregion
+                #endregion "当前显示原油的集合"
 
                 OilBll oilBll = new OilBll();
                 this.tempRanSumDic = oilBll.GetRangOilInfoCrudeIndex(this._rangeSearchList);//从C库获取满足条件的原油编号
@@ -238,6 +241,7 @@ namespace RIPP.App.OilDataApp.Forms
                 this.StopWaiting();
             }
         }
+
         /// <summary>
         /// 得到查询结果，结果绑定
         /// </summary>
@@ -285,6 +289,7 @@ namespace RIPP.App.OilDataApp.Forms
                 InitRangeList(listView, tempDIC);
             }
         }
+
         /// <summary>
         /// 范围查找输出配置
         /// </summary>
@@ -300,7 +305,6 @@ namespace RIPP.App.OilDataApp.Forms
                 this._tempShowViewList = OutputConfiguration.tempListView;
             }
         }
-
 
         /// <summary>
         /// 显示列表
@@ -345,7 +349,7 @@ namespace RIPP.App.OilDataApp.Forms
                 listViewItem.SubItems[2].Tag = item.OilTableRowID;
                 ranListView.Items.Add(listViewItem);
             }
-            #endregion
+            #endregion "查询条件"
 
             #region "显示条件"
             if (showListView != null)
@@ -386,9 +390,9 @@ namespace RIPP.App.OilDataApp.Forms
                     }
                 }
             }
-            #endregion
+            #endregion "显示条件"
 
-            #endregion
+            #endregion "建立ranListView"
 
             #region "添加列"
             this.gridList.Columns.Clear();
@@ -406,7 +410,7 @@ namespace RIPP.App.OilDataApp.Forms
                 this.gridList.Columns.Add(new DataGridViewTextBoxColumn() { Name = strTableName, HeaderText = strTableName + ":" + strItemName, AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
             }
             this.gridList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            #endregion
+            #endregion "添加列"
 
             foreach (string key in Dic.Keys)
             {
@@ -440,9 +444,10 @@ namespace RIPP.App.OilDataApp.Forms
             this.gridList.Sort(this.gridList.Columns["原油编号"], ListSortDirection.Ascending);
         }
 
-        #endregion
+        #endregion "范围查找"
 
         #region "相似查找"
+
         /// <summary>
         /// 相似查找的信息表名称下拉菜单选择事件,目的是为了向物性下拉菜单中添加查找物性
         /// </summary>
@@ -454,12 +459,12 @@ namespace RIPP.App.OilDataApp.Forms
             OilDataSearchRowAccess oilDataRowAccess = new OilDataSearchRowAccess();
             List<OilDataSearchRowEntity> oilDataRowEntityList = oilDataRowAccess.Get("1=1");
 
-            var selectedItem = (OilDataSearchColEntity)this.cmbSimilarFraction.SelectedItem;//确定当前菜单中的数据           
+            var selectedItem = (OilDataSearchColEntity)this.cmbSimilarFraction.SelectedItem;//确定当前菜单中的数据
             List<OilDataSearchRowEntity> cmb_OilDataRowList = oilDataRowEntityList.Where(o => o.OilDataColID == selectedItem.ID && o.BelongsToB == true).ToList();
 
             if (null != this.cmbSimilarItem.Items)
             {
-                this.cmbSimilarItem.Items.Clear();//将上一次所选择的内容清零             
+                this.cmbSimilarItem.Items.Clear();//将上一次所选择的内容清零
                 this.cmbSimilarItem.DisplayMember = "ItemName";//设置显示名称
                 this.cmbSimilarItem.ValueMember = "ItemCode";//设置保存代码
             }
@@ -475,6 +480,7 @@ namespace RIPP.App.OilDataApp.Forms
             }
             selectOilData();
         }
+
         /// <summary>
         /// 相似查找---物性下拉菜单
         /// </summary>
@@ -509,7 +515,7 @@ namespace RIPP.App.OilDataApp.Forms
 
             OilTableRowEntity selectOiltableRowEntity = (OilTableRowEntity)cmbSimilarItem.SelectedItem;//获取物性下拉菜单选择项实体
             int oilTableRowID = selectOiltableRowEntity.ID;
-            OilDataSearchColEntity selectedItem = (OilDataSearchColEntity)this.cmbSimilarFraction.SelectedItem;//确定当前菜单中的数据    
+            OilDataSearchColEntity selectedItem = (OilDataSearchColEntity)this.cmbSimilarFraction.SelectedItem;//确定当前菜单中的数据
             int oilTableColID = selectedItem.OilTableColID;
 
             OilDataSearchAccess oilDataSearchAccess = new OilDataSearchAccess();
@@ -567,7 +573,6 @@ namespace RIPP.App.OilDataApp.Forms
                     similarSearch.FracitonName = item.SubItems[1].Text;
                     similarSearch.ItemName = item.SubItems[3].Text;
 
-
                     string sqlWhere = "oilTableRowID='" + similarSearch.OilTableRowID.ToString() + "'" + " and oilTableColId='" + similarSearch.OilTableColID + "'" + " and calData!=''";
                     List<OilDataSearchEntity> oilDataSearchEntityList = oilDataSearchAccess.Get(sqlWhere);//获取对应物性的校正值
 
@@ -579,7 +584,6 @@ namespace RIPP.App.OilDataApp.Forms
 
                         MaxValue = MaxValue > similarSearch.Fvalue ? MaxValue : similarSearch.Fvalue;//如果最大值比基础值要小，则最大值取基础值
                         MinValue = MinValue < similarSearch.Fvalue ? MinValue : similarSearch.Fvalue;//如果最小值比基础值要大，则最小值取基础值
-
                     }
 
                     if (!MaxValue.Equals(float.MinValue) && !MinValue.Equals(float.MaxValue) && MaxValue != null && MinValue != null)
@@ -593,7 +597,7 @@ namespace RIPP.App.OilDataApp.Forms
                         similarSearch.IsAnd = item.SubItems[9].Tag.ToString() == "And" ? true : false;
                     this._similarSearchList.Add(similarSearch);
                 }
-                #endregion
+                #endregion "相似查找实体集合"
 
                 #region "当前显示原油的集合"
                 List<CrudeIndexIDAEntity> currentCrudeIndexIDList = new List<CrudeIndexIDAEntity>();
@@ -605,7 +609,7 @@ namespace RIPP.App.OilDataApp.Forms
                     tempCrudeIndexIDAEntity.crudeName = row.Cells["原油名称"].Value.ToString();
                     currentCrudeIndexIDList.Add(tempCrudeIndexIDAEntity);
                 }
-                #endregion
+                #endregion "当前显示原油的集合"
 
                 OilBll oilBll = new OilBll();
                 IDictionary<string, double> CrudeIndexSumDic = oilBll.GetOilSimInfoCrudeIndex(this._similarSearchList);//从C库获取满足条件的原油编号
@@ -622,6 +626,7 @@ namespace RIPP.App.OilDataApp.Forms
                 this.StopWaiting();
             }
         }
+
         /// <summary>
         /// 相似查找的数据集合
         /// </summary>
@@ -636,7 +641,6 @@ namespace RIPP.App.OilDataApp.Forms
                                  select singleDic;
 
             IDictionary<string, double> tempDIC = tempEnumerable.ToDictionary(o => o.Key, o => o.Value);
-
 
             if (tempSimilarListView != null)
             {
@@ -716,7 +720,7 @@ namespace RIPP.App.OilDataApp.Forms
                 listViewItem.SubItems[2].Tag = item.OilTableRowID;
                 simListView.Items.Add(listViewItem);
             }
-            #endregion
+            #endregion "查询条件"
 
             #region "显示条件"
             if (showListView != null)
@@ -757,9 +761,9 @@ namespace RIPP.App.OilDataApp.Forms
                     }
                 }
             }
-            #endregion
+            #endregion "显示条件"
 
-            #endregion
+            #endregion "建立simListView"
 
             #region "添加列"
             this.gridList.Columns.Clear();
@@ -776,7 +780,7 @@ namespace RIPP.App.OilDataApp.Forms
                 string strItemName = item.SubItems[2].Text;
                 this.gridList.Columns.Add(new DataGridViewTextBoxColumn() { Name = strTableName, HeaderText = strTableName + ":" + strItemName, AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
             }
-            #endregion
+            #endregion "添加列"
 
             foreach (string key in Dic.Keys)
             {
@@ -826,9 +830,11 @@ namespace RIPP.App.OilDataApp.Forms
                 this._tempShowViewList = OutputConfiguration.tempListView;
             }
         }
-        #endregion
+
+        #endregion "相似查找"
 
         #region "step1私有函数"
+
         /// <summary>
         /// 范围查询和相似查询馏分段名称控件绑定
         /// </summary>
@@ -846,12 +852,15 @@ namespace RIPP.App.OilDataApp.Forms
             cmbSimilarFraction.ValueMember = "OilTableName";
             cmbSimilarFraction.DataSource = oilDataColEntityListSim;
         }
+
         /// <summary>
         /// 绑定选择源表格数据
         /// </summary>
         private void GridListSourceBind()
         {
             dgvHeader.SetAppDataBaseBColHeader(this.gridList);
+
+            gridList.Columns.Insert(0, new DataGridViewCheckBoxColumn() { Name = "Check", HeaderText = "选择" ,AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
             this.gridList.Rows.Clear();
 
             List<CrudeIndexIDBEntity> oilInfo = new OilInfoBCrudeIndexIDAccess().Get(this._sqlWhere);
@@ -867,8 +876,9 @@ namespace RIPP.App.OilDataApp.Forms
                     var updataDateTime = oilDataCheck.GetDate(oilInfo[i].updataDate);
                     updataDate = updataDateTime == null ? string.Empty : updataDateTime.Value.ToString(LongDateFormat);
                 }
-                #endregion
+                #endregion "日期处理"
                 this.gridList.Rows.Add(
+                    false,
                             oilInfo[i].ID,
                             oilInfo[i].crudeName,
                             oilInfo[i].englishName,
@@ -898,6 +908,7 @@ namespace RIPP.App.OilDataApp.Forms
             }
             this.toolStripStatusLabel.Text = "共有" + oilInfo.Count.ToString() + "条信息满足条件。";
         }
+
         /// <summary>
         /// 重新刷新数据
         /// </summary>
@@ -905,6 +916,7 @@ namespace RIPP.App.OilDataApp.Forms
         {
             GridListSourceBind();
         }
+
         /// <summary>
         /// 绑定选择表格数据，如果原来有选中的原油数据，显示在选择表格数据
         /// </summary>
@@ -932,6 +944,7 @@ namespace RIPP.App.OilDataApp.Forms
             //    }
             //}
         }
+
         private void gridList_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             Rectangle rectangle = new Rectangle(e.RowBounds.Location.X,
@@ -957,9 +970,11 @@ namespace RIPP.App.OilDataApp.Forms
               this.gridListSelect.RowHeadersDefaultCellStyle.ForeColor,
               TextFormatFlags.VerticalCenter | TextFormatFlags.Right);
         }
-        #endregion 
+
+        #endregion "step1私有函数"
 
         #region "范围查询条件处理"
+
         /// <summary>
         /// 范围查询的or按钮事件，目的添加或查询条件
         /// </summary>
@@ -972,7 +987,7 @@ namespace RIPP.App.OilDataApp.Forms
 
         /// <summary>
         /// 范围查询的and按钮事件，目的添加和查询条件
-        /// </summary>      
+        /// </summary>
         private void btnRangeAndSelect_Click(object sender, EventArgs e)
         {
             RangeQuery(true);//and
@@ -1003,7 +1018,7 @@ namespace RIPP.App.OilDataApp.Forms
                 }
             }
 
-            #endregion
+            #endregion "原油信息输入条件判断"
 
             int ColID = ((OilDataSearchColEntity)this.cmbRangeFraction.SelectedItem).OilTableColID;
 
@@ -1042,7 +1057,7 @@ namespace RIPP.App.OilDataApp.Forms
                 Item.SubItems[7].Tag = rangEnd.Text.Trim();
                 Item.SubItems[8].Tag = ")";
                 Item.SubItems[9].Tag = andOr;
-                #endregion
+                #endregion "非原油信息"
             }
             else if ("原油信息".Equals(cmbRangeFraction.Text))
             {
@@ -1070,13 +1085,13 @@ namespace RIPP.App.OilDataApp.Forms
                 Item.SubItems[7].Tag = this.rangEnd.Text.Trim();
                 Item.SubItems[8].Tag = ")";
                 Item.SubItems[9].Tag = andOr;
-                #endregion
+                #endregion "原油信息"
             }
-            #endregion
+            #endregion "新建文本框显示实体"
 
-            if (this.rangeListView.Items.Count == 0)//                
+            if (this.rangeListView.Items.Count == 0)//
             {
-                #region  "第一个And"
+                #region "第一个And"
                 Item.SubItems[0].Text = "";
                 Item.SubItems[8].Text = "";
                 Item.SubItems[9].Text = "";
@@ -1084,8 +1099,8 @@ namespace RIPP.App.OilDataApp.Forms
                 Item.SubItems[0].Tag = "";
                 Item.SubItems[8].Tag = "";
                 Item.SubItems[9].Tag = "And";
-                this.rangeListView.Items.Add(Item);//显示 
-                #endregion
+                this.rangeListView.Items.Add(Item);//显示
+                #endregion "第一个And"
             }
             else if (this.rangeListView.Items.Count == 1)
             {
@@ -1109,7 +1124,7 @@ namespace RIPP.App.OilDataApp.Forms
                     Item.SubItems[8].Tag = "";
                     Item.SubItems[9].Tag = "And";
                     this.rangeListView.Items.Add(Item);
-                    #endregion
+                    #endregion "第二个And"
                 }
                 else //or
                 {
@@ -1121,7 +1136,6 @@ namespace RIPP.App.OilDataApp.Forms
                     this.rangeListView.Items[0].SubItems[8].Tag = "";
                     this.rangeListView.Items[0].SubItems[9].Tag = "Or";
 
-
                     Item.SubItems[0].Text = "";
                     Item.SubItems[8].Text = ")";
                     Item.SubItems[9].Text = "";
@@ -1129,10 +1143,10 @@ namespace RIPP.App.OilDataApp.Forms
                     Item.SubItems[8].Tag = ")";
                     Item.SubItems[9].Tag = "Or";
                     this.rangeListView.Items.Add(Item);
-                    #endregion
+                    #endregion "第一个Or"
                 }
 
-                #endregion
+                #endregion "添加查询属性----用于原油范围查找"
             }
             else if (this.rangeListView.Items.Count >= 2)//已经存在两个item
             {
@@ -1155,7 +1169,7 @@ namespace RIPP.App.OilDataApp.Forms
                         Item.SubItems[9].Tag = "And";
 
                         this.rangeListView.Items.Add(Item);
-                        #endregion
+                        #endregion "点击And按钮"
                     }
                     else //or
                     {
@@ -1173,9 +1187,9 @@ namespace RIPP.App.OilDataApp.Forms
                         Item.SubItems[8].Tag = ")";
                         Item.SubItems[9].Tag = "Or";
                         this.rangeListView.Items.Add(Item);
-                        #endregion
+                        #endregion "点击Or按钮"
                     }
-                    #endregion
+                    #endregion "倒数第二个item含有Or"
                 }
                 else if (this.rangeListView.Items[this.rangeListView.Items.Count - 2].SubItems[9].Text.Contains("And"))//倒数第二个item含有And
                 {
@@ -1194,7 +1208,7 @@ namespace RIPP.App.OilDataApp.Forms
                         Item.SubItems[8].Tag = "";
                         Item.SubItems[9].Tag = "And";
                         this.rangeListView.Items.Add(Item);
-                        #endregion
+                        #endregion "点击And按钮"
                     }
                     else //or
                     {
@@ -1211,13 +1225,13 @@ namespace RIPP.App.OilDataApp.Forms
                         Item.SubItems[8].Tag = ")";
                         Item.SubItems[9].Tag = "Or";
                         this.rangeListView.Items.Add(Item);
-                        #endregion
+                        #endregion "点击Or按钮"
                     }
-                    #endregion
+                    #endregion "倒数第二个item含有And"
                 }
-                #endregion
+                #endregion "已经存在两个item"
             }
-            #endregion
+            #endregion "范围查询条件处理"
         }
 
         /// <summary>
@@ -1279,7 +1293,7 @@ namespace RIPP.App.OilDataApp.Forms
                     this.rangeListView.Items[selIndex - 1].SubItems[9].Tag = "";
                     this.rangeListView.Items.RemoveAt(selIndex);//从显示的数据源中删除
                 }
-                #endregion
+                #endregion "范围表的显示的元素等于2"
             }
             else if (this.rangeListView.Items.Count > 2)
             {
@@ -1328,7 +1342,7 @@ namespace RIPP.App.OilDataApp.Forms
                             this.rangeListView.Items[selIndex + 1].SubItems[9].Tag = "And";
                             this.rangeListView.Items.RemoveAt(selIndex);//从显示的数据源中删除
                         }
-                        #endregion
+                        #endregion "selIndex >= 1"
                     }
                     else if (selIndex == 0)
                     {
@@ -1357,12 +1371,12 @@ namespace RIPP.App.OilDataApp.Forms
                                 this.rangeListView.Items[selIndex + 1].SubItems[0].Tag = "";
                                 this.rangeListView.Items[selIndex + 1].SubItems[8].Tag = "";
                                 this.rangeListView.Items[selIndex + 1].SubItems[9].Text = "And";
-                                this.rangeListView.Items.RemoveAt(selIndex);//从显示的数据源中删除                          
+                                this.rangeListView.Items.RemoveAt(selIndex);//从显示的数据源中删除
                             }
                         }
-                        #endregion
+                        #endregion "selIndex == 0"
                     }
-                    #endregion
+                    #endregion "this.rangeListView.SelectedItems[0].SubItems[9].Text.Contains("Or") && this.rangeListView.SelectedItems[0].SubItems[0].Text.Contains("(")"
                 }
                 else if (this.rangeListView.SelectedItems[0].SubItems[9].Text.Contains("And"))
                 {
@@ -1393,13 +1407,13 @@ namespace RIPP.App.OilDataApp.Forms
                                 this.rangeListView.Items[selIndex - 1].SubItems[9].Tag = "And";
                                 this.rangeListView.Items.RemoveAt(selIndex);//从显示的数据源中删除
                             }
-                            #endregion
+                            #endregion "范围表的显示的元素大于2"
                         }
                         else if (this.rangeListView.SelectedItems[0].SubItems[0].Text.Contains("") && this.rangeListView.SelectedItems[0].SubItems[8].Text.Contains(""))
                             this.rangeListView.Items.RemoveAt(selIndex);//从显示的数据源中删除
                     }
                     else if (selIndex == 0)
-                        this.rangeListView.Items.RemoveAt(selIndex);//从显示的数据源中删除 
+                        this.rangeListView.Items.RemoveAt(selIndex);//从显示的数据源中删除
                 }
                 else if (this.rangeListView.SelectedItems[0].SubItems[9].Text == "")//左侧包括"("的Or情况
                 {
@@ -1445,6 +1459,7 @@ namespace RIPP.App.OilDataApp.Forms
         #endregion
 
         #region "相似查询条件处理"
+
         /// <summary>
         /// 相似查找中的OR事件
         /// </summary>
@@ -1454,6 +1469,7 @@ namespace RIPP.App.OilDataApp.Forms
         {
             SimilarQuery(false);
         }
+
         /// <summary>
         /// 相似查找的And事件
         /// </summary>
@@ -1502,7 +1518,7 @@ namespace RIPP.App.OilDataApp.Forms
 
             string AndOr = isAnd ? " And " : " Or ";
 
-            int oilTableColID = ((OilDataSearchColEntity)this.cmbSimilarFraction.SelectedItem).OilTableColID;//获得当前下拉菜单在OilTableCol中对应列的ID                    
+            int oilTableColID = ((OilDataSearchColEntity)this.cmbSimilarFraction.SelectedItem).OilTableColID;//获得当前下拉菜单在OilTableCol中对应列的ID
 
             #region "新建文本框显示实体,Key值用来向ListBox显示"
             ListViewItem Item = new ListViewItem();
@@ -1538,7 +1554,7 @@ namespace RIPP.App.OilDataApp.Forms
             Item.SubItems[9].Tag = AndOr;
             #endregion
 
-            if (this.similarListView.Items.Count == 0)//                
+            if (this.similarListView.Items.Count == 0)//
             {
                 #region "第一个And"
                 Item.SubItems[0].Text = "";
@@ -1721,7 +1737,7 @@ namespace RIPP.App.OilDataApp.Forms
             else if (this.similarListView.Items.Count == 2)
             {
                 #region "存在两个元素"
-                if (this.similarListView.SelectedItems[0].SubItems[9].Text.Contains("Or") && this.similarListView.SelectedItems[0].SubItems[0].Text.Contains("("))//左侧不包括"("的Or情况  
+                if (this.similarListView.SelectedItems[0].SubItems[9].Text.Contains("Or") && this.similarListView.SelectedItems[0].SubItems[0].Text.Contains("("))//左侧不包括"("的Or情况
                 {
                     this.similarListView.Items[selIndex + 1].SubItems[8].Text = "";
                     this.similarListView.Items[selIndex + 1].SubItems[8].Tag = "And";
@@ -1820,7 +1836,7 @@ namespace RIPP.App.OilDataApp.Forms
                             this.similarListView.Items[selIndex + 1].SubItems[0].Tag = "";
                             this.similarListView.Items[selIndex + 1].SubItems[8].Text = "";
                             this.similarListView.Items[selIndex + 1].SubItems[9].Tag = "And";
-                            this.similarListView.Items.RemoveAt(selIndex);//从显示的数据源中删除                          
+                            this.similarListView.Items.RemoveAt(selIndex);//从显示的数据源中删除
                         }
                         #endregion
                     }
@@ -1862,7 +1878,7 @@ namespace RIPP.App.OilDataApp.Forms
                             this.similarListView.Items.RemoveAt(selIndex);//从显示的数据源中删除
                     }
                     else if (selIndex == 0)//选择第一个元素
-                        this.similarListView.Items.RemoveAt(selIndex);//从显示的数据源中删除 
+                        this.similarListView.Items.RemoveAt(selIndex);//从显示的数据源中删除
                     #endregion
                 }
                 else if (this.similarListView.SelectedItems[0].SubItems[9].Text == "")
@@ -1907,10 +1923,11 @@ namespace RIPP.App.OilDataApp.Forms
                 #endregion
             }
         }
+
         #endregion
 
         #region "查询条件的保存、导入、导出"
-      
+
         /// <summary>
         /// 读取输入条件
         /// </summary>
@@ -1948,7 +1965,6 @@ namespace RIPP.App.OilDataApp.Forms
                 //    Item.SubItems[7].Text = this._outLib.OilRangeSearchList[i].upLimit;
                 //    Item.SubItems[8].Text = this._outLib.OilRangeSearchList[i].RightParenthesis;
                 //    Item.SubItems[9].Text = this._outLib.OilRangeSearchList[i].IsAnd ? "And" : "Or";
-
 
                 //    Item.SubItems[0].Tag = this._outLib.OilRangeSearchList[i].LeftParenthesis;
                 //    Item.SubItems[1].Tag = this._outLib.OilRangeSearchList[i].OilTableColID;
@@ -2010,7 +2026,7 @@ namespace RIPP.App.OilDataApp.Forms
 
         /// <summary>
         /// 清除输入条件
-        /// </summary>    
+        /// </summary>
         private void btnRangeReset_Click(object sender, EventArgs e)
         {
             this.rangeListView.Items.Clear();//清除显示列表信息
@@ -2068,7 +2084,6 @@ namespace RIPP.App.OilDataApp.Forms
                 //    Item.SubItems[8].Text = this._outLib.OilRangeSearchList[i].RightParenthesis;
                 //    Item.SubItems[9].Text = this._outLib.OilRangeSearchList[i].IsAnd ? "And" : "Or";
 
-
                 //    Item.SubItems[0].Tag = this._outLib.OilRangeSearchList[i].LeftParenthesis;
                 //    Item.SubItems[1].Tag = this._outLib.OilRangeSearchList[i].OilTableColID;
                 //    Item.SubItems[2].Tag = ":";
@@ -2089,6 +2104,7 @@ namespace RIPP.App.OilDataApp.Forms
                 return;
             }
         }
+
         /// <summary>
         /// 保存
         /// </summary>
@@ -2137,9 +2153,11 @@ namespace RIPP.App.OilDataApp.Forms
             //this.txtWeight.Text = "";
             this.similarListView.Items.Clear();
         }
+
         #endregion
 
         #region "step1的确定、取消和清空事件"
+
         /// <summary>
         /// 确定
         /// </summary>
@@ -2168,7 +2186,7 @@ namespace RIPP.App.OilDataApp.Forms
             }
             else
             {
-                MessageBox.Show("请选择混合原油!" , "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("请选择混合原油!", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
             #region "镇海演示"
@@ -2190,6 +2208,7 @@ namespace RIPP.App.OilDataApp.Forms
             }
             #endregion
         }
+
         /// <summary>
         /// 取消选择
         /// </summary>
@@ -2201,6 +2220,7 @@ namespace RIPP.App.OilDataApp.Forms
             this._cutOilRates.Clear();
             this.panelStep1.Visible = false;
         }
+
         /// <summary>
         /// 清空选择原油
         /// </summary>
@@ -2211,7 +2231,7 @@ namespace RIPP.App.OilDataApp.Forms
             this.gridListSelect.Rows.Clear();
             this._cutOilRates.Clear();
         }
-        #endregion 
 
+        #endregion
     }
 }

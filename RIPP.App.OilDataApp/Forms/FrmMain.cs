@@ -19,7 +19,7 @@ using System.IO;
 
 namespace RIPP.App.OilDataApp.Forms
 {
-    public partial class FrmMain : Form  
+    public partial class FrmMain : Form
     {
         #region 私有变量
         private OutLib _outLib = null;//导入的B库文件
@@ -48,14 +48,14 @@ namespace RIPP.App.OilDataApp.Forms
         /// </summary>
         public bool BZH
         {
-            get { return this.bZhenHai ;}
+            get { return this.bZhenHai; }
             set { this.bZhenHai = value; }
         }
 
 
         #region"step1"
         private string _sqlWhere = "1=1";
-       
+
         /// <summary>
         /// 用于防止打开多个窗体
         /// </summary>
@@ -90,10 +90,10 @@ namespace RIPP.App.OilDataApp.Forms
         /// 数据处理
         /// </summary>
         private OilDataCheck oilDataCheck = new OilDataCheck();
-        #endregion 
+        #endregion
 
         #endregion
- 
+
         #region 等待线程
 
         /// <summary>
@@ -154,15 +154,15 @@ namespace RIPP.App.OilDataApp.Forms
             this.butStep3.Enabled = false;
             this.butStep4.Enabled = false;
             this.btnStep5.Enabled = false;
-            
+
             InitStep1();
             if (BZH)
             {
                 this.tableLayoutPanelStep1Main.RowStyles[0].Height = 0;
-              
+
                 demo();
             }
-               
+
         }
         /// <summary>
         /// 演示模版（隐藏第二步）
@@ -196,8 +196,8 @@ namespace RIPP.App.OilDataApp.Forms
             cmbFractionBind();
             GridListSourceBind();
             GridListSelectBind();
-            #endregion       
-            
+            #endregion
+
         }
         #endregion        
 
@@ -212,7 +212,7 @@ namespace RIPP.App.OilDataApp.Forms
             {
                 e.Item.Visible = false;
             }
-        }     
+        }
 
         #endregion
 
@@ -225,7 +225,7 @@ namespace RIPP.App.OilDataApp.Forms
 
         private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-             
+
         }
 
         private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -273,7 +273,7 @@ namespace RIPP.App.OilDataApp.Forms
             this.panelStep1.Dock = DockStyle.Fill;  //将STEP1所用的界面铺展右侧空间
             this.panelStep1.Visible = true;          //将STEP1所用的界面可视
             this.panelStep1.BringToFront();//将STEP1所用的界面放到最上层
-            this.toolStripStatusLabel.Text = "选择原油";                             
+            this.toolStripStatusLabel.Text = "选择原油";
         }
 
         /// <summary>
@@ -286,8 +286,8 @@ namespace RIPP.App.OilDataApp.Forms
             this.panelStep2.Dock = DockStyle.Fill;
             this.panelStep2.Visible = true;
             this.panelStep2.BringToFront();
-            
-            this.toolStripStatusLabel.Text = "混合方案";           
+
+            this.toolStripStatusLabel.Text = "混合方案";
         }
 
         /// <summary>
@@ -300,7 +300,7 @@ namespace RIPP.App.OilDataApp.Forms
             this.panelStep3.Dock = DockStyle.Fill;
             this.panelStep3.Visible = true;
             this.panelStep3.BringToFront();
- 
+
             this.toolStripStatusLabel.Text = "切割方案";
             ConfigBll config = new ConfigBll();
             string strDir = config.getDir(enumModel.AppCut);
@@ -312,8 +312,8 @@ namespace RIPP.App.OilDataApp.Forms
             }
             else
             {
-                initAllCutMothed(strDir);     
-            }              
+                initAllCutMothed(strDir);
+            }
         }
 
         /// <summary>
@@ -337,16 +337,16 @@ namespace RIPP.App.OilDataApp.Forms
             }
             finally
             {
-                this.StopWaiting();              
+                this.StopWaiting();
                 InitStep4();
                 this.panelStep4.Dock = DockStyle.Fill;
                 this.panelStep4.Visible = true;
                 this.toolStripStatusLabel.Text = "切割计算";
                 this.btnStep5.Enabled = true;
             }
-          
+
             #region 
-              
+
             //ShowCutData newForm = new ShowCutData(this._oilB, this._cutMotheds);
             //newForm.Show();
             //OilPropertyAPIEntity temp = new OilPropertyAPIEntity()
@@ -406,7 +406,7 @@ namespace RIPP.App.OilDataApp.Forms
             //l.Add(d);
             ////l.Add(f);
             //l.Add(g);
-                      
+
             //List<CutMothedEntity> cutMothedList = new List<CutMothedEntity>();
             //for (int index = 0; index < l.Count; index++)
             //{
@@ -426,7 +426,7 @@ namespace RIPP.App.OilDataApp.Forms
             //    cutRateEntity.rate = cutRateList[i];
             //    rateList.Add(cutRateEntity);
             //}
- 
+
             //this._oil = oilApplyAPIBll.GetCutResultAPI("RIPP0305 ", l);
             ////this._oil = oilApplyAPIBll.GetCutResultAPI(rateList, l);
             ////this._oil = oilApplyAPIBll.GetCutResultAPI(temp, l);
@@ -434,7 +434,7 @@ namespace RIPP.App.OilDataApp.Forms
             //ShowCutData newForm = new ShowCutData(this._oil, cutMothedList);
             //newForm.Show();
             #endregion
-         
+
         }
 
         /// <summary>
@@ -447,7 +447,7 @@ namespace RIPP.App.OilDataApp.Forms
             try
             {
                 ConfigBll config = new ConfigBll();
-                
+
                 string strDir = config.getDir(enumModel.AppXls);
                 if (File.Exists(strDir))
                 {
@@ -475,7 +475,7 @@ namespace RIPP.App.OilDataApp.Forms
                         {
                             return;
                         }
-                    }                  
+                    }
                 }
 
                 int outResult = DataToExcelBll.DataToExcel(null, this._oilB, strFilePath, _cutMotheds, "B");
@@ -506,7 +506,7 @@ namespace RIPP.App.OilDataApp.Forms
                 else if (outResult == 0)//取消保存
                 {
                     //MessageBox.Show("数据导出失败,错误信息：\r\n" + outResult, "提示");
-                }     
+                }
             }
             catch (Exception ex)
             {
@@ -543,7 +543,7 @@ namespace RIPP.App.OilDataApp.Forms
         }
 
         #endregion
-        
+
         /// <summary>
         /// 多B库合并
         /// </summary>
@@ -570,7 +570,7 @@ namespace RIPP.App.OilDataApp.Forms
                 }
                 else
                     tempFrmLibBIn.Init(this._outLib);
-            }             
+            }
         }
         private void 设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -578,8 +578,8 @@ namespace RIPP.App.OilDataApp.Forms
             if (!this.IsExistChildFrm("FrmSetting"))
             {
                 FrmSetting frmSetting = new FrmSetting();
-                frmSetting.Show();               
-            }   
+                frmSetting.Show();
+            }
         }
         /// <summary>
         /// 是否存在该类型的子窗体
@@ -619,7 +619,7 @@ namespace RIPP.App.OilDataApp.Forms
             return childFrm;
         }
 
-        
+
         /// <summary>
         /// enter结束编辑
         /// </summary>
@@ -638,12 +638,12 @@ namespace RIPP.App.OilDataApp.Forms
             return base.ProcessDialogKey(keyData);
 
         }
-       
+
         private void gridListRate_KeyUp(object sender, KeyEventArgs e)
         {
             try
             {
-                if (e.KeyData  == Keys.Enter)
+                if (e.KeyData == Keys.Enter)
                 {
                     this.gridListRate.EndEdit();
                 }
@@ -665,9 +665,22 @@ namespace RIPP.App.OilDataApp.Forms
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-
+            gridList.CellContentClick += GridList_CellContentClick;
         }
 
-       
-    }  
+        private void GridList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
+            if (gridList.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn)
+            {
+                var t = gridList.Rows[e.RowIndex].Cells[e.ColumnIndex] as DataGridViewCheckBoxCell;
+                if ((bool?)t.Value != true)
+                    t.Value = true;
+                else
+                    t.Value = false;
+            }
+            //
+        }
+    }
 }
