@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using RIPP.OilDB.Model;
-using RIPP.OilDB.Data;
-using RIPP.Lib;
-using RIPP.OilDB.UI.GridOil;
-using RIPP.OilDB.UI.GridOil.V2;
-using RIPP.OilDB.Data.DataCheck;
-using RIPP.App.OilDataManager.Forms.FrmBase;
+﻿using RIPP.Lib;
 using RIPP.OilDB.BLL;
+using RIPP.OilDB.Data;
+using RIPP.OilDB.Data.DataCheck;
+using RIPP.OilDB.Model;
+using RIPP.OilDB.UI.GridOil;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace RIPP.App.OilDataApp.Forms
 {
@@ -23,26 +16,32 @@ namespace RIPP.App.OilDataApp.Forms
     {
         #region 私有变量
         private OutLib _outLib = null;//导入的B库文件
+
         /// <summary>
-        /// 原油ID和混合比例  
+        /// 原油ID和混合比例
         /// </summary>
         private List<CutOilRateEntity> _cutOilRates = new List<CutOilRateEntity>();
+
         /// <summary>
-        /// 切割方案 
+        /// 切割方案
         /// </summary>
         private List<CutMothedEntity> _cutMotheds = new List<CutMothedEntity>();
+
         /// <summary>
         /// 切割计算结果
         /// </summary>
         private OilInfoBEntity _oilB = new OilInfoBEntity();     //切割计算结果
+
         /// <summary>
         /// 切割算法
         /// </summary>
         private OilApplyBll oilApplyBll = new OilApplyBll();
+
         /// <summary>
         /// 镇海演示模块功能
         /// </summary>
         private bool bZhenHai = false;
+
         /// <summary>
         /// 镇海演示模块功能
         /// </summary>
@@ -52,7 +51,6 @@ namespace RIPP.App.OilDataApp.Forms
             set { this.bZhenHai = value; }
         }
 
-
         #region"step1"
         private string _sqlWhere = "1=1";
 
@@ -61,11 +59,11 @@ namespace RIPP.App.OilDataApp.Forms
         /// </summary>
         private bool _isOilOpening = false;
 
-
         /// <summary>
         /// 存储上次查找到的原油
         /// </summary>
         private IList<CrudeIndexIDBEntity> _openOilCollection = new List<CrudeIndexIDBEntity>();//存储上次查找到的原油
+
         private int tabControlIndex = 0;//判断是范围查找还是相似查找
         private ListView _tempShowViewList = null;
 
@@ -73,24 +71,28 @@ namespace RIPP.App.OilDataApp.Forms
         /// 范围查找条件集合
         /// </summary>
         private IList<OilRangeSearchEntity> _rangeSearchList = new List<OilRangeSearchEntity>();
+
         /// <summary>
         ///  相似查找条件集合
         /// </summary>
         private IList<OilSimilarSearchEntity> _similarSearchList = new List<OilSimilarSearchEntity>();
 
         /// <summary>
-        /// 从C库获取满足条件的原油编号,存放查找原油的相似度（范围查找相似度为0）       
+        /// 从C库获取满足条件的原油编号,存放查找原油的相似度（范围查找相似度为0）
         /// </summary>
-        private IDictionary<string, double> tempRanSumDic = new Dictionary<string, double>();//从C库获取满足条件的原油编号,存放查找原油的相似度（范围查找相似度为0）       
+        private IDictionary<string, double> tempRanSumDic = new Dictionary<string, double>();//从C库获取满足条件的原油编号,存放查找原油的相似度（范围查找相似度为0）
+
         /// <summary>
         /// 用来设置表头
         /// </summary>
         private DgvHeader dgvHeader = new DgvHeader();
+
         /// <summary>
         /// 数据处理
         /// </summary>
         private OilDataCheck oilDataCheck = new OilDataCheck();
-        #endregion
+
+        #endregion 私有变量
 
         #endregion
 
@@ -114,6 +116,7 @@ namespace RIPP.App.OilDataApp.Forms
             this.myFrmWaiting = new FrmWaiting();
             this.myFrmWaiting.ShowDialog();
         }
+
         /// <summary>
         /// 开始等待线程
         /// </summary>
@@ -142,8 +145,9 @@ namespace RIPP.App.OilDataApp.Forms
         #endregion
 
         #region 构造函数
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public FrmMain(bool zhenHai = false)
         {
@@ -162,8 +166,8 @@ namespace RIPP.App.OilDataApp.Forms
 
                 demo();
             }
-
         }
+
         /// <summary>
         /// 演示模版（隐藏第二步）
         /// </summary>
@@ -179,9 +183,11 @@ namespace RIPP.App.OilDataApp.Forms
             butStep4.Text = "第3步 原油切割";
             btnStep5.Text = "第4步 导出Excel";
         }
+
         #endregion
 
-        #region "公有函数"  
+        #region "公有函数"
+
         /// <summary>
         /// step1初始化
         /// </summary>
@@ -197,15 +203,15 @@ namespace RIPP.App.OilDataApp.Forms
             GridListSourceBind();
             GridListSelectBind();
             #endregion
-
         }
-        #endregion        
+
+        #endregion
 
         #region 主窗体控件事件
 
         /// <summary>
         /// 取消子窗口左上角的图标
-        /// </summary>    
+        /// </summary>
         private void menuStrip_ItemAdded(object sender, ToolStripItemEventArgs e)
         {
             if (e.Item.ToString() == "System.Windows.Forms.MdiControlStrip+SystemMenuItem")
@@ -225,7 +231,6 @@ namespace RIPP.App.OilDataApp.Forms
 
         private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
         }
 
         private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -253,7 +258,7 @@ namespace RIPP.App.OilDataApp.Forms
             LayoutMdi(MdiLayout.ArrangeIcons);
         }
 
-        #endregion    
+        #endregion
 
         #region
 
@@ -345,7 +350,7 @@ namespace RIPP.App.OilDataApp.Forms
                 this.btnStep5.Enabled = true;
             }
 
-            #region 
+            #region
 
             //ShowCutData newForm = new ShowCutData(this._oilB, this._cutMotheds);
             //newForm.Show();
@@ -434,12 +439,11 @@ namespace RIPP.App.OilDataApp.Forms
             //ShowCutData newForm = new ShowCutData(this._oil, cutMothedList);
             //newForm.Show();
             #endregion
-
         }
 
         /// <summary>
         /// 计算结果输出为Excel
-        /// </summary>   
+        /// </summary>
         private void button5_Click(object sender, EventArgs e)
         {
             this.toolStripStatusLabel.Text = "导出Excel";
@@ -520,7 +524,7 @@ namespace RIPP.App.OilDataApp.Forms
 
         /// <summary>
         /// 重新开始
-        /// </summary>    
+        /// </summary>
         private void menuItemStart_Click(object sender, EventArgs e)
         {
             GridListSourceBind();
@@ -566,12 +570,12 @@ namespace RIPP.App.OilDataApp.Forms
                     frmLibBIn.Init(this._outLib);
                     frmLibBIn.Name = "FrmLibBIn";
                     frmLibBIn.Show();
-
                 }
                 else
                     tempFrmLibBIn.Init(this._outLib);
             }
         }
+
         private void 设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //打开子窗口
@@ -581,6 +585,7 @@ namespace RIPP.App.OilDataApp.Forms
                 frmSetting.Show();
             }
         }
+
         /// <summary>
         /// 是否存在该类型的子窗体
         /// </summary>
@@ -600,6 +605,7 @@ namespace RIPP.App.OilDataApp.Forms
             }
             return flag;
         }
+
         /// <summary>
         /// 根据窗体名称获取窗体
         /// </summary>
@@ -619,7 +625,6 @@ namespace RIPP.App.OilDataApp.Forms
             return childFrm;
         }
 
-
         /// <summary>
         /// enter结束编辑
         /// </summary>
@@ -636,7 +641,6 @@ namespace RIPP.App.OilDataApp.Forms
             }
 
             return base.ProcessDialogKey(keyData);
-
         }
 
         private void gridListRate_KeyUp(object sender, KeyEventArgs e)
@@ -654,7 +658,6 @@ namespace RIPP.App.OilDataApp.Forms
             }
             finally
             {
-
             }
         }
 
@@ -666,6 +669,35 @@ namespace RIPP.App.OilDataApp.Forms
         private void FrmMain_Load(object sender, EventArgs e)
         {
             gridList.CellContentClick += GridList_CellContentClick;
+            gridList.CellMouseDown += GridList_CellMouseDown;
+            toolStripMenuItemSelectAll.Click += ToolStripMenuItemSelectAll_Click;
+            toolStripMenuItemReverseSelect.Click += ToolStripMenuItemSelectAll_Click;
+            toolStripMenuItemNonSelect.Click += ToolStripMenuItemSelectAll_Click;
+            toolStripMenuItemAdd.Click += btnSelect_Click;
+        }
+
+        private void ToolStripMenuItemSelectAll_Click(object sender, EventArgs e)
+        {
+            Func<bool, bool> fun = (b) => false;
+            if (sender == toolStripMenuItemSelectAll)
+                fun = (b) => true;
+            else if (sender == toolStripMenuItemReverseSelect)
+                fun = (b) => !b;
+
+            foreach (DataGridViewRow row in gridList.Rows)
+            {
+                var cell = row.Cells["Check"];
+                var b = (bool?)cell.Value == true;
+                b = fun(b);
+                cell.Value = b;
+            }
+        }
+
+        private void GridList_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Right)
+                return;
+            contextMenuStrip1.Show(MousePosition.X, MousePosition.Y);
         }
 
         private void GridList_CellContentClick(object sender, DataGridViewCellEventArgs e)

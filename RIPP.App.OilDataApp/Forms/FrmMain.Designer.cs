@@ -166,6 +166,12 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtSimilarFoundationValue = new System.Windows.Forms.TextBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemSelectAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemNonSelect = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemReverseSelect = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItemAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.tableLayoutPanelMain.SuspendLayout();
@@ -207,6 +213,7 @@
             this.palRan.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -1643,6 +1650,46 @@
             this.txtSimilarFoundationValue.Size = new System.Drawing.Size(100, 21);
             this.txtSimilarFoundationValue.TabIndex = 48;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemSelectAll,
+            this.toolStripMenuItemNonSelect,
+            this.toolStripMenuItemReverseSelect,
+            this.toolStripSeparator1,
+            this.toolStripMenuItemAdd});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 120);
+            // 
+            // toolStripMenuItemSelectAll
+            // 
+            this.toolStripMenuItemSelectAll.Name = "toolStripMenuItemSelectAll";
+            this.toolStripMenuItemSelectAll.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemSelectAll.Text = "全选(&A)";
+            // 
+            // toolStripMenuItemNonSelect
+            // 
+            this.toolStripMenuItemNonSelect.Name = "toolStripMenuItemNonSelect";
+            this.toolStripMenuItemNonSelect.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemNonSelect.Text = "不选(&N)";
+            // 
+            // toolStripMenuItemReverseSelect
+            // 
+            this.toolStripMenuItemReverseSelect.Name = "toolStripMenuItemReverseSelect";
+            this.toolStripMenuItemReverseSelect.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemReverseSelect.Text = "反选(&R)";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // toolStripMenuItemAdd
+            // 
+            this.toolStripMenuItemAdd.Name = "toolStripMenuItemAdd";
+            this.toolStripMenuItemAdd.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemAdd.Text = "添加(&I)";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1704,6 +1751,7 @@
             this.tabPage2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1838,6 +1886,12 @@
         private System.Windows.Forms.Panel palRan;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSelectAll;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemNonSelect;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemReverseSelect;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAdd;
     }
 }
 
