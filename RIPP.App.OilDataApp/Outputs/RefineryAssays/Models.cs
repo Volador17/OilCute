@@ -62,13 +62,13 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     public partial class RefineryAssaysRefineryAssay
     {
         /// <remarks/>
-        public RefineryAssaysRefineryAssayRefineryAssayName RefineryAssayName { get; set; }
+        public RefineryAssaysValue<string> RefineryAssayName { get; set; }
 
         /// <remarks/>
-        public RefineryAssaysRefineryAssaySourceType SourceType { get; set; }
+        public RefineryAssaysValue<string> SourceType { get; set; }
 
         /// <remarks/>
-        public RefineryAssaysRefineryAssayAssociatedFluidPackage AssociatedFluidPackage { get; set; }
+        public RefineryAssaysValue<string> AssociatedFluidPackage { get; set; }
 
         /// <remarks/>
         public RefineryAssaysRefineryAssayPlantDataGroups PlantDataGroups { get; set; }
@@ -92,48 +92,6 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     [Serializable]
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssayRefineryAssayName
-    {
-        /// <remarks/>
-        public string Value { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
-    }
-
-    /// <remarks/>
-    [Serializable]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssaySourceType
-    {
-        /// <remarks/>
-        public string Value { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
-    }
-
-    /// <remarks/>
-    [Serializable]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssayAssociatedFluidPackage
-    {
-        /// <remarks/>
-        public string Value { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
-    }
-
-    /// <remarks/>
-    [Serializable]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType = true)]
     public partial class RefineryAssaysRefineryAssayPlantDataGroups
     {
         /// <remarks/>
@@ -151,7 +109,7 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroup
     {
         /// <remarks/>
-        public RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupPlantDataGroupName PlantDataGroupName { get; set; }
+        public RefineryAssaysValue<string> PlantDataGroupName { get; set; }
 
         /// <remarks/>
         public RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupProperties Properties { get; set; }
@@ -166,20 +124,6 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
         /// <remarks/>
         [XmlAttribute]
         public string Name { get; set; }
-    }
-
-    /// <remarks/>
-    [Serializable]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupPlantDataGroupName
-    {
-        /// <remarks/>
-        public string Value { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
     }
 
     /// <remarks/>
@@ -204,13 +148,13 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupPropertiesProperty
     {
         /// <remarks/>
-        public RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupPropertiesPropertyPropertyName PropertyName { get; set; }
+        public RefineryAssaysValue<string> PropertyName { get; set; }
 
         /// <remarks/>
-        public RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupPropertiesPropertyPropertyKey PropertyKey { get; set; }
+        public RefineryAssaysValue<ushort> PropertyKey { get; set; }
 
         /// <remarks/>
-        public RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupPropertiesPropertyPropertyQualifierValue PropertyQualifierValue { get; set; }
+        public RefineryAssaysValue<byte> PropertyQualifierValue { get; set; }
 
         /// <remarks/>
         [XmlAttribute]
@@ -219,48 +163,6 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
         /// <remarks/>
         [XmlAttribute]
         public string Name { get; set; }
-    }
-
-    /// <remarks/>
-    [Serializable]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupPropertiesPropertyPropertyName
-    {
-        /// <remarks/>
-        public string Value { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
-    }
-
-    /// <remarks/>
-    [Serializable]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupPropertiesPropertyPropertyKey
-    {
-        /// <remarks/>
-        public ushort Value { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
-    }
-
-    /// <remarks/>
-    [Serializable]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupPropertiesPropertyPropertyQualifierValue
-    {
-        /// <remarks/>
-        public byte Value { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
     }
 
     /// <remarks/>
@@ -285,10 +187,10 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCut
     {
         /// <remarks/>
-        public RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutCutName CutName { get; set; }
+        public RefineryAssaysValue<string> CutName { get; set; }
 
         /// <remarks/>
-        public RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutCutType CutType { get; set; }
+        public RefineryAssaysValue<byte> CutType { get; set; }
 
         /// <remarks/>
         public RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutProperties Properties { get; set; }
@@ -300,34 +202,6 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
         /// <remarks/>
         [XmlAttribute]
         public string Name { get; set; }
-    }
-
-    /// <remarks/>
-    [Serializable]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutCutName
-    {
-        /// <remarks/>
-        public string Value { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
-    }
-
-    /// <remarks/>
-    [Serializable]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutCutType
-    {
-        /// <remarks/>
-        public byte Value { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
     }
 
     /// <remarks/>
@@ -352,10 +226,10 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutPropertiesProperty
     {
         /// <remarks/>
-        public RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutPropertiesPropertyPropertyName PropertyName { get; set; }
+        public RefineryAssaysValue<string> PropertyName { get; set; }
 
         /// <remarks/>
-        public RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutPropertiesPropertyInputValue InputValue { get; set; }
+        public RefineryAssaysValue<decimal> InputValue { get; set; }
 
         /// <remarks/>
         [XmlAttribute]
@@ -364,34 +238,6 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
         /// <remarks/>
         [XmlAttribute]
         public string Name { get; set; }
-    }
-
-    /// <remarks/>
-    [Serializable]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutPropertiesPropertyPropertyName
-    {
-        /// <remarks/>
-        public string Value { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
-    }
-
-    /// <remarks/>
-    [Serializable]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutPropertiesPropertyInputValue
-    {
-        /// <remarks/>
-        public decimal Value { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
     }
 
     /// <remarks/>
@@ -420,16 +266,16 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     public partial class RefineryAssaysRefineryAssaySynthesisParametersSynthesisParameter
     {
         /// <remarks/>
-        public RefineryAssaysRefineryAssaySynthesisParametersSynthesisParameterSynthesisParameterName SynthesisParameterName { get; set; }
+        public RefineryAssaysValue<string> SynthesisParameterName { get; set; }
 
         /// <remarks/>
-        public RefineryAssaysRefineryAssaySynthesisParametersSynthesisParameterParameterKey ParameterKey { get; set; }
+        public RefineryAssaysValue<ushort> ParameterKey { get; set; }
 
         /// <remarks/>
-        public RefineryAssaysRefineryAssaySynthesisParametersSynthesisParameterSynthesisParameterOption SynthesisParameterOption { get; set; }
+        public RefineryAssaysValue<decimal> SynthesisParameterOption { get; set; }
 
         /// <remarks/>
-        public RefineryAssaysRefineryAssaySynthesisParametersSynthesisParameterSynthesisParameterIsDefault SynthesisParameterIsDefault { get; set; }
+        public RefineryAssaysValue<byte> SynthesisParameterIsDefault { get; set; }
 
         /// <remarks/>
         [XmlAttribute]
@@ -438,62 +284,6 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
         /// <remarks/>
         [XmlAttribute]
         public string Name { get; set; }
-    }
-
-    /// <remarks/>
-    [Serializable]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssaySynthesisParametersSynthesisParameterSynthesisParameterName
-    {
-        /// <remarks/>
-        public string Value { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
-    }
-
-    /// <remarks/>
-    [Serializable]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssaySynthesisParametersSynthesisParameterParameterKey
-    {
-        /// <remarks/>
-        public ushort Value { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
-    }
-
-    /// <remarks/>
-    [Serializable]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssaySynthesisParametersSynthesisParameterSynthesisParameterOption
-    {
-        /// <remarks/>
-        public decimal Value { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
-    }
-
-    /// <remarks/>
-    [Serializable]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssaySynthesisParametersSynthesisParameterSynthesisParameterIsDefault
-    {
-        /// <remarks/>
-        public byte Value { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
     }
 
     /// <remarks/>
@@ -522,16 +312,16 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     public partial class RefineryAssaysRefineryAssaySynthesisMethodsSynthesisMethod
     {
         /// <remarks/>
-        public RefineryAssaysRefineryAssaySynthesisMethodsSynthesisMethodSynthesisMethodName SynthesisMethodName { get; set; }
+        public RefineryAssaysValue<string> SynthesisMethodName { get; set; }
 
         /// <remarks/>
-        public RefineryAssaysRefineryAssaySynthesisMethodsSynthesisMethodMethodKey MethodKey { get; set; }
+        public RefineryAssaysValue<ushort> MethodKey { get; set; }
 
         /// <remarks/>
-        public RefineryAssaysRefineryAssaySynthesisMethodsSynthesisMethodSynthesisMethodOption SynthesisMethodOption { get; set; }
+        public RefineryAssaysValue<byte> SynthesisMethodOption { get; set; }
 
         /// <remarks/>
-        public RefineryAssaysRefineryAssaySynthesisMethodsSynthesisMethodSynthesisMethodIsDefault SynthesisMethodIsDefault { get; set; }
+        public RefineryAssaysValue<byte> SynthesisMethodIsDefault { get; set; }
 
         /// <remarks/>
         [XmlAttribute]
@@ -546,52 +336,10 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     [Serializable]
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssaySynthesisMethodsSynthesisMethodSynthesisMethodName
+    public partial class RefineryAssaysValue<TValue>
     {
         /// <remarks/>
-        public string Value { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
-    }
-
-    /// <remarks/>
-    [Serializable]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssaySynthesisMethodsSynthesisMethodMethodKey
-    {
-        /// <remarks/>
-        public ushort Value { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
-    }
-
-    /// <remarks/>
-    [Serializable]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssaySynthesisMethodsSynthesisMethodSynthesisMethodOption
-    {
-        /// <remarks/>
-        public byte Value { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
-    }
-
-    /// <remarks/>
-    [Serializable]
-    [DesignerCategory("code")]
-    [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssaySynthesisMethodsSynthesisMethodSynthesisMethodIsDefault
-    {
-        /// <remarks/>
-        public byte Value { get; set; }
+        public TValue Value { get; set; }
 
         /// <remarks/>
         [XmlAttribute]
