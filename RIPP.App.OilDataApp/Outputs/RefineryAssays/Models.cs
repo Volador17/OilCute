@@ -69,7 +69,7 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
 
             var maps = Newtonsoft.Json.JsonConvert.DeserializeObject<RefineryAssaysMapItem[]>(File.ReadAllText("RefineryAssaysMaps.json"));
 
-            var name = oil.englishName ?? oil.crudeName;
+            var name = $"{oil.crudeIndex} - {oil.englishName ?? oil.crudeName}";
             r.RefineryAssay = new RefineryAssaysRefineryAssay()
             {
                 Name = name,

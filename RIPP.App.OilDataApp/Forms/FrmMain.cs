@@ -1,4 +1,5 @@
-﻿using RIPP.Lib;
+﻿using RIPP.App.OilDataApp.Outputs.RefineryAssays;
+using RIPP.Lib;
 using RIPP.OilDB.BLL;
 using RIPP.OilDB.Data;
 using RIPP.OilDB.Data.DataCheck;
@@ -681,6 +682,14 @@ namespace RIPP.App.OilDataApp.Forms
             toolStripMenuItemExportXml.Click += ToolStripMenuItemExportXml_Click;
         }
 
+        SaveFileDialog saveXmlFileDialog1 = new SaveFileDialog()
+        {
+            Filter = "XML 文件 (*.xml)|*.xml",
+            DefaultExt = "xml",
+            Title = "XML 文件",
+
+        };
+
         /// <summary>
         /// 导出
         /// </summary>
@@ -691,6 +700,26 @@ namespace RIPP.App.OilDataApp.Forms
             var gv = contextMenuStrip1.Tag as DataGridView;
             if (gv == null)
                 return;
+            var row = gv.CurrentRow;// gv.SelectedRows.Count > 0 ? gv.SelectedRows[0] : null;
+            if (row == null)
+                return;
+
+            var id = (int?)row.Cells["ID"].Value;
+
+            if (id == null)
+                return;
+
+            OilInfoBAccess access = new OilInfoBAccess();
+            var oil = access.Get(id.Value);
+
+            saveXmlFileDialog1.FileName = $"{oil.crudeIndex} - {oil.englishName ?? oil.crudeName}";
+            if (saveXmlFileDialog1.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                return;
+
+            var r = RefineryAssays.ConvertFrom(oil);
+            var xml = r.ToXml();
+
+            File.WriteAllText(saveXmlFileDialog1.FileName, xml);
 
         }
 
@@ -748,6 +777,7 @@ namespace RIPP.App.OilDataApp.Forms
 
             if (e.RowIndex >= 0)
             {
+                gv.CurrentCell = gv.Rows[e.RowIndex].Cells[e.ColumnIndex];
                 if (!gv.Rows[e.RowIndex].Selected)
                 {
                     gv.ClearSelection();
