@@ -7,7 +7,6 @@ using System.Xml.Serialization;
 namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
 {
     [Serializable]
-    [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
     [XmlRoot(Namespace = "", IsNullable = false)]
     public partial class RefineryAssays : RefineryAssaysType
@@ -50,7 +49,6 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     }
 
     [Serializable]
-    [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
     public partial class RefineryAssaysRefineryAssay : RefineryAssaysName
     {
@@ -68,7 +66,6 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     }
 
     [Serializable]
-    [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
     public partial class RefineryAssaysRefineryAssayPlantDataGroups : RefineryAssaysType
     {
@@ -76,7 +73,6 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     }
 
     [Serializable]
-    [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
     public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroup : RefineryAssaysName
     {
@@ -88,7 +84,6 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     }
 
     [Serializable]
-    [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
     public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupProperties : RefineryAssaysType
     {
@@ -97,7 +92,6 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     }
 
     [Serializable]
-    [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
     public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupPropertiesProperty : RefineryAssaysName
     {
@@ -109,7 +103,6 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     }
 
     [Serializable]
-    [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
     public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCuts : RefineryAssaysType
     {
@@ -118,7 +111,6 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     }
 
     [Serializable]
-    [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
     public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCut : RefineryAssaysName
     {
@@ -130,7 +122,6 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     }
 
     [Serializable]
-    [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
     public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutProperties : RefineryAssaysType
     {
@@ -139,7 +130,6 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     }
 
     [Serializable]
-    [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
     public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutPropertiesProperty : RefineryAssaysName
     {
@@ -149,7 +139,6 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     }
 
     [Serializable]
-    [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
     public partial class RefineryAssaysRefineryAssaySynthesisParameters : RefineryAssaysName
     {
@@ -158,7 +147,6 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     }
 
     [Serializable]
-    [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
     public partial class RefineryAssaysRefineryAssaySynthesisParametersSynthesisParameter : RefineryAssaysName
     {
@@ -172,7 +160,6 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     }
 
     [Serializable]
-    [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
     public partial class RefineryAssaysRefineryAssaySynthesisMethods : RefineryAssaysName
     {
@@ -181,7 +168,6 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     }
 
     [Serializable]
-    [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
     public partial class RefineryAssaysRefineryAssaySynthesisMethodsSynthesisMethod : RefineryAssaysName
     {
@@ -217,6 +203,9 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
         [XmlAttribute]
         public string Type { get; set; }
 
+        /// <summary>
+        /// 名称
+        /// </summary>
         [XmlAttribute]
         public string Name { get; set; }
     }
@@ -226,10 +215,12 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     /// </summary>
     /// <typeparam name="TValue"></typeparam>
     [Serializable]
-    [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
     public partial class RefineryAssaysValue<TValue>
     {
+        /// <summary>
+        /// 值
+        /// </summary>
         public TValue Value { get; set; }
 
         /// <summary>
