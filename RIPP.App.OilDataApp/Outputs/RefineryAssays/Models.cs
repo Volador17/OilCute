@@ -6,19 +6,13 @@ using System.Xml.Serialization;
 
 namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
 {
-    /// <remarks/>
     [Serializable]
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
     [XmlRoot(Namespace = "", IsNullable = false)]
-    public partial class RefineryAssays
+    public partial class RefineryAssays : RefineryAssaysType
     {
-        /// <remarks/>
         public RefineryAssaysRefineryAssay RefineryAssay { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
 
         private static XmlSerializer serializer = new XmlSerializer(typeof(RefineryAssays));
 
@@ -55,294 +49,196 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
         }
     }
 
-    /// <remarks/>
     [Serializable]
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssay
+    public partial class RefineryAssaysRefineryAssay : RefineryAssaysName
     {
-        /// <remarks/>
         public RefineryAssaysValue<string> RefineryAssayName { get; set; }
 
-        /// <remarks/>
         public RefineryAssaysValue<string> SourceType { get; set; }
 
-        /// <remarks/>
         public RefineryAssaysValue<string> AssociatedFluidPackage { get; set; }
 
-        /// <remarks/>
         public RefineryAssaysRefineryAssayPlantDataGroups PlantDataGroups { get; set; }
 
-        /// <remarks/>
         public RefineryAssaysRefineryAssaySynthesisParameters SynthesisParameters { get; set; }
 
-        /// <remarks/>
         public RefineryAssaysRefineryAssaySynthesisMethods SynthesisMethods { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Name { get; set; }
     }
 
-    /// <remarks/>
     [Serializable]
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssayPlantDataGroups
+    public partial class RefineryAssaysRefineryAssayPlantDataGroups : RefineryAssaysType
     {
-        /// <remarks/>
         public RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroup PlantDataGroup { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
     }
 
-    /// <remarks/>
     [Serializable]
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroup
+    public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroup : RefineryAssaysName
     {
-        /// <remarks/>
         public RefineryAssaysValue<string> PlantDataGroupName { get; set; }
 
-        /// <remarks/>
         public RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupProperties Properties { get; set; }
 
-        /// <remarks/>
         public RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCuts Cuts { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Name { get; set; }
     }
 
-    /// <remarks/>
     [Serializable]
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupProperties
+    public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupProperties : RefineryAssaysType
     {
-        /// <remarks/>
         [XmlElement("Property")]
         public RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupPropertiesProperty[] Property { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
     }
 
-    /// <remarks/>
     [Serializable]
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupPropertiesProperty
+    public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupPropertiesProperty : RefineryAssaysName
     {
-        /// <remarks/>
         public RefineryAssaysValue<string> PropertyName { get; set; }
 
-        /// <remarks/>
         public RefineryAssaysValue<ushort> PropertyKey { get; set; }
 
-        /// <remarks/>
         public RefineryAssaysValue<byte> PropertyQualifierValue { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Name { get; set; }
     }
 
-    /// <remarks/>
     [Serializable]
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCuts
+    public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCuts : RefineryAssaysType
     {
-        /// <remarks/>
         [XmlElement("Cut")]
         public RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCut[] Cut { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
     }
 
-    /// <remarks/>
     [Serializable]
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCut
+    public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCut : RefineryAssaysName
     {
-        /// <remarks/>
         public RefineryAssaysValue<string> CutName { get; set; }
 
-        /// <remarks/>
         public RefineryAssaysValue<byte> CutType { get; set; }
 
-        /// <remarks/>
         public RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutProperties Properties { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Name { get; set; }
     }
 
-    /// <remarks/>
     [Serializable]
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutProperties
+    public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutProperties : RefineryAssaysType
     {
-        /// <remarks/>
         [XmlElement("Property")]
         public RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutPropertiesProperty[] Property { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
     }
 
-    /// <remarks/>
     [Serializable]
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutPropertiesProperty
+    public partial class RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutPropertiesProperty : RefineryAssaysName
     {
-        /// <remarks/>
         public RefineryAssaysValue<string> PropertyName { get; set; }
 
-        /// <remarks/>
         public RefineryAssaysValue<decimal> InputValue { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Name { get; set; }
     }
 
-    /// <remarks/>
     [Serializable]
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssaySynthesisParameters
+    public partial class RefineryAssaysRefineryAssaySynthesisParameters : RefineryAssaysName
     {
-        /// <remarks/>
         [XmlElement("SynthesisParameter")]
         public RefineryAssaysRefineryAssaySynthesisParametersSynthesisParameter[] SynthesisParameter { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Name { get; set; }
     }
 
-    /// <remarks/>
     [Serializable]
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssaySynthesisParametersSynthesisParameter
+    public partial class RefineryAssaysRefineryAssaySynthesisParametersSynthesisParameter : RefineryAssaysName
     {
-        /// <remarks/>
         public RefineryAssaysValue<string> SynthesisParameterName { get; set; }
 
-        /// <remarks/>
         public RefineryAssaysValue<ushort> ParameterKey { get; set; }
 
-        /// <remarks/>
         public RefineryAssaysValue<decimal> SynthesisParameterOption { get; set; }
 
-        /// <remarks/>
         public RefineryAssaysValue<byte> SynthesisParameterIsDefault { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Name { get; set; }
     }
 
-    /// <remarks/>
     [Serializable]
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssaySynthesisMethods
+    public partial class RefineryAssaysRefineryAssaySynthesisMethods : RefineryAssaysName
     {
-        /// <remarks/>
         [XmlElement("SynthesisMethod")]
         public RefineryAssaysRefineryAssaySynthesisMethodsSynthesisMethod[] SynthesisMethod { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Type { get; set; }
-
-        /// <remarks/>
-        [XmlAttribute]
-        public string Name { get; set; }
     }
 
-    /// <remarks/>
     [Serializable]
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
-    public partial class RefineryAssaysRefineryAssaySynthesisMethodsSynthesisMethod
+    public partial class RefineryAssaysRefineryAssaySynthesisMethodsSynthesisMethod : RefineryAssaysName
     {
-        /// <remarks/>
         public RefineryAssaysValue<string> SynthesisMethodName { get; set; }
 
-        /// <remarks/>
         public RefineryAssaysValue<ushort> MethodKey { get; set; }
 
-        /// <remarks/>
         public RefineryAssaysValue<byte> SynthesisMethodOption { get; set; }
 
-        /// <remarks/>
         public RefineryAssaysValue<byte> SynthesisMethodIsDefault { get; set; }
+    }
 
-        /// <remarks/>
+    /// <summary>
+    /// Type
+    /// </summary>
+    public abstract class RefineryAssaysType
+    {
+        /// <summary>
+        /// 类型 固定为 ParamSet
+        /// </summary>
+        [XmlAttribute]
+        public string Type { get; set; }
+    }
+
+    /// <summary>
+    /// Type-Name
+    /// </summary>
+    public abstract class RefineryAssaysName
+    {
+        /// <summary>
+        /// 类型 固定为 ParamSet
+        /// </summary>
         [XmlAttribute]
         public string Type { get; set; }
 
-        /// <remarks/>
         [XmlAttribute]
         public string Name { get; set; }
     }
 
-    /// <remarks/>
+    /// <summary>
+    /// Type-Value
+    /// </summary>
+    /// <typeparam name="TValue"></typeparam>
     [Serializable]
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true)]
     public partial class RefineryAssaysValue<TValue>
     {
-        /// <remarks/>
         public TValue Value { get; set; }
 
-        /// <remarks/>
+        /// <summary>
+        /// 类型 固定为 Param
+        /// </summary>
         [XmlAttribute]
         public string Type { get; set; }
+
+        public override string ToString()
+            => Value?.ToString();
     }
 }
