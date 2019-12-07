@@ -172,6 +172,7 @@
             this.toolStripMenuItemReverseSelect = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemRemove = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.tableLayoutPanelMain.SuspendLayout();
@@ -1657,7 +1658,8 @@
             this.toolStripMenuItemNonSelect,
             this.toolStripMenuItemReverseSelect,
             this.toolStripSeparator1,
-            this.toolStripMenuItemAdd});
+            this.toolStripMenuItemAdd,
+            this.toolStripMenuItemRemove});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(181, 120);
             // 
@@ -1689,6 +1691,12 @@
             this.toolStripMenuItemAdd.Name = "toolStripMenuItemAdd";
             this.toolStripMenuItemAdd.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItemAdd.Text = "添加(&I)";
+            // 
+            // toolStripMenuItemRemove
+            // 
+            this.toolStripMenuItemRemove.Name = "toolStripMenuItemRemove";
+            this.toolStripMenuItemRemove.Size = new System.Drawing.Size(240, 30);
+            this.toolStripMenuItemRemove.Text = "移除(&D)";
             // 
             // FrmMain
             // 
@@ -1892,6 +1900,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemReverseSelect;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAdd;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemRemove;
     }
 }
 

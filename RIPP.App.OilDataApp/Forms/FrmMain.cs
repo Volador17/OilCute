@@ -669,14 +669,22 @@ namespace RIPP.App.OilDataApp.Forms
         private void FrmMain_Load(object sender, EventArgs e)
         {
             gridList.CellContentClick += GridList_CellContentClick;
-            gridListSelect.CellContentClick += GridList_SelectCellContentClick;
             gridList.CellMouseDown += GridList_CellMouseDown;
+            gridListSelect.CellContentClick += GridList_CellContentClick;
+            gridListSelect.CellMouseDown += GridList_CellMouseDown;
+
             toolStripMenuItemSelectAll.Click += ToolStripMenuItemSelectAll_Click;
             toolStripMenuItemReverseSelect.Click += ToolStripMenuItemSelectAll_Click;
             toolStripMenuItemNonSelect.Click += ToolStripMenuItemSelectAll_Click;
             toolStripMenuItemAdd.Click += btnSelect_Click;
+            toolStripMenuItemRemove.Click += btnDel_Click;
         }
 
+        /// <summary>
+        /// 原油选择右键菜单：全选、不选、反选
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ToolStripMenuItemSelectAll_Click(object sender, EventArgs e)
         {
             Func<bool, bool> fun = (b) => false;
@@ -685,7 +693,11 @@ namespace RIPP.App.OilDataApp.Forms
             else if (sender == toolStripMenuItemReverseSelect)
                 fun = (b) => !b;
 
-            foreach (DataGridViewRow row in gridList.Rows)
+            var gv = contextMenuStrip1.Tag as DataGridView;
+            if (gv == null)
+                return;
+
+            foreach (DataGridViewRow row in gv.Rows)
             {
                 var cell = row.Cells["Check"];
                 var b = (bool?)cell.Value == true;
@@ -694,41 +706,50 @@ namespace RIPP.App.OilDataApp.Forms
             }
         }
 
+        /// <summary>
+        /// 原油选择单元格右键点击菜单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GridList_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button != MouseButtons.Right)
                 return;
+            contextMenuStrip1.Tag = sender;
+            if (sender == gridList)
+            {
+                toolStripMenuItemAdd.Visible = true;
+                toolStripMenuItemRemove.Visible = false;
+            }
+            else
+            {
+                toolStripMenuItemAdd.Visible = false;
+                toolStripMenuItemRemove.Visible = true;
+            }
             contextMenuStrip1.Show(MousePosition.X, MousePosition.Y);
         }
 
+        /// <summary>
+        /// 原油选择的复选框点击
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GridList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || e.ColumnIndex < 0)
                 return;
-            if (gridList.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn)
-            {
-                var t = gridList.Rows[e.RowIndex].Cells[e.ColumnIndex] as DataGridViewCheckBoxCell;
-                if ((bool?)t.Value != true)
-                    t.Value = true;
-                else
-                    t.Value = false;
-            }
-            //
-        }
-
-        private void GridList_SelectCellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+            var gv = sender as DataGridView;
+            if (gv == null)
                 return;
-            if (gridListSelect.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn)
+
+            if (gv.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn)
             {
-                var t = gridListSelect.Rows[e.RowIndex].Cells[e.ColumnIndex] as DataGridViewCheckBoxCell;
+                var t = gv.Rows[e.RowIndex].Cells[e.ColumnIndex] as DataGridViewCheckBoxCell;
                 if ((bool?)t.Value != true)
                     t.Value = true;
                 else
                     t.Value = false;
             }
-            //
         }
     }
 }
