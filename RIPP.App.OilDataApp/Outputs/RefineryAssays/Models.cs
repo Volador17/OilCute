@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
@@ -46,6 +45,13 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
                 return serializer.Deserialize(reader) as RefineryAssays;
             };
         }
+
+        /// <summary>
+        /// 转换为字符串
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+            => RefineryAssay?.ToString();
     }
 
     [Serializable]
@@ -70,6 +76,12 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     public partial class RefineryAssaysRefineryAssayPlantDataGroups : RefineryAssaysType
     {
         public RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroup PlantDataGroup { get; set; }
+        /// <summary>
+        /// 转换为字符串
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+            => PlantDataGroup?.ToString();
     }
 
     [Serializable]
@@ -189,7 +201,7 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
         /// 类型 固定为 ParamSet
         /// </summary>
         [XmlAttribute]
-        public string Type { get; set; }
+        public string Type { get => "ParamSet"; set { } }
     }
 
     /// <summary>
@@ -201,13 +213,20 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
         /// 类型 固定为 ParamSet
         /// </summary>
         [XmlAttribute]
-        public string Type { get; set; }
+        public string Type { get => "ParamSet"; set { } }
 
         /// <summary>
         /// 名称
         /// </summary>
         [XmlAttribute]
         public string Name { get; set; }
+
+        /// <summary>
+        /// 转换为字符串
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+            => Name;
     }
 
     /// <summary>
@@ -227,9 +246,27 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
         /// 类型 固定为 Param
         /// </summary>
         [XmlAttribute]
-        public string Type { get; set; }
+        public string Type { get => "Param"; set { } }
 
+        /// <summary>
+        /// 转换为字符串
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
             => Value?.ToString();
+
+        /// <summary>
+        /// 隐式转换
+        /// </summary>
+        /// <param name="t">包装值</param>
+        public static implicit operator TValue(RefineryAssaysValue<TValue> t)
+            => t != null ? t.Value : default(TValue);
+
+        /// <summary>
+        /// 隐式转换
+        /// </summary>
+        /// <param name="v">值</param>
+        public static implicit operator RefineryAssaysValue<TValue>(TValue v)
+            => new RefineryAssaysValue<TValue>() { Value = v };
     }
 }
