@@ -180,6 +180,7 @@
       <DependentUpon>LicenseManager.cs</DependentUpon>
     </Compile>
     <Compile Include="Outputs\RefineryAssays\Models.cs" />
+    <Compile Include="Outputs\RefineryAssays\RefineryAssaysMapper.cs" />
     <Compile Include="Outputs\RefineryAssays\Utf8StringWriter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -246,6 +247,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="RefineryAssaysMaps.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\btnNew.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -366,6 +370,9 @@
   <ItemGroup>
     <PackageReference Include="log4net">
       <Version>2.0.8</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,0 +1,167 @@
+[
+  {
+    "key": 1030,
+    "name": "Initial cut point",
+    "ripp_name": "初切点"
+  },
+  {
+    "key": 1024,
+    "name": "Final cut point",
+    "ripp_name": "终切点"
+  },
+  {
+    "key": 1056,
+    "name": "Percent weight yield",
+    "ripp_name": "质量收率"
+  },
+  {
+    "key": 1512,
+    "name": "Sulfur content",
+    "ripp_name": "硫含量"
+  },
+  {
+    "key": 1520,
+    "name": "Nitrogen content",
+    "ripp_name": "氮含量"
+  },
+  {
+    "key": 1535,
+    "name": "Basic nitrogen content",
+    "ripp_name": "碱性氮"
+  },
+  {
+    "key": 1530,
+    "name": "Mercaptan sulfur content",
+    "ripp_name": "硫醇硫含量"
+  },
+  {
+    "key": 1538,
+    "name": "Acidity",
+    "ripp_name": "酸值"
+  },
+  {
+    "key": 1516,
+    "name": "Molecular weight",
+    "ripp_name": "相对分子质量"
+  },
+  {
+    "key": 1004,
+    "name": "BMCI",
+    "ripp_name": "特性因数"
+  },
+  {
+    "key": 1518,
+    "name": "Aniline point",
+    "ripp_name": "苯胺点     "
+  },
+  {
+    "key": 1025,
+    "name": "Flash point ASTM/PMCC",
+    "ripp_name": "闪点(闭口) "
+  },
+  {
+    "key": 6525,
+    "name": "Paraffins content by weight",
+    "ripp_name": "正构烷烃"
+  },
+  {
+    "key": 6529,
+    "name": "Iso paraffins content by weight",
+    "ripp_name": "异构烷烃"
+  },
+  {
+    "key": 6528,
+    "name": "Naphthenes content by weight",
+    "ripp_name": "环烷烃"
+  },
+  {
+    "key": 1064,
+    "name": "Research octane number",
+    "ripp_name": "辛烷值(RON)"
+  },
+  {
+    "key": 1041,
+    "name": "Reid vapour pressure",
+    "ripp_name": "雷德蒸汽压(37.8℃)"
+  },
+  {
+    "key": 1515,
+    "name": "Freeze point",
+    "ripp_name": "冰点"
+  },
+  {
+    "key": 1042,
+    "name": "Smoke point",
+    "ripp_name": "烟点"
+  },
+  {
+    "key": 6526,
+    "name": "Paraffins content by volume",
+    "ripp_name": "饱和烃体积分数"
+  },
+  {
+    "key": 1504,
+    "name": "Aromatics content by volume",
+    "ripp_name": "芳香烃体积分数"
+  },
+  {
+    "key": 1029,
+    "name": "Lower heating value mass",
+    "ripp_name": "净热值"
+  },
+  {
+    "key": 1513,
+    "name": "Pour point",
+    "ripp_name": "倾点"
+  },
+  {
+    "key": 1514,
+    "name": "Cloud point",
+    "ripp_name": "浊点"
+  },
+  {
+    "key": 1009,
+    "name": "Cetane index ASTM D4737",
+    "ripp_name": "十六烷指数(D4737)"
+  },
+  {
+    "key": 1011,
+    "name": "Diesel index",
+    "ripp_name": "柴油指数"
+  },
+  {
+    "key": 1521,
+    "name": "Conradson carbon content",
+    "ripp_name": "残炭(康氏)  "
+  },
+  {
+    "key": 1590,
+    "name": "Resins content",
+    "ripp_name": "胶质"
+  },
+  {
+    "key": 1003,
+    "name": "Asphaltenes content",
+    "ripp_name": "沥青质"
+  },
+  {
+    "key": 1542,
+    "name": "Iron content",
+    "ripp_name": "铁含量"
+  },
+  {
+    "key": 1522,
+    "name": "Nickel content",
+    "ripp_name": "镍含量"
+  },
+  {
+    "key": 1523,
+    "name": "Vanadium content",
+    "ripp_name": "钒含量"
+  },
+  {
+    "key": 6567,
+    "name": "Mono-aromatics content by weight",
+    "ripp_name": "单环芳烃"
+  }
+]

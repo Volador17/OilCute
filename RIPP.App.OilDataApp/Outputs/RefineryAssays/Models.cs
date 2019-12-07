@@ -1,5 +1,8 @@
-﻿using System;
+﻿using RIPP.OilDB.Model;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -52,6 +55,65 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
         /// <returns></returns>
         public override string ToString()
             => RefineryAssay?.ToString();
+
+        /// <summary>
+        /// 转换
+        /// </summary>
+        /// <param name="oil"></param>
+        /// <returns></returns>
+        public static RefineryAssays ConvertFrom(OilInfoBEntity oil)
+        {
+            var r = new RefineryAssays();
+            if (oil == null)
+                return r;
+
+            var maps = Newtonsoft.Json.JsonConvert.DeserializeObject<RefineryAssaysMapItem[]>(File.ReadAllText("RefineryAssaysMaps.json"));
+
+            var name = oil.englishName ?? oil.crudeName;
+            r.RefineryAssay = new RefineryAssaysRefineryAssay()
+            {
+                Name = name,
+                RefineryAssayName = name,
+                SourceType = oil.sourceRef,
+                AssociatedFluidPackage = "Basis-1",
+                PlantDataGroups = new RefineryAssaysRefineryAssayPlantDataGroups()
+                {
+                    PlantDataGroup = new RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroup()
+                    {
+                        Name = "Plant Data Group-1",
+                        PlantDataGroupName = "Plant Data Group-1"
+                    },
+                }
+            };
+
+            var ps = new List<RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupPropertiesProperty>();
+
+            foreach (var p in maps)
+            {
+                var tr = oil.OilTableRows.FirstOrDefault(o => o.itemName == p.ripp_name);
+                if (tr == null)
+                    continue;
+                var index = oil.OilTableRows.IndexOf(tr);
+                var d = oil.OilDatas[index];
+
+                ps.Add(new RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupPropertiesProperty()
+                {
+                    PropertyName = p.name,
+                    PropertyKey = p.key,
+                    PropertyQualifierValue = d.calData,
+                });
+
+            }
+
+
+            var plant = r.RefineryAssay.PlantDataGroups.PlantDataGroup;
+            plant.Properties = new RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupProperties()
+            {
+                Property = ps.ToArray()
+            };
+
+            return r;
+        }
     }
 
     [Serializable]
@@ -76,6 +138,7 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     public partial class RefineryAssaysRefineryAssayPlantDataGroups : RefineryAssaysType
     {
         public RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroup PlantDataGroup { get; set; }
+
         /// <summary>
         /// 转换为字符串
         /// </summary>
@@ -111,7 +174,7 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
 
         public RefineryAssaysValue<ushort> PropertyKey { get; set; }
 
-        public RefineryAssaysValue<byte> PropertyQualifierValue { get; set; }
+        public RefineryAssaysValue<string> PropertyQualifierValue { get; set; }
     }
 
     [Serializable]
