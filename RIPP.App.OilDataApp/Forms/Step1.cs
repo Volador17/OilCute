@@ -49,9 +49,21 @@ namespace RIPP.App.OilDataApp.Forms
         /// <param name="e"></param>
         private void btnDel_Click(object sender, EventArgs e)
         {
-            if (this.gridListSelect.CurrentRow != null)
-                this.gridListSelect.Rows.Remove(this.gridListSelect.CurrentRow);
+            //  if (this.gridListSelect.CurrentRow != null)
+            //      this.gridListSelect.Rows.Remove(this.gridListSelect.CurrentRow);
+            //  this.gridListSelect.Refresh();
+
+            for (int i = 0; i < this.gridListSelect.Rows.Count; i++)
+            {
+                if ((bool?)gridListSelect.Rows[i].Cells["Check"].Value == true)
+                {
+                    this.gridListSelect.Rows.RemoveAt(i);
+                    i--;
+                }
+            }
             this.gridListSelect.Refresh();
+
+
         }
 
         /// <summary>
@@ -91,10 +103,14 @@ namespace RIPP.App.OilDataApp.Forms
                 DataGridViewRow row = new DataGridViewRow();
                 foreach (DataGridViewCell c in r.Cells)
                 {
-                    if (c.OwningColumn.Name == "Check")
-                        continue;
                     var c2 = c.Clone() as DataGridViewCell;
                     c2.Value = c.Value;
+                    if (c.OwningColumn.Name == "Check") 
+                    {
+                        var t = c2 as DataGridViewCheckBoxCell;
+                        t.Value = false;
+                    }
+                   
                     row.Cells.Add(c2);
                 }
                 this.gridListSelect.Rows.Add(row);
@@ -923,7 +939,8 @@ namespace RIPP.App.OilDataApp.Forms
         private void GridListSelectBind()
         {
             dgvHeader.SetAppDataBaseBColHeader(this.gridListSelect);
-
+            gridListSelect.Columns.Insert(0, new DataGridViewCheckBoxColumn() { Name = "Check", HeaderText = "选择", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
+            this.gridListSelect.Rows.Clear();
             //for (int i = 0; i < this._cutOilRates .CutOilRates.Count; i++)//选择了几条原油
             //{
             //    foreach (DataGridViewRow rowSource in this.gridListSelect.Rows)

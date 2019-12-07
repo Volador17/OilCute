@@ -669,6 +669,7 @@ namespace RIPP.App.OilDataApp.Forms
         private void FrmMain_Load(object sender, EventArgs e)
         {
             gridList.CellContentClick += GridList_CellContentClick;
+            gridListSelect.CellContentClick += GridList_SelectCellContentClick;
             gridList.CellMouseDown += GridList_CellMouseDown;
             toolStripMenuItemSelectAll.Click += ToolStripMenuItemSelectAll_Click;
             toolStripMenuItemReverseSelect.Click += ToolStripMenuItemSelectAll_Click;
@@ -707,6 +708,21 @@ namespace RIPP.App.OilDataApp.Forms
             if (gridList.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn)
             {
                 var t = gridList.Rows[e.RowIndex].Cells[e.ColumnIndex] as DataGridViewCheckBoxCell;
+                if ((bool?)t.Value != true)
+                    t.Value = true;
+                else
+                    t.Value = false;
+            }
+            //
+        }
+
+        private void GridList_SelectCellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
+            if (gridListSelect.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn)
+            {
+                var t = gridListSelect.Rows[e.RowIndex].Cells[e.ColumnIndex] as DataGridViewCheckBoxCell;
                 if ((bool?)t.Value != true)
                     t.Value = true;
                 else
