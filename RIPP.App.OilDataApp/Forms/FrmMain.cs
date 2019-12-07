@@ -678,6 +678,20 @@ namespace RIPP.App.OilDataApp.Forms
             toolStripMenuItemNonSelect.Click += ToolStripMenuItemSelectAll_Click;
             toolStripMenuItemAdd.Click += btnSelect_Click;
             toolStripMenuItemRemove.Click += btnDel_Click;
+            toolStripMenuItemExportXml.Click += ToolStripMenuItemExportXml_Click;
+        }
+
+        /// <summary>
+        /// 导出
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemExportXml_Click(object sender, EventArgs e)
+        {
+            var gv = contextMenuStrip1.Tag as DataGridView;
+            if (gv == null)
+                return;
+
         }
 
         /// <summary>
@@ -715,6 +729,11 @@ namespace RIPP.App.OilDataApp.Forms
         {
             if (e.Button != MouseButtons.Right)
                 return;
+
+            var gv = sender as DataGridView;
+            if (gv == null)
+                return;
+
             contextMenuStrip1.Tag = sender;
             if (sender == gridList)
             {
@@ -726,6 +745,19 @@ namespace RIPP.App.OilDataApp.Forms
                 toolStripMenuItemAdd.Visible = false;
                 toolStripMenuItemRemove.Visible = true;
             }
+
+            if (e.RowIndex >= 0)
+            {
+                if (!gv.Rows[e.RowIndex].Selected)
+                {
+                    gv.ClearSelection();
+                    gv.Rows[e.RowIndex].Selected = true;
+                }
+                toolStripMenuItemExportXml.Visible = true;
+            }
+            else
+                toolStripMenuItemExportXml.Visible = false;
+
             contextMenuStrip1.Show(MousePosition.X, MousePosition.Y);
         }
 

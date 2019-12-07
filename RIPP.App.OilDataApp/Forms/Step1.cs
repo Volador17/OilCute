@@ -53,16 +53,12 @@ namespace RIPP.App.OilDataApp.Forms
             //      this.gridListSelect.Rows.Remove(this.gridListSelect.CurrentRow);
             //  this.gridListSelect.Refresh();
 
-            for (int i = 0; i < this.gridListSelect.Rows.Count; i++)
+            for (int i = this.gridListSelect.Rows.Count - 1; i >=0; i--)
             {
                 if ((bool?)gridListSelect.Rows[i].Cells["Check"].Value == true)
-                {
                     this.gridListSelect.Rows.RemoveAt(i);
-                    i--;
-                }
             }
             this.gridListSelect.Refresh();
-
 
         }
 
