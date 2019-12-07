@@ -173,6 +173,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemRemove = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemExportXml = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.tableLayoutPanelMain.SuspendLayout();
@@ -1659,9 +1660,10 @@
             this.toolStripMenuItemReverseSelect,
             this.toolStripSeparator1,
             this.toolStripMenuItemAdd,
-            this.toolStripMenuItemRemove});
+            this.toolStripMenuItemRemove,
+            this.toolStripMenuItemExportXml});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 120);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 164);
             // 
             // toolStripMenuItemSelectAll
             // 
@@ -1695,8 +1697,14 @@
             // toolStripMenuItemRemove
             // 
             this.toolStripMenuItemRemove.Name = "toolStripMenuItemRemove";
-            this.toolStripMenuItemRemove.Size = new System.Drawing.Size(240, 30);
+            this.toolStripMenuItemRemove.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItemRemove.Text = "移除(&D)";
+            // 
+            // toolStripMenuItemExportXml
+            // 
+            this.toolStripMenuItemExportXml.Name = "toolStripMenuItemExportXml";
+            this.toolStripMenuItemExportXml.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemExportXml.Text = "导出XML(&E)";
             // 
             // FrmMain
             // 
@@ -1901,6 +1909,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAdd;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemRemove;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemExportXml;
     }
 }
 
