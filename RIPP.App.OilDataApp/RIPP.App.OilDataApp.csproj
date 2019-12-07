@@ -179,6 +179,8 @@
     <Compile Include="LicenseManager.Designer.cs">
       <DependentUpon>LicenseManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="Outputs\RefineryAssays\Models.cs" />
+    <Compile Include="Outputs\RefineryAssays\Utf8StringWriter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\FrmLibBIn.resx">
