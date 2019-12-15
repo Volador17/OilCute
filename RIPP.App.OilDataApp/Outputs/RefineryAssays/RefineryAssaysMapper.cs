@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 
@@ -165,5 +166,23 @@ Mono-aromatics content by weight	wt%
         /// 值转换表达式
         /// </summary>
         public string expr { get; set; }
+
+        private static DataTable dt = new DataTable();
+
+        public string GetValue(string v)
+        {
+            if (string.IsNullOrWhiteSpace(v) || string.IsNullOrWhiteSpace(expr))
+                return v;
+
+            var t = $"{v} { expr}";
+            try
+            {
+                var ret = dt.Compute(t, "");
+                return ret?.ToString() ?? v;
+            }
+            catch { }
+
+            return v;
+        }
     }
 }
