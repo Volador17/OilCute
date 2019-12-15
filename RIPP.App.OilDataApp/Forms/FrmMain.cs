@@ -7,7 +7,9 @@ using RIPP.OilDB.Model;
 using RIPP.OilDB.UI.GridOil;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -51,6 +53,8 @@ namespace RIPP.App.OilDataApp.Forms
             get { return this.bZhenHai; }
             set { this.bZhenHai = value; }
         }
+
+        public DataGridView GridListAdd { get; private set; }
 
         #region"step1"
         private string _sqlWhere = "1=1";
@@ -203,6 +207,8 @@ namespace RIPP.App.OilDataApp.Forms
             cmbFractionBind();
             GridListSourceBind();
             GridListSelectBind();
+            GridListAddBind();
+            GridListGroupBind();
             #endregion
         }
 
@@ -673,6 +679,7 @@ namespace RIPP.App.OilDataApp.Forms
             gridList.CellMouseDown += GridList_CellMouseDown;
             gridListSelect.CellContentClick += GridList_CellContentClick;
             gridListSelect.CellMouseDown += GridList_CellMouseDown;
+            gridListAdd.CellContentClick += GridList_CellContentClick;
 
             toolStripMenuItemSelectAll.Click += ToolStripMenuItemSelectAll_Click;
             toolStripMenuItemReverseSelect.Click += ToolStripMenuItemSelectAll_Click;
@@ -813,5 +820,104 @@ namespace RIPP.App.OilDataApp.Forms
                     t.Value = false;
             }
         }
+        private void btnSelectHide_Click(object sender, EventArgs e)
+        {
+            if (btnSelectHide.Text == "高级查询")
+            {
+                btnSelectHide.Text = "隐藏高级查询";
+                tabControl1.Visible = true;
+            }
+            else {
+                btnSelectHide.Text = "高级查询";
+                tabControl1.Visible = false;
+            }
+        }
+        private void gridListAdd_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            Rectangle rectangle = new Rectangle(e.RowBounds.Location.X,e.RowBounds.Location.Y,
+                this.gridListAdd.RowHeadersWidth - 4,e.RowBounds.Height);
+            TextRenderer.DrawText(e.Graphics, (e.RowIndex + 1).ToString(),
+                this.gridListAdd.RowHeadersDefaultCellStyle.Font,rectangle,
+                this.gridListAdd.RowHeadersDefaultCellStyle.ForeColor,
+                TextFormatFlags.VerticalCenter | TextFormatFlags.Right);
+        }
+        private void GridListAddBind()
+        {
+            dgvHeader.SetAppDataBaseBColHeader(this.gridListAdd);
+            gridListAdd.Columns.Insert(0, new DataGridViewCheckBoxColumn() { Name = "Check", HeaderText = "选择", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
+            gridListAdd.Columns.Remove("酸水平");
+            this.gridListAdd.Rows.Clear();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            var rows = new List<DataGridViewRow>();
+            foreach (DataGridViewRow row in this.gridListSelect.Rows)
+            {
+                if ((bool?)row.Cells["Check"].Value == true)
+                {
+                    rows.Add(row);
+                }
+            }
+            if (rows.Any() != true)
+            {
+                MessageBox.Show("请先勾选原油！");
+                return;
+            }
+            //已经存在的原油
+            var exists = new List<string>();
+            foreach (DataGridViewRow rowSlect in gridListAdd.Rows)
+            {
+                exists.Add(rowSlect.Cells["ID"].Value.ToString());
+            }
+            foreach (var r in rows)
+            {
+                var id = r.Cells["ID"].Value?.ToString();
+                if (exists.Contains(id))
+                    continue;
+
+                DataGridViewRow row = new DataGridViewRow();
+                foreach (DataGridViewCell c in r.Cells)
+                {
+                    var c2 = c.Clone() as DataGridViewCell;
+                    c2.Value = c.Value;
+                    if (c.OwningColumn.Name == "Check")
+                    {
+                        var t = c2 as DataGridViewCheckBoxCell;
+                        t.Value = false;
+                    }
+                    row.Cells.Add(c2);
+                }
+                this.gridListAdd.Rows.Add(row);
+            }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            for (int i = this.gridListAdd.Rows.Count - 1; i >= 0; i--)
+            {
+                if ((bool?)gridListAdd.Rows[i].Cells["Check"].Value == true)
+                    this.gridListAdd.Rows.RemoveAt(i);
+            }
+            this.gridListAdd.Refresh();
+        }
+
+
+
+        ///油组列表表头设置
+        public void SetGroupColHeader(DataGridView dgv)
+        {
+            dgv.Columns.Clear();
+            dgv.Columns.Add(new DataGridViewTextBoxColumn() { Name = "ID", HeaderText = "ID", ReadOnly = true});
+            dgv.Columns.Add(new DataGridViewTextBoxColumn() { Name = "油组名称", HeaderText = "油组名称", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
+            dgv.Columns.Add(new DataGridViewTextBoxColumn() { Name = "油种数量", HeaderText = "油种数量", ReadOnly = true, AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
+            dgv.Columns.Add(new DataGridViewTextBoxColumn() { Name = "创建日期", HeaderText = "创建日期", ReadOnly = true, AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
+            dgv.Columns.Add(new DataGridViewTextBoxColumn() { Name = "备注", HeaderText = "备注", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
+        }
+
+        private void GridListGroupBind()
+        {
+            SetGroupColHeader(this.gridListGroup);
+        } 
     }
 }

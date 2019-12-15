@@ -957,7 +957,6 @@ namespace RIPP.App.OilDataApp.Forms
             //    }
             //}
         }
-
         private void gridList_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             Rectangle rectangle = new Rectangle(e.RowBounds.Location.X,

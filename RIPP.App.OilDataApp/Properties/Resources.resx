@@ -118,17 +118,29 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="optionArr5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\optionArr5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="oilApplyBt11" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\oilApplyBt11.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="waiting2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\waiting2.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="GoRight32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GoRight32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\refresh1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="btnNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnNew.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="optionArr5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\optionArr5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="GoBottom32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GoBottom32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="optionArr4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\optionArr4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ZoomFit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ZoomFit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,9 +184,6 @@
   <data name="optionArr6" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\optionArr6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="optionArr1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\optionArr1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="oilApplybg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\oilApplybg.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -187,11 +196,8 @@
   <data name="GoDown32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GoDown32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="GoBottom32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GoBottom32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="optionArr4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\optionArr4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="optionArr1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\optionArr1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="second" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\second.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -199,7 +205,7 @@
   <data name="GoTop32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GoTop32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\refresh1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="GoLeft32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GoLeft32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
