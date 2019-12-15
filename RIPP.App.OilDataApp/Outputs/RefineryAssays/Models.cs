@@ -90,7 +90,7 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
 
             foreach (var p in maps)
             {
-                var tr = oil.OilTableRows.FirstOrDefault(o => o.itemName == p.ripp_code);
+                var tr = oil.OilTableRows.FirstOrDefault(o => o.itemCode == p.ripp_code);
                 if (tr == null)
                     continue;
                 var index = oil.OilTableRows.IndexOf(tr);
@@ -98,9 +98,10 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
 
                 ps.Add(new RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupPropertiesProperty()
                 {
-                    PropertyName = p.name,
+                    Name = p.name,
+                    PropertyName = p.property_name,
                     PropertyKey = p.key,
-                    PropertyQualifierValue = d.calData,
+                    PropertyQualifierValue = p.GetValue(d.calData),
                 });
             }
 
