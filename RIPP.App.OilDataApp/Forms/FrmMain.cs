@@ -163,6 +163,7 @@ namespace RIPP.App.OilDataApp.Forms
             this.butStep3.Enabled = false;
             this.butStep4.Enabled = false;
             this.btnStep5.Enabled = false;
+            this.butStep6.Enabled = false;
 
             InitStep1();
             if (BZH)
@@ -202,6 +203,7 @@ namespace RIPP.App.OilDataApp.Forms
             this.panelStep2.Visible = false;
             this.panelStep3.Visible = false;
             this.panelStep4.Visible = false;
+            this.panelStep6.Visible = false;
             this.panelStep1.Dock = DockStyle.Fill;
             #region "step1"
             cmbFractionBind();
@@ -326,6 +328,15 @@ namespace RIPP.App.OilDataApp.Forms
             {
                 initAllCutMothed(strDir);
             }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.panelStep6.Dock = DockStyle.Fill;
+            this.panelStep6.Visible = true;
+            this.panelStep6.BringToFront();
+
+            this.toolStripStatusLabel.Text = "物性定制";
         }
 
         /// <summary>
@@ -546,10 +557,12 @@ namespace RIPP.App.OilDataApp.Forms
             this.panelStep2.Visible = false;
             this.panelStep3.Visible = false;
             this.panelStep4.Visible = false;
+            this.panelStep6.Visible = false;
             this.butStep2.Enabled = false;
             this.butStep3.Enabled = false;
             this.butStep4.Enabled = false;
             this.btnStep5.Enabled = false;
+            this.butStep6.Enabled = false;
             this.toolStripStatusLabel.Text = "再次切割";
         }
 
@@ -820,6 +833,12 @@ namespace RIPP.App.OilDataApp.Forms
                     t.Value = false;
             }
         }
+
+        /// <summary>
+        /// 高级查询功能隐藏与显示
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSelectHide_Click(object sender, EventArgs e)
         {
             if (btnSelectHide.Text == "高级查询")
@@ -832,12 +851,14 @@ namespace RIPP.App.OilDataApp.Forms
                 tabControl1.Visible = false;
             }
         }
+
+
         private void gridListAdd_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            Rectangle rectangle = new Rectangle(e.RowBounds.Location.X,e.RowBounds.Location.Y,
-                this.gridListAdd.RowHeadersWidth - 4,e.RowBounds.Height);
+            Rectangle rectangle = new Rectangle(e.RowBounds.Location.X, e.RowBounds.Location.Y,
+                this.gridListAdd.RowHeadersWidth - 4, e.RowBounds.Height);
             TextRenderer.DrawText(e.Graphics, (e.RowIndex + 1).ToString(),
-                this.gridListAdd.RowHeadersDefaultCellStyle.Font,rectangle,
+                this.gridListAdd.RowHeadersDefaultCellStyle.Font, rectangle,
                 this.gridListAdd.RowHeadersDefaultCellStyle.ForeColor,
                 TextFormatFlags.VerticalCenter | TextFormatFlags.Right);
         }
@@ -845,10 +866,28 @@ namespace RIPP.App.OilDataApp.Forms
         {
             dgvHeader.SetAppDataBaseBColHeader(this.gridListAdd);
             gridListAdd.Columns.Insert(0, new DataGridViewCheckBoxColumn() { Name = "Check", HeaderText = "选择", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
-            gridListAdd.Columns.Remove("酸水平");
+            gridListAdd.Columns[1].ReadOnly = true;
+            gridListAdd.Columns[2].ReadOnly = true;
+            gridListAdd.Columns[3].ReadOnly = true;
+            gridListAdd.Columns[5].Visible = false;
+            gridListAdd.Columns[6].Visible = false;
+            gridListAdd.Columns[7].Visible = false;
+            gridListAdd.Columns[8].Visible = false;
+            gridListAdd.Columns[9].Visible = false;
+            gridListAdd.Columns[10].Visible = false;
+            gridListAdd.Columns[11].Visible = false;
+            gridListAdd.Columns[12].Visible = false;
+            gridListAdd.Columns[13].Visible = false;
+            gridListAdd.Columns.Add(new DataGridViewTextBoxColumn() { Name = "混炼加工量", HeaderText = "混炼加工量", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
+            gridListAdd.Columns.Add(new DataGridViewTextBoxColumn() { Name = "混兑比例", HeaderText = "混兑比例%",  AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
             this.gridListAdd.Rows.Clear();
         }
 
+        /// <summary>
+        /// 加入油种信息列表
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             var rows = new List<DataGridViewRow>();
@@ -892,6 +931,11 @@ namespace RIPP.App.OilDataApp.Forms
             }
         }
 
+        /// <summary>
+        /// 从油种信息列表移除
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBack_Click(object sender, EventArgs e)
         {
             for (int i = this.gridListAdd.Rows.Count - 1; i >= 0; i--)
@@ -902,22 +946,54 @@ namespace RIPP.App.OilDataApp.Forms
             this.gridListAdd.Refresh();
         }
 
-
-
-        ///油组列表表头设置
+        /// <summary>
+        /// 油组列表表头设置
+        /// </summary>
+        /// <param name="dgv"></param>
         public void SetGroupColHeader(DataGridView dgv)
         {
             dgv.Columns.Clear();
-            dgv.Columns.Add(new DataGridViewTextBoxColumn() { Name = "ID", HeaderText = "ID", ReadOnly = true});
             dgv.Columns.Add(new DataGridViewTextBoxColumn() { Name = "油组名称", HeaderText = "油组名称", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
             dgv.Columns.Add(new DataGridViewTextBoxColumn() { Name = "油种数量", HeaderText = "油种数量", ReadOnly = true, AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
             dgv.Columns.Add(new DataGridViewTextBoxColumn() { Name = "创建日期", HeaderText = "创建日期", ReadOnly = true, AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
             dgv.Columns.Add(new DataGridViewTextBoxColumn() { Name = "备注", HeaderText = "备注", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
         }
+        /// <summary>
+        /// 油组列表行号设置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void gridListGroup_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            Rectangle rectangle = new Rectangle(e.RowBounds.Location.X, e.RowBounds.Location.Y,
+                this.gridListAdd.RowHeadersWidth - 4, e.RowBounds.Height);
+            TextRenderer.DrawText(e.Graphics, (e.RowIndex + 1).ToString(),
+                this.gridListAdd.RowHeadersDefaultCellStyle.Font, rectangle,
+                this.gridListAdd.RowHeadersDefaultCellStyle.ForeColor,
+                TextFormatFlags.VerticalCenter | TextFormatFlags.Right);
+        }
 
         private void GridListGroupBind()
         {
             SetGroupColHeader(this.gridListGroup);
-        } 
+        }
+
+        /// <summary>
+        /// 新建油组
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnNewGroup_Click(object sender, EventArgs e)
+        {
+            FrmNewGroup frmNewGroup = new FrmNewGroup();
+            frmNewGroup.StartPosition = FormStartPosition.Manual;
+            frmNewGroup.Location = new Point(700, 400);
+            frmNewGroup.TransfEvent += frmNewGroup_TransfEvent;
+            frmNewGroup.Show();
+        }
+        void frmNewGroup_TransfEvent(string groupName, String groupRemark)
+        {
+            gridListGroup.Rows.Add(groupName, gridListSelect.RowCount, DateTime.Now.ToString(), groupRemark);
+        }
     }
 }

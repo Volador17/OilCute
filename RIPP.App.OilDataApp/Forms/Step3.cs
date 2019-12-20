@@ -31,9 +31,27 @@ namespace RIPP.App.OilDataApp.Forms
         /// </summary>
         private void InitStep3Grid()
         {
-            SetStep3ColHeader();//设定列头       
+            SetStep3ProListHeader();
+            SetStep3ColHeader();//设定列头
             SetRow();
             this.gridListCut.MultiSelect = true;
+        }
+        /// <summary>
+        /// 设置左侧方案列表表头
+        /// </summary>
+        private void SetStep3ProListHeader()
+        {
+            this.gridListProg.Columns.Add(new DataGridViewTextBoxColumn() { HeaderText = "方案名称", Name = "方案名称" });
+            this.gridListProg.Columns.Add(new DataGridViewTextBoxColumn() { HeaderText = "建立时间", Name = "建立时间" });
+            this.gridListProg.Columns.Add(new DataGridViewTextBoxColumn() { HeaderText = "备注信息", Name = "备注信息" });
+        }
+        private void gridListProg_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            Rectangle rectangle = new Rectangle(e.RowBounds.Location.X,
+           e.RowBounds.Location.Y, this.gridListProg.RowHeadersWidth - 4, e.RowBounds.Height);
+            TextRenderer.DrawText(e.Graphics, (e.RowIndex + 1).ToString(), this.gridListProg.RowHeadersDefaultCellStyle.Font,
+            rectangle,
+            this.gridListProg.RowHeadersDefaultCellStyle.ForeColor, TextFormatFlags.VerticalCenter | TextFormatFlags.Right);
         }
 
         /// <summary>
@@ -49,7 +67,7 @@ namespace RIPP.App.OilDataApp.Forms
             this.gridListCut.Columns.Add(new DataGridViewTextBoxColumn() { HeaderText = "初馏点", Name = "ICP" });
             this.gridListCut.Columns.Add(new DataGridViewTextBoxColumn() { HeaderText = "终馏点", Name = "ECP" });
             this.gridListCut.Columns.Add(new DataGridViewTextBoxColumn() { HeaderText = "馏分段名称", Name = "Name" });
-            this.gridListCut.Columns.Add(new DataGridViewTextBoxColumn() { HeaderText = "切割馏分类型", Name = "CutType" });
+            this.gridListCut.Columns.Add(new DataGridViewTextBoxColumn() { HeaderText = "切割馏分类型", Name = "CutType"});
             #endregion
         }
         /// <summary>
@@ -297,7 +315,8 @@ namespace RIPP.App.OilDataApp.Forms
             if (resultMothed)
             {
                 this.panelStep3.Visible = false;
-                this.butStep4.Enabled = true;
+                //this.butStep4.Enabled = true;
+                this.butStep6.Enabled = true;
             }
             else
             {

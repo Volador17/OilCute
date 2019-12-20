@@ -64,12 +64,35 @@
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelMainLeft = new System.Windows.Forms.TableLayoutPanel();
             this.panelMainLeft = new System.Windows.Forms.Panel();
+            this.butStep6 = new System.Windows.Forms.Button();
             this.btnStep5 = new System.Windows.Forms.Button();
             this.butStep1 = new System.Windows.Forms.Button();
             this.butStep4 = new System.Windows.Forms.Button();
             this.butStep2 = new System.Windows.Forms.Button();
             this.butStep3 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panelStep4 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanelStep4Main = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanelStep4Bottom = new System.Windows.Forms.TableLayoutPanel();
+            this.butStep4Ok = new System.Windows.Forms.Button();
+            this.butStep4Cancel = new System.Windows.Forms.Button();
+            this.tabControlStep4 = new System.Windows.Forms.TabControl();
+            this.step4tabPage1 = new System.Windows.Forms.TabPage();
+            this.dgvStep4Whole = new System.Windows.Forms.DataGridView();
+            this.step4tabPage2 = new System.Windows.Forms.TabPage();
+            this.dgvStep4GC = new System.Windows.Forms.DataGridView();
+            this.step4tabPage3 = new System.Windows.Forms.TabPage();
+            this.dgvStep4Com = new System.Windows.Forms.DataGridView();
+            this.step4tabPage4 = new System.Windows.Forms.TabPage();
+            this.dgvStep4Res = new System.Windows.Forms.DataGridView();
+            this.panelStep6 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.panelStep2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanelStep2Main = new System.Windows.Forms.TableLayoutPanel();
             this.gridListRate = new RIPP.OilDB.UI.GridOil.GridList(this.components);
@@ -85,10 +108,12 @@
             this.toolStripButtonNewCutMethod = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonReadCutMethod = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonSaveCutMethod = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.gridListCut = new RIPP.OilDB.UI.GridOil.GridList(this.components);
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.btnStep3Ok = new System.Windows.Forms.Button();
             this.btnStep3Cancel = new System.Windows.Forms.Button();
+            this.gridListProg = new System.Windows.Forms.DataGridView();
             this.panelStep1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanelStep1Main = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -162,20 +187,6 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.gridListGroup = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.panelStep4 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanelStep4Main = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanelStep4Bottom = new System.Windows.Forms.TableLayoutPanel();
-            this.butStep4Ok = new System.Windows.Forms.Button();
-            this.butStep4Cancel = new System.Windows.Forms.Button();
-            this.tabControlStep4 = new System.Windows.Forms.TabControl();
-            this.step4tabPage1 = new System.Windows.Forms.TabPage();
-            this.dgvStep4Whole = new System.Windows.Forms.DataGridView();
-            this.step4tabPage2 = new System.Windows.Forms.TabPage();
-            this.dgvStep4GC = new System.Windows.Forms.DataGridView();
-            this.step4tabPage3 = new System.Windows.Forms.TabPage();
-            this.dgvStep4Com = new System.Windows.Forms.DataGridView();
-            this.step4tabPage4 = new System.Windows.Forms.TabPage();
-            this.dgvStep4Res = new System.Windows.Forms.DataGridView();
             this.gridListAdd = new RIPP.OilDB.UI.GridOil.GridOilList(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemSelectAll = new System.Windows.Forms.ToolStripMenuItem();
@@ -185,12 +196,33 @@
             this.toolStripMenuItemAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemRemove = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemExportXml = new System.Windows.Forms.ToolStripMenuItem();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.tableLayoutPanelMain.SuspendLayout();
             this.tableLayoutPanelMainLeft.SuspendLayout();
             this.panelMainLeft.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panelStep4.SuspendLayout();
+            this.tableLayoutPanelStep4Main.SuspendLayout();
+            this.tableLayoutPanelStep4Bottom.SuspendLayout();
+            this.tabControlStep4.SuspendLayout();
+            this.step4tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStep4Whole)).BeginInit();
+            this.step4tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStep4GC)).BeginInit();
+            this.step4tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStep4Com)).BeginInit();
+            this.step4tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStep4Res)).BeginInit();
+            this.panelStep6.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.panelStep2.SuspendLayout();
             this.tableLayoutPanelStep2Main.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridListRate)).BeginInit();
@@ -200,6 +232,7 @@
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridListCut)).BeginInit();
             this.tableLayoutPanel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridListProg)).BeginInit();
             this.panelStep1.SuspendLayout();
             this.tableLayoutPanelStep1Main.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -218,20 +251,9 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridListGroup)).BeginInit();
             this.groupBox5.SuspendLayout();
-            this.panelStep4.SuspendLayout();
-            this.tableLayoutPanelStep4Main.SuspendLayout();
-            this.tableLayoutPanelStep4Bottom.SuspendLayout();
-            this.tabControlStep4.SuspendLayout();
-            this.step4tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStep4Whole)).BeginInit();
-            this.step4tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStep4GC)).BeginInit();
-            this.step4tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStep4Com)).BeginInit();
-            this.step4tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStep4Res)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridListAdd)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -372,7 +394,7 @@
             // 
             this.btnDel.BackgroundImage = global::RIPP.App.OilDataApp.Properties.Resources.GoUp32;
             this.btnDel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDel.Location = new System.Drawing.Point(151, 0);
+            this.btnDel.Location = new System.Drawing.Point(34, 0);
             this.btnDel.Margin = new System.Windows.Forms.Padding(0);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(34, 34);
@@ -385,7 +407,7 @@
             // 
             this.btnSelect.BackgroundImage = global::RIPP.App.OilDataApp.Properties.Resources.GoDown32;
             this.btnSelect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSelect.Location = new System.Drawing.Point(319, 0);
+            this.btnSelect.Location = new System.Drawing.Point(202, 0);
             this.btnSelect.Margin = new System.Windows.Forms.Padding(0);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(34, 34);
@@ -398,7 +420,7 @@
             // 
             this.butShowAll.BackgroundImage = global::RIPP.App.OilDataApp.Properties.Resources.refresh;
             this.butShowAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.butShowAll.Location = new System.Drawing.Point(235, 0);
+            this.butShowAll.Location = new System.Drawing.Point(118, 0);
             this.butShowAll.Margin = new System.Windows.Forms.Padding(0);
             this.butShowAll.Name = "butShowAll";
             this.butShowAll.Size = new System.Drawing.Size(34, 34);
@@ -443,6 +465,7 @@
             // 
             // panelMainLeft
             // 
+            this.panelMainLeft.Controls.Add(this.butStep6);
             this.panelMainLeft.Controls.Add(this.btnStep5);
             this.panelMainLeft.Controls.Add(this.butStep1);
             this.panelMainLeft.Controls.Add(this.butStep4);
@@ -454,6 +477,22 @@
             this.panelMainLeft.Name = "panelMainLeft";
             this.panelMainLeft.Size = new System.Drawing.Size(150, 348);
             this.panelMainLeft.TabIndex = 0;
+            // 
+            // butStep6
+            // 
+            this.butStep6.BackgroundImage = global::RIPP.App.OilDataApp.Properties.Resources.oilApplyBt11;
+            this.butStep6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.butStep6.FlatAppearance.BorderSize = 0;
+            this.butStep6.Font = new System.Drawing.Font("宋体", 10F);
+            this.butStep6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.butStep6.Location = new System.Drawing.Point(0, 181);
+            this.butStep6.Name = "butStep6";
+            this.butStep6.Padding = new System.Windows.Forms.Padding(33, 0, 0, 0);
+            this.butStep6.Size = new System.Drawing.Size(150, 50);
+            this.butStep6.TabIndex = 5;
+            this.butStep6.Text = "第4步 物性定制";
+            this.butStep6.UseVisualStyleBackColor = true;
+            this.butStep6.Click += new System.EventHandler(this.button6_Click);
             // 
             // btnStep5
             // 
@@ -467,7 +506,7 @@
             this.btnStep5.Padding = new System.Windows.Forms.Padding(33, 0, 0, 0);
             this.btnStep5.Size = new System.Drawing.Size(150, 50);
             this.btnStep5.TabIndex = 4;
-            this.btnStep5.Text = "第5步 导出Excel";
+            this.btnStep5.Text = "第6步 导出Excel";
             this.btnStep5.UseVisualStyleBackColor = true;
             this.btnStep5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -495,12 +534,12 @@
             this.butStep4.FlatAppearance.BorderSize = 0;
             this.butStep4.Font = new System.Drawing.Font("宋体", 10F);
             this.butStep4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.butStep4.Location = new System.Drawing.Point(0, 224);
+            this.butStep4.Location = new System.Drawing.Point(0, 241);
             this.butStep4.Name = "butStep4";
             this.butStep4.Padding = new System.Windows.Forms.Padding(33, 0, 0, 0);
             this.butStep4.Size = new System.Drawing.Size(150, 50);
             this.butStep4.TabIndex = 3;
-            this.butStep4.Text = "第4步 原油切割";
+            this.butStep4.Text = "第5步 原油切割";
             this.butStep4.UseVisualStyleBackColor = true;
             this.butStep4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -511,7 +550,7 @@
             this.butStep2.FlatAppearance.BorderSize = 0;
             this.butStep2.Font = new System.Drawing.Font("宋体", 10F);
             this.butStep2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.butStep2.Location = new System.Drawing.Point(0, 76);
+            this.butStep2.Location = new System.Drawing.Point(-1, 60);
             this.butStep2.Name = "butStep2";
             this.butStep2.Padding = new System.Windows.Forms.Padding(33, 0, 0, 0);
             this.butStep2.Size = new System.Drawing.Size(150, 50);
@@ -527,7 +566,7 @@
             this.butStep3.FlatAppearance.BorderSize = 0;
             this.butStep3.Font = new System.Drawing.Font("宋体", 10F);
             this.butStep3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.butStep3.Location = new System.Drawing.Point(0, 148);
+            this.butStep3.Location = new System.Drawing.Point(-1, 120);
             this.butStep3.Name = "butStep3";
             this.butStep3.Padding = new System.Windows.Forms.Padding(33, 0, 0, 0);
             this.butStep3.Size = new System.Drawing.Size(150, 50);
@@ -540,6 +579,8 @@
             // 
             this.panel2.BackgroundImage = global::RIPP.App.OilDataApp.Properties.Resources.second;
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel2.Controls.Add(this.panelStep4);
+            this.panel2.Controls.Add(this.panelStep6);
             this.panel2.Controls.Add(this.panelStep2);
             this.panel2.Controls.Add(this.panelStep3);
             this.panel2.Controls.Add(this.panelStep1);
@@ -549,12 +590,292 @@
             this.panel2.Size = new System.Drawing.Size(1162, 579);
             this.panel2.TabIndex = 1;
             // 
+            // panelStep4
+            // 
+            this.panelStep4.Controls.Add(this.tableLayoutPanelStep4Main);
+            this.panelStep4.Location = new System.Drawing.Point(719, 297);
+            this.panelStep4.Name = "panelStep4";
+            this.panelStep4.Size = new System.Drawing.Size(449, 256);
+            this.panelStep4.TabIndex = 57;
+            // 
+            // tableLayoutPanelStep4Main
+            // 
+            this.tableLayoutPanelStep4Main.ColumnCount = 1;
+            this.tableLayoutPanelStep4Main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelStep4Main.Controls.Add(this.tableLayoutPanelStep4Bottom, 0, 1);
+            this.tableLayoutPanelStep4Main.Controls.Add(this.tabControlStep4, 0, 0);
+            this.tableLayoutPanelStep4Main.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelStep4Main.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelStep4Main.Name = "tableLayoutPanelStep4Main";
+            this.tableLayoutPanelStep4Main.RowCount = 2;
+            this.tableLayoutPanelStep4Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelStep4Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
+            this.tableLayoutPanelStep4Main.Size = new System.Drawing.Size(449, 256);
+            this.tableLayoutPanelStep4Main.TabIndex = 3;
+            // 
+            // tableLayoutPanelStep4Bottom
+            // 
+            this.tableLayoutPanelStep4Bottom.ColumnCount = 5;
+            this.tableLayoutPanelStep4Bottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelStep4Bottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanelStep4Bottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanelStep4Bottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanelStep4Bottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelStep4Bottom.Controls.Add(this.butStep4Ok, 1, 1);
+            this.tableLayoutPanelStep4Bottom.Controls.Add(this.butStep4Cancel, 3, 1);
+            this.tableLayoutPanelStep4Bottom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelStep4Bottom.Location = new System.Drawing.Point(3, 210);
+            this.tableLayoutPanelStep4Bottom.Name = "tableLayoutPanelStep4Bottom";
+            this.tableLayoutPanelStep4Bottom.RowCount = 3;
+            this.tableLayoutPanelStep4Bottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelStep4Bottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelStep4Bottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelStep4Bottom.Size = new System.Drawing.Size(443, 43);
+            this.tableLayoutPanelStep4Bottom.TabIndex = 11;
+            // 
+            // butStep4Ok
+            // 
+            this.butStep4Ok.Location = new System.Drawing.Point(66, 6);
+            this.butStep4Ok.Margin = new System.Windows.Forms.Padding(0);
+            this.butStep4Ok.Name = "butStep4Ok";
+            this.butStep4Ok.Size = new System.Drawing.Size(80, 30);
+            this.butStep4Ok.TabIndex = 8;
+            this.butStep4Ok.Text = "确定";
+            this.butStep4Ok.UseVisualStyleBackColor = true;
+            this.butStep4Ok.Click += new System.EventHandler(this.butStep4Ok_Click);
+            // 
+            // butStep4Cancel
+            // 
+            this.butStep4Cancel.Location = new System.Drawing.Point(296, 6);
+            this.butStep4Cancel.Margin = new System.Windows.Forms.Padding(0);
+            this.butStep4Cancel.Name = "butStep4Cancel";
+            this.butStep4Cancel.Size = new System.Drawing.Size(80, 30);
+            this.butStep4Cancel.TabIndex = 17;
+            this.butStep4Cancel.Text = "取消";
+            this.butStep4Cancel.UseVisualStyleBackColor = true;
+            this.butStep4Cancel.Click += new System.EventHandler(this.butStep4Cancel_Click);
+            // 
+            // tabControlStep4
+            // 
+            this.tabControlStep4.Controls.Add(this.step4tabPage1);
+            this.tabControlStep4.Controls.Add(this.step4tabPage2);
+            this.tabControlStep4.Controls.Add(this.step4tabPage3);
+            this.tabControlStep4.Controls.Add(this.step4tabPage4);
+            this.tabControlStep4.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tabControlStep4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlStep4.Location = new System.Drawing.Point(3, 3);
+            this.tabControlStep4.Name = "tabControlStep4";
+            this.tabControlStep4.SelectedIndex = 0;
+            this.tabControlStep4.Size = new System.Drawing.Size(443, 201);
+            this.tabControlStep4.TabIndex = 2;
+            // 
+            // step4tabPage1
+            // 
+            this.step4tabPage1.Controls.Add(this.dgvStep4Whole);
+            this.step4tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.step4tabPage1.Name = "step4tabPage1";
+            this.step4tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.step4tabPage1.Size = new System.Drawing.Size(435, 175);
+            this.step4tabPage1.TabIndex = 0;
+            this.step4tabPage1.Text = "原油";
+            this.step4tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // dgvStep4Whole
+            // 
+            this.dgvStep4Whole.AllowUserToAddRows = false;
+            this.dgvStep4Whole.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvStep4Whole.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStep4Whole.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvStep4Whole.Location = new System.Drawing.Point(3, 3);
+            this.dgvStep4Whole.Name = "dgvStep4Whole";
+            this.dgvStep4Whole.RowTemplate.Height = 23;
+            this.dgvStep4Whole.Size = new System.Drawing.Size(429, 169);
+            this.dgvStep4Whole.TabIndex = 0;
+            // 
+            // step4tabPage2
+            // 
+            this.step4tabPage2.Controls.Add(this.dgvStep4GC);
+            this.step4tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.step4tabPage2.Name = "step4tabPage2";
+            this.step4tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.step4tabPage2.Size = new System.Drawing.Size(435, 175);
+            this.step4tabPage2.TabIndex = 1;
+            this.step4tabPage2.Text = "GC表";
+            this.step4tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dgvStep4GC
+            // 
+            this.dgvStep4GC.AllowUserToAddRows = false;
+            this.dgvStep4GC.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvStep4GC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStep4GC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvStep4GC.Location = new System.Drawing.Point(3, 3);
+            this.dgvStep4GC.Name = "dgvStep4GC";
+            this.dgvStep4GC.RowTemplate.Height = 23;
+            this.dgvStep4GC.Size = new System.Drawing.Size(429, 169);
+            this.dgvStep4GC.TabIndex = 0;
+            // 
+            // step4tabPage3
+            // 
+            this.step4tabPage3.Controls.Add(this.dgvStep4Com);
+            this.step4tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.step4tabPage3.Name = "step4tabPage3";
+            this.step4tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.step4tabPage3.Size = new System.Drawing.Size(435, 175);
+            this.step4tabPage3.TabIndex = 2;
+            this.step4tabPage3.Text = "馏分油";
+            this.step4tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dgvStep4Com
+            // 
+            this.dgvStep4Com.AllowUserToAddRows = false;
+            this.dgvStep4Com.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvStep4Com.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStep4Com.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvStep4Com.Location = new System.Drawing.Point(3, 3);
+            this.dgvStep4Com.Name = "dgvStep4Com";
+            this.dgvStep4Com.RowTemplate.Height = 23;
+            this.dgvStep4Com.Size = new System.Drawing.Size(429, 169);
+            this.dgvStep4Com.TabIndex = 0;
+            // 
+            // step4tabPage4
+            // 
+            this.step4tabPage4.Controls.Add(this.dgvStep4Res);
+            this.step4tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.step4tabPage4.Name = "step4tabPage4";
+            this.step4tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.step4tabPage4.Size = new System.Drawing.Size(435, 175);
+            this.step4tabPage4.TabIndex = 3;
+            this.step4tabPage4.Text = "渣油";
+            this.step4tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // dgvStep4Res
+            // 
+            this.dgvStep4Res.AllowUserToAddRows = false;
+            this.dgvStep4Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvStep4Res.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStep4Res.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvStep4Res.Location = new System.Drawing.Point(3, 3);
+            this.dgvStep4Res.Name = "dgvStep4Res";
+            this.dgvStep4Res.RowTemplate.Height = 23;
+            this.dgvStep4Res.Size = new System.Drawing.Size(429, 169);
+            this.dgvStep4Res.TabIndex = 1;
+            // 
+            // panelStep6
+            // 
+            this.panelStep6.Controls.Add(this.tableLayoutPanel3);
+            this.panelStep6.Location = new System.Drawing.Point(74, 141);
+            this.panelStep6.Name = "panelStep6";
+            this.panelStep6.Size = new System.Drawing.Size(819, 444);
+            this.panelStep6.TabIndex = 57;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.dataGridView1, 0, 1);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 3;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(819, 444);
+            this.tableLayoutPanel3.TabIndex = 1;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 3;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.67352F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.32648F));
+            this.tableLayoutPanel4.Controls.Add(this.button1, 1, 1);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 397);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 3;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(813, 44);
+            this.tableLayoutPanel4.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Location = new System.Drawing.Point(312, 9);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(81, 26);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "确定";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 7;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Controls.Add(this.label6, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label8, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label11, 4, 0);
+            this.tableLayoutPanel5.Controls.Add(this.comboBox1, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.comboBox2, 3, 0);
+            this.tableLayoutPanel5.Controls.Add(this.comboBox3, 5, 0);
+            this.tableLayoutPanel5.Controls.Add(this.button2, 6, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(813, 24);
+            this.tableLayoutPanel5.TabIndex = 2;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 6);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 12);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "选择装置";
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(153, 6);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(53, 12);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "选择方案";
+            // 
+            // label11
+            // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(303, 6);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(53, 12);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "选择馏分";
+            // 
             // panelStep2
             // 
             this.panelStep2.Controls.Add(this.tableLayoutPanelStep2Main);
-            this.panelStep2.Location = new System.Drawing.Point(65, 423);
+            this.panelStep2.Location = new System.Drawing.Point(65, 426);
             this.panelStep2.Name = "panelStep2";
-            this.panelStep2.Size = new System.Drawing.Size(272, 153);
+            this.panelStep2.Size = new System.Drawing.Size(358, 150);
             this.panelStep2.TabIndex = 55;
             // 
             // tableLayoutPanelStep2Main
@@ -569,7 +890,7 @@
             this.tableLayoutPanelStep2Main.RowCount = 2;
             this.tableLayoutPanelStep2Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelStep2Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanelStep2Main.Size = new System.Drawing.Size(272, 153);
+            this.tableLayoutPanelStep2Main.Size = new System.Drawing.Size(358, 150);
             this.tableLayoutPanelStep2Main.TabIndex = 19;
             // 
             // gridListRate
@@ -602,7 +923,7 @@
             this.gridListRate.Name = "gridListRate";
             this.gridListRate.RowHeadersWidth = 30;
             this.gridListRate.RowTemplate.Height = 23;
-            this.gridListRate.Size = new System.Drawing.Size(266, 97);
+            this.gridListRate.Size = new System.Drawing.Size(352, 94);
             this.gridListRate.TabIndex = 3;
             this.gridListRate.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridListRate_CellEndEdit);
             this.gridListRate.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gridListRate_CellValidating);
@@ -621,18 +942,18 @@
             this.tableLayoutPanel6.Controls.Add(this.btnStep2OK, 1, 1);
             this.tableLayoutPanel6.Controls.Add(this.btnStep2Cancel, 3, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 106);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 103);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 3;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(266, 44);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(352, 44);
             this.tableLayoutPanel6.TabIndex = 10;
             // 
             // btnStep2OK
             // 
-            this.btnStep2OK.Location = new System.Drawing.Point(-22, 7);
+            this.btnStep2OK.Location = new System.Drawing.Point(21, 7);
             this.btnStep2OK.Margin = new System.Windows.Forms.Padding(0);
             this.btnStep2OK.Name = "btnStep2OK";
             this.btnStep2OK.Size = new System.Drawing.Size(80, 30);
@@ -643,7 +964,7 @@
             // 
             // btnStep2Cancel
             // 
-            this.btnStep2Cancel.Location = new System.Drawing.Point(208, 7);
+            this.btnStep2Cancel.Location = new System.Drawing.Point(251, 7);
             this.btnStep2Cancel.Margin = new System.Windows.Forms.Padding(0);
             this.btnStep2Cancel.Name = "btnStep2Cancel";
             this.btnStep2Cancel.Size = new System.Drawing.Size(80, 30);
@@ -655,18 +976,20 @@
             // panelStep3
             // 
             this.panelStep3.Controls.Add(this.tableLayoutPanelStep3Main);
-            this.panelStep3.Location = new System.Drawing.Point(786, 9);
+            this.panelStep3.Location = new System.Drawing.Point(761, 18);
             this.panelStep3.Name = "panelStep3";
-            this.panelStep3.Size = new System.Drawing.Size(230, 228);
+            this.panelStep3.Size = new System.Drawing.Size(363, 270);
             this.panelStep3.TabIndex = 56;
             // 
             // tableLayoutPanelStep3Main
             // 
-            this.tableLayoutPanelStep3Main.ColumnCount = 1;
-            this.tableLayoutPanelStep3Main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelStep3Main.Controls.Add(this.toolStrip, 0, 0);
-            this.tableLayoutPanelStep3Main.Controls.Add(this.gridListCut, 0, 1);
-            this.tableLayoutPanelStep3Main.Controls.Add(this.tableLayoutPanel8, 0, 2);
+            this.tableLayoutPanelStep3Main.ColumnCount = 2;
+            this.tableLayoutPanelStep3Main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelStep3Main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelStep3Main.Controls.Add(this.toolStrip, 1, 0);
+            this.tableLayoutPanelStep3Main.Controls.Add(this.gridListCut, 1, 1);
+            this.tableLayoutPanelStep3Main.Controls.Add(this.tableLayoutPanel8, 1, 2);
+            this.tableLayoutPanelStep3Main.Controls.Add(this.gridListProg, 0, 1);
             this.tableLayoutPanelStep3Main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelStep3Main.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelStep3Main.Name = "tableLayoutPanelStep3Main";
@@ -674,7 +997,7 @@
             this.tableLayoutPanelStep3Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanelStep3Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelStep3Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanelStep3Main.Size = new System.Drawing.Size(230, 228);
+            this.tableLayoutPanelStep3Main.Size = new System.Drawing.Size(363, 270);
             this.tableLayoutPanelStep3Main.TabIndex = 20;
             // 
             // toolStrip
@@ -685,10 +1008,11 @@
             this.toolStripButton1,
             this.toolStripButtonNewCutMethod,
             this.toolStripButtonReadCutMethod,
-            this.toolStripButtonSaveCutMethod});
-            this.toolStrip.Location = new System.Drawing.Point(0, 0);
+            this.toolStripButtonSaveCutMethod,
+            this.toolStripButton2});
+            this.toolStrip.Location = new System.Drawing.Point(181, 0);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(230, 25);
+            this.toolStrip.Size = new System.Drawing.Size(182, 25);
             this.toolStrip.TabIndex = 13;
             this.toolStrip.Text = "toolStrip1";
             // 
@@ -721,7 +1045,7 @@
             this.toolStripButtonNewCutMethod.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonNewCutMethod.Image")));
             this.toolStripButtonNewCutMethod.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonNewCutMethod.Name = "toolStripButtonNewCutMethod";
-            this.toolStripButtonNewCutMethod.Size = new System.Drawing.Size(52, 22);
+            this.toolStripButtonNewCutMethod.Size = new System.Drawing.Size(52, 21);
             this.toolStripButtonNewCutMethod.Text = "新建";
             this.toolStripButtonNewCutMethod.Click += new System.EventHandler(this.toolStripButtonNewCutMethod_Click);
             // 
@@ -743,6 +1067,14 @@
             this.toolStripButtonSaveCutMethod.Text = "保存";
             this.toolStripButtonSaveCutMethod.Click += new System.EventHandler(this.toolStripButtonSaveCutMethod_Click);
             // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(76, 21);
+            this.toolStripButton2.Text = "温度校核";
+            // 
             // gridListCut
             // 
             this.gridListCut.AllowUserToAddRows = false;
@@ -760,12 +1092,12 @@
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.gridListCut.DefaultCellStyle = dataGridViewCellStyle5;
             this.gridListCut.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridListCut.Location = new System.Drawing.Point(3, 28);
+            this.gridListCut.Location = new System.Drawing.Point(184, 28);
             this.gridListCut.MultiSelect = false;
             this.gridListCut.Name = "gridListCut";
             this.gridListCut.RowHeadersWidth = 30;
             this.gridListCut.RowTemplate.Height = 23;
-            this.gridListCut.Size = new System.Drawing.Size(224, 147);
+            this.gridListCut.Size = new System.Drawing.Size(176, 189);
             this.gridListCut.TabIndex = 14;
             this.gridListCut.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.gridListCut_RowPostPaint);
             this.gridListCut.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridListCut_KeyDown);
@@ -782,18 +1114,18 @@
             this.tableLayoutPanel8.Controls.Add(this.btnStep3Ok, 1, 1);
             this.tableLayoutPanel8.Controls.Add(this.btnStep3Cancel, 3, 1);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 181);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(184, 223);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 3;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(224, 44);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(176, 44);
             this.tableLayoutPanel8.TabIndex = 15;
             // 
             // btnStep3Ok
             // 
-            this.btnStep3Ok.Location = new System.Drawing.Point(-48, 7);
+            this.btnStep3Ok.Location = new System.Drawing.Point(-72, 7);
             this.btnStep3Ok.Margin = new System.Windows.Forms.Padding(0);
             this.btnStep3Ok.Name = "btnStep3Ok";
             this.btnStep3Ok.Size = new System.Drawing.Size(80, 30);
@@ -804,7 +1136,7 @@
             // 
             // btnStep3Cancel
             // 
-            this.btnStep3Cancel.Location = new System.Drawing.Point(192, 7);
+            this.btnStep3Cancel.Location = new System.Drawing.Point(168, 7);
             this.btnStep3Cancel.Margin = new System.Windows.Forms.Padding(0);
             this.btnStep3Cancel.Name = "btnStep3Cancel";
             this.btnStep3Cancel.Size = new System.Drawing.Size(80, 30);
@@ -813,12 +1145,25 @@
             this.btnStep3Cancel.UseVisualStyleBackColor = true;
             this.btnStep3Cancel.Click += new System.EventHandler(this.btnStep3Cancel_Click);
             // 
+            // gridListProg
+            // 
+            this.gridListProg.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gridListProg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridListProg.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridListProg.Location = new System.Drawing.Point(3, 28);
+            this.gridListProg.MultiSelect = false;
+            this.gridListProg.Name = "gridListProg";
+            this.gridListProg.RowTemplate.Height = 23;
+            this.gridListProg.Size = new System.Drawing.Size(175, 189);
+            this.gridListProg.TabIndex = 16;
+            this.gridListProg.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.gridListProg_RowPostPaint);
+            // 
             // panelStep1
             // 
             this.panelStep1.Controls.Add(this.tableLayoutPanelStep1Main);
             this.panelStep1.Location = new System.Drawing.Point(3, 3);
             this.panelStep1.Name = "panelStep1";
-            this.panelStep1.Size = new System.Drawing.Size(777, 520);
+            this.panelStep1.Size = new System.Drawing.Size(420, 288);
             this.panelStep1.TabIndex = 0;
             // 
             // tableLayoutPanelStep1Main
@@ -844,7 +1189,7 @@
             this.tableLayoutPanelStep1Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanelStep1Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelStep1Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanelStep1Main.Size = new System.Drawing.Size(777, 520);
+            this.tableLayoutPanelStep1Main.Size = new System.Drawing.Size(420, 288);
             this.tableLayoutPanelStep1Main.TabIndex = 18;
             // 
             // groupBox2
@@ -853,7 +1198,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 160);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(504, 130);
+            this.groupBox2.Size = new System.Drawing.Size(270, 14);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "显示列表";
@@ -884,7 +1229,7 @@
             this.gridList.RowHeadersWidth = 30;
             this.gridList.RowTemplate.Height = 23;
             this.gridList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridList.Size = new System.Drawing.Size(498, 110);
+            this.gridList.Size = new System.Drawing.Size(264, 0);
             this.gridList.TabIndex = 2;
             this.gridList.Visible = false;
             this.gridList.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.gridList_RowPostPaint);
@@ -893,9 +1238,9 @@
             // 
             this.groupBox3.Controls.Add(this.gridListSelect);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(3, 336);
+            this.groupBox3.Location = new System.Drawing.Point(3, 220);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(504, 130);
+            this.groupBox3.Size = new System.Drawing.Size(270, 14);
             this.groupBox3.TabIndex = 13;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "选中列表";
@@ -925,7 +1270,7 @@
             this.gridListSelect.RowHeadersWidth = 30;
             this.gridListSelect.RowTemplate.Height = 23;
             this.gridListSelect.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridListSelect.Size = new System.Drawing.Size(498, 110);
+            this.gridListSelect.Size = new System.Drawing.Size(264, 0);
             this.gridListSelect.TabIndex = 1;
             this.gridListSelect.Visible = false;
             this.gridListSelect.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.gridListSelect_RowPostPaint);
@@ -944,13 +1289,13 @@
             this.tableLayoutPanelStep1Center.Controls.Add(this.btnSelect, 5, 1);
             this.tableLayoutPanelStep1Center.Controls.Add(this.butShowAll, 3, 1);
             this.tableLayoutPanelStep1Center.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelStep1Center.Location = new System.Drawing.Point(3, 296);
+            this.tableLayoutPanelStep1Center.Location = new System.Drawing.Point(3, 180);
             this.tableLayoutPanelStep1Center.Name = "tableLayoutPanelStep1Center";
             this.tableLayoutPanelStep1Center.RowCount = 3;
             this.tableLayoutPanelStep1Center.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelStep1Center.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanelStep1Center.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelStep1Center.Size = new System.Drawing.Size(504, 34);
+            this.tableLayoutPanelStep1Center.Size = new System.Drawing.Size(270, 34);
             this.tableLayoutPanelStep1Center.TabIndex = 18;
             // 
             // tableLayoutPanelStep1Bottom
@@ -969,18 +1314,18 @@
             this.tableLayoutPanelStep1Bottom.Controls.Add(this.btnStep1Cancel, 5, 1);
             this.tableLayoutPanelStep1Bottom.Controls.Add(this.butStep1ClearAll, 3, 1);
             this.tableLayoutPanelStep1Bottom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelStep1Bottom.Location = new System.Drawing.Point(3, 472);
+            this.tableLayoutPanelStep1Bottom.Location = new System.Drawing.Point(3, 240);
             this.tableLayoutPanelStep1Bottom.Name = "tableLayoutPanelStep1Bottom";
             this.tableLayoutPanelStep1Bottom.RowCount = 3;
             this.tableLayoutPanelStep1Bottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanelStep1Bottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelStep1Bottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanelStep1Bottom.Size = new System.Drawing.Size(504, 45);
+            this.tableLayoutPanelStep1Bottom.Size = new System.Drawing.Size(270, 45);
             this.tableLayoutPanelStep1Bottom.TabIndex = 19;
             // 
             // btnStep1Ok
             // 
-            this.btnStep1Ok.Location = new System.Drawing.Point(79, 8);
+            this.btnStep1Ok.Location = new System.Drawing.Point(-37, 8);
             this.btnStep1Ok.Margin = new System.Windows.Forms.Padding(0);
             this.btnStep1Ok.Name = "btnStep1Ok";
             this.btnStep1Ok.Size = new System.Drawing.Size(75, 28);
@@ -991,7 +1336,7 @@
             // 
             // btnStep1Cancel
             // 
-            this.btnStep1Cancel.Location = new System.Drawing.Point(349, 8);
+            this.btnStep1Cancel.Location = new System.Drawing.Point(233, 8);
             this.btnStep1Cancel.Margin = new System.Windows.Forms.Padding(0);
             this.btnStep1Cancel.Name = "btnStep1Cancel";
             this.btnStep1Cancel.Size = new System.Drawing.Size(75, 28);
@@ -1002,7 +1347,7 @@
             // 
             // butStep1ClearAll
             // 
-            this.butStep1ClearAll.Location = new System.Drawing.Point(214, 8);
+            this.butStep1ClearAll.Location = new System.Drawing.Point(98, 8);
             this.butStep1ClearAll.Margin = new System.Windows.Forms.Padding(0);
             this.butStep1ClearAll.Name = "butStep1ClearAll";
             this.butStep1ClearAll.Size = new System.Drawing.Size(75, 28);
@@ -1024,7 +1369,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(504, 151);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(270, 151);
             this.tableLayoutPanel1.TabIndex = 20;
             // 
             // tabControl1
@@ -1037,7 +1382,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(15, 3);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(402, 145);
+            this.tabControl1.Size = new System.Drawing.Size(473, 145);
             this.tabControl1.TabIndex = 1;
             this.tabControl1.Visible = false;
             // 
@@ -1047,7 +1392,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(394, 119);
+            this.tabPage1.Size = new System.Drawing.Size(465, 119);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "范围查询";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1072,7 +1417,7 @@
             this.palRan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.palRan.Location = new System.Drawing.Point(3, 3);
             this.palRan.Name = "palRan";
-            this.palRan.Size = new System.Drawing.Size(388, 113);
+            this.palRan.Size = new System.Drawing.Size(459, 113);
             this.palRan.TabIndex = 58;
             // 
             // btRangeConfiguration
@@ -1281,7 +1626,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(394, 119);
+            this.tabPage2.Size = new System.Drawing.Size(465, 119);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "相似查询";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1306,7 +1651,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(388, 113);
+            this.panel1.Size = new System.Drawing.Size(459, 113);
             this.panel1.TabIndex = 58;
             // 
             // btSimilarConfiguration
@@ -1530,7 +1875,7 @@
             this.tableLayoutPanel2.Controls.Add(this.btnBack, 1, 3);
             this.tableLayoutPanel2.Controls.Add(this.btnNewGroup, 1, 5);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(513, 336);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(279, 220);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 7;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -1540,14 +1885,14 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(25, 130);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(10, 14);
             this.tableLayoutPanel2.TabIndex = 21;
             // 
             // btnAdd
             // 
             this.btnAdd.BackgroundImage = global::RIPP.App.OilDataApp.Properties.Resources.GoRight32;
             this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAdd.Location = new System.Drawing.Point(-4, -36);
+            this.btnAdd.Location = new System.Drawing.Point(-12, -94);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(0);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(34, 34);
@@ -1559,7 +1904,7 @@
             // 
             this.btnBack.BackgroundImage = global::RIPP.App.OilDataApp.Properties.Resources.GoLeft32;
             this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBack.Location = new System.Drawing.Point(-4, 48);
+            this.btnBack.Location = new System.Drawing.Point(-12, -10);
             this.btnBack.Margin = new System.Windows.Forms.Padding(0);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(34, 34);
@@ -1569,218 +1914,49 @@
             // 
             // btnNewGroup
             // 
-            this.btnNewGroup.Location = new System.Drawing.Point(-4, 132);
+            this.btnNewGroup.Location = new System.Drawing.Point(-12, 74);
             this.btnNewGroup.Margin = new System.Windows.Forms.Padding(0);
             this.btnNewGroup.Name = "btnNewGroup";
             this.btnNewGroup.Size = new System.Drawing.Size(34, 34);
             this.btnNewGroup.TabIndex = 2;
             this.btnNewGroup.Text = "新建";
             this.btnNewGroup.UseVisualStyleBackColor = true;
+            this.btnNewGroup.Click += new System.EventHandler(this.btnNewGroup_Click);
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.gridListGroup);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(544, 160);
+            this.groupBox4.Location = new System.Drawing.Point(295, 160);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(230, 130);
+            this.groupBox4.Size = new System.Drawing.Size(122, 14);
             this.groupBox4.TabIndex = 13;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "油组列表";
             // 
             // gridListGroup
             // 
+            this.gridListGroup.AllowUserToOrderColumns = true;
             this.gridListGroup.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gridListGroup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridListGroup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridListGroup.Location = new System.Drawing.Point(3, 17);
             this.gridListGroup.Name = "gridListGroup";
             this.gridListGroup.RowTemplate.Height = 23;
-            this.gridListGroup.Size = new System.Drawing.Size(224, 110);
+            this.gridListGroup.Size = new System.Drawing.Size(116, 0);
             this.gridListGroup.TabIndex = 0;
+            this.gridListGroup.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.gridListGroup_RowPostPaint);
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.panelStep4);
             this.groupBox5.Controls.Add(this.gridListAdd);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox5.Location = new System.Drawing.Point(544, 336);
+            this.groupBox5.Location = new System.Drawing.Point(295, 220);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(230, 130);
+            this.groupBox5.Size = new System.Drawing.Size(122, 14);
             this.groupBox5.TabIndex = 13;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "油种列表";
-            // 
-            // panelStep4
-            // 
-            this.panelStep4.Controls.Add(this.tableLayoutPanelStep4Main);
-            this.panelStep4.Location = new System.Drawing.Point(211, 132);
-            this.panelStep4.Name = "panelStep4";
-            this.panelStep4.Size = new System.Drawing.Size(493, 273);
-            this.panelStep4.TabIndex = 57;
-            // 
-            // tableLayoutPanelStep4Main
-            // 
-            this.tableLayoutPanelStep4Main.ColumnCount = 1;
-            this.tableLayoutPanelStep4Main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelStep4Main.Controls.Add(this.tableLayoutPanelStep4Bottom, 0, 1);
-            this.tableLayoutPanelStep4Main.Controls.Add(this.tabControlStep4, 0, 0);
-            this.tableLayoutPanelStep4Main.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelStep4Main.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanelStep4Main.Name = "tableLayoutPanelStep4Main";
-            this.tableLayoutPanelStep4Main.RowCount = 2;
-            this.tableLayoutPanelStep4Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelStep4Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.tableLayoutPanelStep4Main.Size = new System.Drawing.Size(493, 273);
-            this.tableLayoutPanelStep4Main.TabIndex = 3;
-            // 
-            // tableLayoutPanelStep4Bottom
-            // 
-            this.tableLayoutPanelStep4Bottom.ColumnCount = 5;
-            this.tableLayoutPanelStep4Bottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelStep4Bottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanelStep4Bottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanelStep4Bottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanelStep4Bottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelStep4Bottom.Controls.Add(this.butStep4Ok, 1, 1);
-            this.tableLayoutPanelStep4Bottom.Controls.Add(this.butStep4Cancel, 3, 1);
-            this.tableLayoutPanelStep4Bottom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelStep4Bottom.Location = new System.Drawing.Point(3, 227);
-            this.tableLayoutPanelStep4Bottom.Name = "tableLayoutPanelStep4Bottom";
-            this.tableLayoutPanelStep4Bottom.RowCount = 3;
-            this.tableLayoutPanelStep4Bottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelStep4Bottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelStep4Bottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelStep4Bottom.Size = new System.Drawing.Size(487, 43);
-            this.tableLayoutPanelStep4Bottom.TabIndex = 11;
-            // 
-            // butStep4Ok
-            // 
-            this.butStep4Ok.Location = new System.Drawing.Point(88, 6);
-            this.butStep4Ok.Margin = new System.Windows.Forms.Padding(0);
-            this.butStep4Ok.Name = "butStep4Ok";
-            this.butStep4Ok.Size = new System.Drawing.Size(80, 30);
-            this.butStep4Ok.TabIndex = 8;
-            this.butStep4Ok.Text = "确定";
-            this.butStep4Ok.UseVisualStyleBackColor = true;
-            this.butStep4Ok.Click += new System.EventHandler(this.butStep4Ok_Click);
-            // 
-            // butStep4Cancel
-            // 
-            this.butStep4Cancel.Location = new System.Drawing.Point(318, 6);
-            this.butStep4Cancel.Margin = new System.Windows.Forms.Padding(0);
-            this.butStep4Cancel.Name = "butStep4Cancel";
-            this.butStep4Cancel.Size = new System.Drawing.Size(80, 30);
-            this.butStep4Cancel.TabIndex = 17;
-            this.butStep4Cancel.Text = "取消";
-            this.butStep4Cancel.UseVisualStyleBackColor = true;
-            this.butStep4Cancel.Click += new System.EventHandler(this.butStep4Cancel_Click);
-            // 
-            // tabControlStep4
-            // 
-            this.tabControlStep4.Controls.Add(this.step4tabPage1);
-            this.tabControlStep4.Controls.Add(this.step4tabPage2);
-            this.tabControlStep4.Controls.Add(this.step4tabPage3);
-            this.tabControlStep4.Controls.Add(this.step4tabPage4);
-            this.tabControlStep4.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tabControlStep4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlStep4.Location = new System.Drawing.Point(3, 3);
-            this.tabControlStep4.Name = "tabControlStep4";
-            this.tabControlStep4.SelectedIndex = 0;
-            this.tabControlStep4.Size = new System.Drawing.Size(487, 218);
-            this.tabControlStep4.TabIndex = 2;
-            // 
-            // step4tabPage1
-            // 
-            this.step4tabPage1.Controls.Add(this.dgvStep4Whole);
-            this.step4tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.step4tabPage1.Name = "step4tabPage1";
-            this.step4tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.step4tabPage1.Size = new System.Drawing.Size(479, 192);
-            this.step4tabPage1.TabIndex = 0;
-            this.step4tabPage1.Text = "原油";
-            this.step4tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // dgvStep4Whole
-            // 
-            this.dgvStep4Whole.AllowUserToAddRows = false;
-            this.dgvStep4Whole.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvStep4Whole.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStep4Whole.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvStep4Whole.Location = new System.Drawing.Point(3, 3);
-            this.dgvStep4Whole.Name = "dgvStep4Whole";
-            this.dgvStep4Whole.RowTemplate.Height = 23;
-            this.dgvStep4Whole.Size = new System.Drawing.Size(473, 186);
-            this.dgvStep4Whole.TabIndex = 0;
-            // 
-            // step4tabPage2
-            // 
-            this.step4tabPage2.Controls.Add(this.dgvStep4GC);
-            this.step4tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.step4tabPage2.Name = "step4tabPage2";
-            this.step4tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.step4tabPage2.Size = new System.Drawing.Size(479, 192);
-            this.step4tabPage2.TabIndex = 1;
-            this.step4tabPage2.Text = "GC表";
-            this.step4tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // dgvStep4GC
-            // 
-            this.dgvStep4GC.AllowUserToAddRows = false;
-            this.dgvStep4GC.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvStep4GC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStep4GC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvStep4GC.Location = new System.Drawing.Point(3, 3);
-            this.dgvStep4GC.Name = "dgvStep4GC";
-            this.dgvStep4GC.RowTemplate.Height = 23;
-            this.dgvStep4GC.Size = new System.Drawing.Size(473, 186);
-            this.dgvStep4GC.TabIndex = 0;
-            // 
-            // step4tabPage3
-            // 
-            this.step4tabPage3.Controls.Add(this.dgvStep4Com);
-            this.step4tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.step4tabPage3.Name = "step4tabPage3";
-            this.step4tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.step4tabPage3.Size = new System.Drawing.Size(479, 192);
-            this.step4tabPage3.TabIndex = 2;
-            this.step4tabPage3.Text = "馏分油";
-            this.step4tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // dgvStep4Com
-            // 
-            this.dgvStep4Com.AllowUserToAddRows = false;
-            this.dgvStep4Com.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvStep4Com.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStep4Com.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvStep4Com.Location = new System.Drawing.Point(3, 3);
-            this.dgvStep4Com.Name = "dgvStep4Com";
-            this.dgvStep4Com.RowTemplate.Height = 23;
-            this.dgvStep4Com.Size = new System.Drawing.Size(473, 186);
-            this.dgvStep4Com.TabIndex = 0;
-            // 
-            // step4tabPage4
-            // 
-            this.step4tabPage4.Controls.Add(this.dgvStep4Res);
-            this.step4tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.step4tabPage4.Name = "step4tabPage4";
-            this.step4tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.step4tabPage4.Size = new System.Drawing.Size(479, 192);
-            this.step4tabPage4.TabIndex = 3;
-            this.step4tabPage4.Text = "渣油";
-            this.step4tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // dgvStep4Res
-            // 
-            this.dgvStep4Res.AllowUserToAddRows = false;
-            this.dgvStep4Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvStep4Res.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStep4Res.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvStep4Res.Location = new System.Drawing.Point(3, 3);
-            this.dgvStep4Res.Name = "dgvStep4Res";
-            this.dgvStep4Res.RowTemplate.Height = 23;
-            this.dgvStep4Res.Size = new System.Drawing.Size(473, 186);
-            this.dgvStep4Res.TabIndex = 1;
             // 
             // gridListAdd
             // 
@@ -1803,10 +1979,9 @@
             this.gridListAdd.Location = new System.Drawing.Point(3, 17);
             this.gridListAdd.MultiSelect = false;
             this.gridListAdd.Name = "gridListAdd";
-            this.gridListAdd.ReadOnly = true;
             this.gridListAdd.RowTemplate.Height = 23;
             this.gridListAdd.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridListAdd.Size = new System.Drawing.Size(224, 110);
+            this.gridListAdd.Size = new System.Drawing.Size(116, 0);
             this.gridListAdd.TabIndex = 0;
             this.gridListAdd.Visible = false;
             this.gridListAdd.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.gridListAdd_RowPostPaint);
@@ -1865,6 +2040,56 @@
             this.toolStripMenuItemExportXml.Size = new System.Drawing.Size(141, 22);
             this.toolStripMenuItemExportXml.Text = "导出XML(&E)";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(63, 3);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(84, 20);
+            this.comboBox1.TabIndex = 3;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(213, 3);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(84, 20);
+            this.comboBox2.TabIndex = 4;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(363, 3);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(84, 20);
+            this.comboBox3.TabIndex = 5;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(450, 0);
+            this.button2.Margin = new System.Windows.Forms.Padding(0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "保存修改";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(19, 47);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(500, 300);
+            this.dataGridView1.TabIndex = 3;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1887,6 +2112,23 @@
             this.tableLayoutPanelMainLeft.ResumeLayout(false);
             this.panelMainLeft.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panelStep4.ResumeLayout(false);
+            this.tableLayoutPanelStep4Main.ResumeLayout(false);
+            this.tableLayoutPanelStep4Bottom.ResumeLayout(false);
+            this.tabControlStep4.ResumeLayout(false);
+            this.step4tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStep4Whole)).EndInit();
+            this.step4tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStep4GC)).EndInit();
+            this.step4tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStep4Com)).EndInit();
+            this.step4tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStep4Res)).EndInit();
+            this.panelStep6.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
             this.panelStep2.ResumeLayout(false);
             this.tableLayoutPanelStep2Main.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridListRate)).EndInit();
@@ -1898,6 +2140,7 @@
             this.toolStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridListCut)).EndInit();
             this.tableLayoutPanel8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridListProg)).EndInit();
             this.panelStep1.ResumeLayout(false);
             this.tableLayoutPanelStep1Main.ResumeLayout(false);
             this.tableLayoutPanelStep1Main.PerformLayout();
@@ -1919,20 +2162,9 @@
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridListGroup)).EndInit();
             this.groupBox5.ResumeLayout(false);
-            this.panelStep4.ResumeLayout(false);
-            this.tableLayoutPanelStep4Main.ResumeLayout(false);
-            this.tableLayoutPanelStep4Bottom.ResumeLayout(false);
-            this.tabControlStep4.ResumeLayout(false);
-            this.step4tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStep4Whole)).EndInit();
-            this.step4tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStep4GC)).EndInit();
-            this.step4tabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStep4Com)).EndInit();
-            this.step4tabPage4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStep4Res)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridListAdd)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1953,6 +2185,7 @@
         private System.Windows.Forms.ToolStripMenuItem indexToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.Button butStep6;
         private System.Windows.Forms.Button butStep4;
         private System.Windows.Forms.Button butStep3;
         private System.Windows.Forms.Button btnStep5;
@@ -2081,9 +2314,24 @@
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnNewGroup;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.DataGridView gridListGroup;
+        public  System.Windows.Forms.DataGridView gridListGroup;
         private System.Windows.Forms.GroupBox groupBox5;
         private OilDB.UI.GridOil.GridOilList gridListAdd;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.DataGridView gridListProg;
+        private System.Windows.Forms.Panel panelStep6;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 
