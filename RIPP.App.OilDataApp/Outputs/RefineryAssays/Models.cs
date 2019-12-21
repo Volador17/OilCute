@@ -109,10 +109,7 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
             }
 
             var plant = r.RefineryAssay.PlantDataGroups.PlantDataGroup;
-            plant.Properties = new RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupProperties()
-            {
-                Property = ps.ToArray()
-            };
+            plant.Properties = ps;
 
             #endregion 原油信息
 
@@ -138,8 +135,6 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
             //构造切割曲线
             void BuildCut(string name1, string name2, string type)
             {
-                #region "内部计算"
-
                 var Cols = OilDataCols.Where(o => o.OilTableName.Contains(name1) && o.OilTableName.Contains(name2)).OrderBy(o => o.itemOrder).ToList();
                 if (Cols.Count == 0)
                     return;
@@ -182,32 +177,26 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
                         });
                     }
 
-                    cut.Properties = new RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutProperties()
-                    {
-                        Property = ps2.ToArray()
-                    };
-
+                    cut.Properties = ps2;
                     cuts.Add(cut);
                 }
             }
 
             if (cuts.Any() == true)
             {
-                plant.Cuts = new RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCuts()
-                {
-                    Cut = cuts.ToArray()
-                };
+                plant.Cuts = cuts;
             }
 
-            #endregion "内部计算"
+            #endregion 切割曲线
 
             return r;
         }
 
-        private static void InitDataGridView(string strTableName, string name2, List<OilDataSearchColEntity> OilDataCols, List<OilDataSearchRowEntity> OilDataRows, List<OilDataSearchEntity> allDatas)
-        {
-            #endregion 切割曲线
-        }
+        public static implicit operator RefineryAssaysRefineryAssay(RefineryAssays refinery)
+             => refinery?.RefineryAssay;
+
+        public static implicit operator RefineryAssays(RefineryAssaysRefineryAssay refinery)
+            => new RefineryAssays() { RefineryAssay = refinery };
     }
 
     [Serializable]
@@ -239,6 +228,12 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
         /// <returns></returns>
         public override string ToString()
             => PlantDataGroup?.ToString();
+
+        public static implicit operator RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroup(RefineryAssaysRefineryAssayPlantDataGroups thz)
+            => thz?.PlantDataGroup;
+
+        public static implicit operator RefineryAssaysRefineryAssayPlantDataGroups(RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroup ds)
+            => new RefineryAssaysRefineryAssayPlantDataGroups() { PlantDataGroup = ds };
     }
 
     [Serializable]
@@ -258,6 +253,12 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     {
         [XmlElement("Property")]
         public RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupPropertiesProperty[] Property { get; set; }
+
+        public static implicit operator RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupPropertiesProperty[](RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupProperties thz)
+            => thz?.Property;
+
+        public static implicit operator RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupProperties(List<RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupPropertiesProperty> ds)
+            => new RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupProperties() { Property = ds?.ToArray() };
     }
 
     [Serializable]
@@ -277,6 +278,12 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     {
         [XmlElement("Cut")]
         public RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCut[] Cut { get; set; }
+
+        public static implicit operator RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCut[](RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCuts thz)
+            => thz?.Cut;
+
+        public static implicit operator RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCuts(List<RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCut> ds)
+            => new RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCuts() { Cut = ds?.ToArray() };
     }
 
     [Serializable]
@@ -296,6 +303,12 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     {
         [XmlElement("Property")]
         public RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutPropertiesProperty[] Property { get; set; }
+
+        public static implicit operator RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutPropertiesProperty[](RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutProperties thz)
+            => thz?.Property;
+
+        public static implicit operator RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutProperties(List<RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutPropertiesProperty> ds)
+        => new RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutProperties() { Property = ds?.ToArray() };
     }
 
     [Serializable]
