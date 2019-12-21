@@ -1,4 +1,5 @@
-﻿using RIPP.OilDB.Model;
+﻿using RIPP.OilDB.Data;
+using RIPP.OilDB.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -69,6 +70,8 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
 
             var maps = Newtonsoft.Json.JsonConvert.DeserializeObject<RefineryAssaysMapItem[]>(File.ReadAllText("RefineryAssaysMaps.json"));
 
+            #region 原油信息
+
             var name = $"{oil.crudeIndex} - {oil.englishName ?? oil.crudeName}";
             r.RefineryAssay = new RefineryAssaysRefineryAssay()
             {
@@ -111,7 +114,99 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
                 Property = ps.ToArray()
             };
 
+            #endregion 原油信息
+
+            #region 切割曲线
+
+            OilDataSearchColAccess oilDataColAccess = new OilDataSearchColAccess();
+            List<OilDataSearchColEntity> OilDataCols = oilDataColAccess.Get("1=1");
+
+            OilDataSearchRowAccess oilDataRowAccess = new OilDataSearchRowAccess();
+            List<OilDataSearchRowEntity> OilDataRows = oilDataRowAccess.Get("1=1");
+
+            OilDataSearchAccess oilDataSearchAccess = new OilDataSearchAccess();
+            List<OilDataSearchEntity> allDatas = oilDataSearchAccess.Get("oilInfoID = " + oil.ID).ToList();
+
+            var cuts = new List<RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCut>();
+
+            BuildCut("石脑油", "15-140", "Naph");
+            BuildCut("煤油", "140-240", "Kero");
+            BuildCut("柴油", "240-350", "Disel");
+            BuildCut("蜡油", "350-540", "VGO");
+            BuildCut("渣油", ">540", "Reside");
+
+            //构造切割曲线
+            void BuildCut(string name1, string name2, string type)
+            {
+                #region "内部计算"
+
+                var Cols = OilDataCols.Where(o => o.OilTableName.Contains(name1) && o.OilTableName.Contains(name2)).OrderBy(o => o.itemOrder).ToList();
+                if (Cols.Count == 0)
+                    return;
+                var Rows = OilDataRows.Where(o => o.OilDataColID == Cols[0].ID).OrderBy(o => o.OilTableRow.itemOrder).ToList();
+                if (Rows.Count == 0)
+                    return;
+                var TableRows = new List<OilTableRowEntity>();
+                for (int i = 0; i < Rows.Count; i++)
+                {
+                    OilTableRowEntity oilTableRow = OilTableRowBll._OilTableRow.Where(o => o.ID == Rows[i].OilTableRowID).FirstOrDefault();
+                    TableRows.Add(oilTableRow);
+                }
+
+                for (int i = 0; i < Cols.Count; i++)
+                {
+                    var Data = allDatas.Where(o => o.oilTableColID == Cols[i].OilTableColID).ToList();
+                    if (Data?.Any() != true)
+                        continue;
+
+                    var cut = new RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCut()
+                    {
+                        CutName = type,
+                        Name = type,
+                        CutType = 0,
+                    };
+
+                    var ps2 = new List<RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutPropertiesProperty>();
+
+                    foreach (var p in maps)
+                    {
+                        var tr = Data.FirstOrDefault(o => o.OilTableRow.itemCode == p.ripp_code);
+                        if (tr == null)
+                            continue;
+
+                        ps2.Add(new RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutPropertiesProperty()
+                        {
+                            Name = p.name,
+                            PropertyName = p.property_name,
+                            InputValue = p.GetValue(tr.calData)
+                        });
+                    }
+
+                    cut.Properties = new RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCutsCutProperties()
+                    {
+                        Property = ps2.ToArray()
+                    };
+
+                    cuts.Add(cut);
+                }
+            }
+
+            if (cuts.Any() == true)
+            {
+                plant.Cuts = new RefineryAssaysRefineryAssayPlantDataGroupsPlantDataGroupCuts()
+                {
+                    Cut = cuts.ToArray()
+                };
+            }
+
+            #endregion "内部计算"
+
             return r;
+        }
+
+        private static void InitDataGridView(string strTableName, string name2, List<OilDataSearchColEntity> OilDataCols, List<OilDataSearchRowEntity> OilDataRows, List<OilDataSearchEntity> allDatas)
+        {
+            #endregion 切割曲线
         }
     }
 
@@ -209,7 +304,7 @@ namespace RIPP.App.OilDataApp.Outputs.RefineryAssays
     {
         public RefineryAssaysValue<string> PropertyName { get; set; }
 
-        public RefineryAssaysValue<decimal> InputValue { get; set; }
+        public RefineryAssaysValue<string> InputValue { get; set; }
     }
 
     [Serializable]
