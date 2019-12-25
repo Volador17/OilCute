@@ -96,6 +96,7 @@
     <Compile Include="BLL\ToolBox\OutputCurvesBll.cs" />
     <Compile Include="BLL\ToolBox\ToolCusFraQueBll.cs" />
     <Compile Include="BLL\UnitConvert.cs" />
+    <Compile Include="Model\CutOilGroupContentEntity.cs" />
     <Compile Include="Data\AbstractDB.cs" />
     <Compile Include="Data\BaseFunction.cs" />
     <Compile Include="Data\CruCodeMapBll.cs" />

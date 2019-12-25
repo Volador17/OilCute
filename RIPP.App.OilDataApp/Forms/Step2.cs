@@ -95,11 +95,7 @@ namespace RIPP.App.OilDataApp.Forms
             { 
             
             }
-        }
-        private void gridListRate_Click(object sender, EventArgs e)
-        {
-           
-        }   
+        } 
         /// <summary>
         /// 单元格验证
         /// </summary>

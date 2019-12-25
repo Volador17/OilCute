@@ -93,6 +93,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panelStep2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanelStep2Main = new System.Windows.Forms.TableLayoutPanel();
             this.gridListRate = new RIPP.OilDB.UI.GridOil.GridList(this.components);
@@ -188,6 +193,7 @@
             this.gridListGroup = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.gridListAdd = new RIPP.OilDB.UI.GridOil.GridOilList(this.components);
+            this.cutOilGroupContentEntityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemNonSelect = new System.Windows.Forms.ToolStripMenuItem();
@@ -196,11 +202,6 @@
             this.toolStripMenuItemAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemRemove = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemExportXml = new System.Windows.Forms.ToolStripMenuItem();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.tableLayoutPanelMain.SuspendLayout();
@@ -223,6 +224,7 @@
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelStep2.SuspendLayout();
             this.tableLayoutPanelStep2Main.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridListRate)).BeginInit();
@@ -252,8 +254,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridListGroup)).BeginInit();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridListAdd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cutOilGroupContentEntityBindingSource)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -394,7 +396,7 @@
             // 
             this.btnDel.BackgroundImage = global::RIPP.App.OilDataApp.Properties.Resources.GoUp32;
             this.btnDel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDel.Location = new System.Drawing.Point(34, 0);
+            this.btnDel.Location = new System.Drawing.Point(138, 0);
             this.btnDel.Margin = new System.Windows.Forms.Padding(0);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(34, 34);
@@ -407,7 +409,7 @@
             // 
             this.btnSelect.BackgroundImage = global::RIPP.App.OilDataApp.Properties.Resources.GoDown32;
             this.btnSelect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSelect.Location = new System.Drawing.Point(202, 0);
+            this.btnSelect.Location = new System.Drawing.Point(306, 0);
             this.btnSelect.Margin = new System.Windows.Forms.Padding(0);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(34, 34);
@@ -420,7 +422,7 @@
             // 
             this.butShowAll.BackgroundImage = global::RIPP.App.OilDataApp.Properties.Resources.refresh;
             this.butShowAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.butShowAll.Location = new System.Drawing.Point(118, 0);
+            this.butShowAll.Location = new System.Drawing.Point(222, 0);
             this.butShowAll.Margin = new System.Windows.Forms.Padding(0);
             this.butShowAll.Name = "butShowAll";
             this.butShowAll.Size = new System.Drawing.Size(34, 34);
@@ -764,9 +766,9 @@
             // panelStep6
             // 
             this.panelStep6.Controls.Add(this.tableLayoutPanel3);
-            this.panelStep6.Location = new System.Drawing.Point(74, 141);
+            this.panelStep6.Location = new System.Drawing.Point(339, 407);
             this.panelStep6.Name = "panelStep6";
-            this.panelStep6.Size = new System.Drawing.Size(819, 444);
+            this.panelStep6.Size = new System.Drawing.Size(381, 172);
             this.panelStep6.TabIndex = 57;
             // 
             // tableLayoutPanel3
@@ -784,7 +786,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(819, 444);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(381, 172);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // tableLayoutPanel4
@@ -795,19 +797,19 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.32648F));
             this.tableLayoutPanel4.Controls.Add(this.button1, 1, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 397);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 125);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(813, 44);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(375, 44);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // button1
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(312, 9);
+            this.button1.Location = new System.Drawing.Point(125, 9);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(81, 26);
             this.button1.TabIndex = 0;
@@ -837,7 +839,7 @@
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(813, 24);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(375, 24);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
             // label6
@@ -869,6 +871,56 @@
             this.label11.Size = new System.Drawing.Size(53, 12);
             this.label11.TabIndex = 2;
             this.label11.Text = "选择馏分";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(63, 3);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(84, 20);
+            this.comboBox1.TabIndex = 3;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(213, 3);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(84, 20);
+            this.comboBox2.TabIndex = 4;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(363, 3);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(84, 20);
+            this.comboBox3.TabIndex = 5;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(450, 0);
+            this.button2.Margin = new System.Windows.Forms.Padding(0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(1, 23);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "保存修改";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 33);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(375, 86);
+            this.dataGridView1.TabIndex = 3;
             // 
             // panelStep2
             // 
@@ -928,7 +980,6 @@
             this.gridListRate.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridListRate_CellEndEdit);
             this.gridListRate.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gridListRate_CellValidating);
             this.gridListRate.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.gridListRate_RowPostPaint);
-            this.gridListRate.Click += new System.EventHandler(this.gridListRate_Click);
             this.gridListRate.KeyUp += new System.Windows.Forms.KeyEventHandler(this.gridListRate_KeyUp);
             // 
             // tableLayoutPanel6
@@ -1163,7 +1214,7 @@
             this.panelStep1.Controls.Add(this.tableLayoutPanelStep1Main);
             this.panelStep1.Location = new System.Drawing.Point(3, 3);
             this.panelStep1.Name = "panelStep1";
-            this.panelStep1.Size = new System.Drawing.Size(420, 288);
+            this.panelStep1.Size = new System.Drawing.Size(737, 410);
             this.panelStep1.TabIndex = 0;
             // 
             // tableLayoutPanelStep1Main
@@ -1189,7 +1240,7 @@
             this.tableLayoutPanelStep1Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanelStep1Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelStep1Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanelStep1Main.Size = new System.Drawing.Size(420, 288);
+            this.tableLayoutPanelStep1Main.Size = new System.Drawing.Size(737, 410);
             this.tableLayoutPanelStep1Main.TabIndex = 18;
             // 
             // groupBox2
@@ -1198,7 +1249,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 160);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(270, 14);
+            this.groupBox2.Size = new System.Drawing.Size(478, 75);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "显示列表";
@@ -1229,7 +1280,7 @@
             this.gridList.RowHeadersWidth = 30;
             this.gridList.RowTemplate.Height = 23;
             this.gridList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridList.Size = new System.Drawing.Size(264, 0);
+            this.gridList.Size = new System.Drawing.Size(472, 55);
             this.gridList.TabIndex = 2;
             this.gridList.Visible = false;
             this.gridList.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.gridList_RowPostPaint);
@@ -1238,9 +1289,9 @@
             // 
             this.groupBox3.Controls.Add(this.gridListSelect);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(3, 220);
+            this.groupBox3.Location = new System.Drawing.Point(3, 281);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(270, 14);
+            this.groupBox3.Size = new System.Drawing.Size(478, 75);
             this.groupBox3.TabIndex = 13;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "选中列表";
@@ -1270,7 +1321,7 @@
             this.gridListSelect.RowHeadersWidth = 30;
             this.gridListSelect.RowTemplate.Height = 23;
             this.gridListSelect.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridListSelect.Size = new System.Drawing.Size(264, 0);
+            this.gridListSelect.Size = new System.Drawing.Size(472, 55);
             this.gridListSelect.TabIndex = 1;
             this.gridListSelect.Visible = false;
             this.gridListSelect.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.gridListSelect_RowPostPaint);
@@ -1289,13 +1340,13 @@
             this.tableLayoutPanelStep1Center.Controls.Add(this.btnSelect, 5, 1);
             this.tableLayoutPanelStep1Center.Controls.Add(this.butShowAll, 3, 1);
             this.tableLayoutPanelStep1Center.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelStep1Center.Location = new System.Drawing.Point(3, 180);
+            this.tableLayoutPanelStep1Center.Location = new System.Drawing.Point(3, 241);
             this.tableLayoutPanelStep1Center.Name = "tableLayoutPanelStep1Center";
             this.tableLayoutPanelStep1Center.RowCount = 3;
             this.tableLayoutPanelStep1Center.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelStep1Center.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanelStep1Center.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelStep1Center.Size = new System.Drawing.Size(270, 34);
+            this.tableLayoutPanelStep1Center.Size = new System.Drawing.Size(478, 34);
             this.tableLayoutPanelStep1Center.TabIndex = 18;
             // 
             // tableLayoutPanelStep1Bottom
@@ -1314,18 +1365,18 @@
             this.tableLayoutPanelStep1Bottom.Controls.Add(this.btnStep1Cancel, 5, 1);
             this.tableLayoutPanelStep1Bottom.Controls.Add(this.butStep1ClearAll, 3, 1);
             this.tableLayoutPanelStep1Bottom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelStep1Bottom.Location = new System.Drawing.Point(3, 240);
+            this.tableLayoutPanelStep1Bottom.Location = new System.Drawing.Point(3, 362);
             this.tableLayoutPanelStep1Bottom.Name = "tableLayoutPanelStep1Bottom";
             this.tableLayoutPanelStep1Bottom.RowCount = 3;
             this.tableLayoutPanelStep1Bottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanelStep1Bottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelStep1Bottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanelStep1Bottom.Size = new System.Drawing.Size(270, 45);
+            this.tableLayoutPanelStep1Bottom.Size = new System.Drawing.Size(478, 45);
             this.tableLayoutPanelStep1Bottom.TabIndex = 19;
             // 
             // btnStep1Ok
             // 
-            this.btnStep1Ok.Location = new System.Drawing.Point(-37, 8);
+            this.btnStep1Ok.Location = new System.Drawing.Point(66, 8);
             this.btnStep1Ok.Margin = new System.Windows.Forms.Padding(0);
             this.btnStep1Ok.Name = "btnStep1Ok";
             this.btnStep1Ok.Size = new System.Drawing.Size(75, 28);
@@ -1336,7 +1387,7 @@
             // 
             // btnStep1Cancel
             // 
-            this.btnStep1Cancel.Location = new System.Drawing.Point(233, 8);
+            this.btnStep1Cancel.Location = new System.Drawing.Point(336, 8);
             this.btnStep1Cancel.Margin = new System.Windows.Forms.Padding(0);
             this.btnStep1Cancel.Name = "btnStep1Cancel";
             this.btnStep1Cancel.Size = new System.Drawing.Size(75, 28);
@@ -1347,7 +1398,7 @@
             // 
             // butStep1ClearAll
             // 
-            this.butStep1ClearAll.Location = new System.Drawing.Point(98, 8);
+            this.butStep1ClearAll.Location = new System.Drawing.Point(201, 8);
             this.butStep1ClearAll.Margin = new System.Windows.Forms.Padding(0);
             this.butStep1ClearAll.Name = "butStep1ClearAll";
             this.butStep1ClearAll.Size = new System.Drawing.Size(75, 28);
@@ -1369,7 +1420,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(270, 151);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(478, 151);
             this.tableLayoutPanel1.TabIndex = 20;
             // 
             // tabControl1
@@ -1875,7 +1926,7 @@
             this.tableLayoutPanel2.Controls.Add(this.btnBack, 1, 3);
             this.tableLayoutPanel2.Controls.Add(this.btnNewGroup, 1, 5);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(279, 220);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(487, 281);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 7;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -1885,14 +1936,14 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(10, 14);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(23, 75);
             this.tableLayoutPanel2.TabIndex = 21;
             // 
             // btnAdd
             // 
             this.btnAdd.BackgroundImage = global::RIPP.App.OilDataApp.Properties.Resources.GoRight32;
             this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAdd.Location = new System.Drawing.Point(-12, -94);
+            this.btnAdd.Location = new System.Drawing.Point(-5, -63);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(0);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(34, 34);
@@ -1904,7 +1955,7 @@
             // 
             this.btnBack.BackgroundImage = global::RIPP.App.OilDataApp.Properties.Resources.GoLeft32;
             this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBack.Location = new System.Drawing.Point(-12, -10);
+            this.btnBack.Location = new System.Drawing.Point(-5, 21);
             this.btnBack.Margin = new System.Windows.Forms.Padding(0);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(34, 34);
@@ -1914,7 +1965,7 @@
             // 
             // btnNewGroup
             // 
-            this.btnNewGroup.Location = new System.Drawing.Point(-12, 74);
+            this.btnNewGroup.Location = new System.Drawing.Point(-5, 105);
             this.btnNewGroup.Margin = new System.Windows.Forms.Padding(0);
             this.btnNewGroup.Name = "btnNewGroup";
             this.btnNewGroup.Size = new System.Drawing.Size(34, 34);
@@ -1927,9 +1978,9 @@
             // 
             this.groupBox4.Controls.Add(this.gridListGroup);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(295, 160);
+            this.groupBox4.Location = new System.Drawing.Point(516, 160);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(122, 14);
+            this.groupBox4.Size = new System.Drawing.Size(218, 75);
             this.groupBox4.TabIndex = 13;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "油组列表";
@@ -1943,7 +1994,7 @@
             this.gridListGroup.Location = new System.Drawing.Point(3, 17);
             this.gridListGroup.Name = "gridListGroup";
             this.gridListGroup.RowTemplate.Height = 23;
-            this.gridListGroup.Size = new System.Drawing.Size(116, 0);
+            this.gridListGroup.Size = new System.Drawing.Size(212, 55);
             this.gridListGroup.TabIndex = 0;
             this.gridListGroup.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.gridListGroup_RowPostPaint);
             // 
@@ -1951,9 +2002,9 @@
             // 
             this.groupBox5.Controls.Add(this.gridListAdd);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox5.Location = new System.Drawing.Point(295, 220);
+            this.groupBox5.Location = new System.Drawing.Point(516, 281);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(122, 14);
+            this.groupBox5.Size = new System.Drawing.Size(218, 75);
             this.groupBox5.TabIndex = 13;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "油种列表";
@@ -1981,10 +2032,14 @@
             this.gridListAdd.Name = "gridListAdd";
             this.gridListAdd.RowTemplate.Height = 23;
             this.gridListAdd.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridListAdd.Size = new System.Drawing.Size(116, 0);
+            this.gridListAdd.Size = new System.Drawing.Size(212, 55);
             this.gridListAdd.TabIndex = 0;
             this.gridListAdd.Visible = false;
             this.gridListAdd.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.gridListAdd_RowPostPaint);
+            // 
+            // cutOilGroupContentEntityBindingSource
+            // 
+            this.cutOilGroupContentEntityBindingSource.DataSource = typeof(RIPP.OilDB.Model.CutOilGroupContentEntity);
             // 
             // contextMenuStrip1
             // 
@@ -2040,56 +2095,6 @@
             this.toolStripMenuItemExportXml.Size = new System.Drawing.Size(141, 22);
             this.toolStripMenuItemExportXml.Text = "导出XML(&E)";
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(63, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(84, 20);
-            this.comboBox1.TabIndex = 3;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(213, 3);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(84, 20);
-            this.comboBox2.TabIndex = 4;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(363, 3);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(84, 20);
-            this.comboBox3.TabIndex = 5;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(450, 0);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "保存修改";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(19, 47);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(500, 300);
-            this.dataGridView1.TabIndex = 3;
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2129,6 +2134,7 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panelStep2.ResumeLayout(false);
             this.tableLayoutPanelStep2Main.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridListRate)).EndInit();
@@ -2163,8 +2169,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridListGroup)).EndInit();
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridListAdd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cutOilGroupContentEntityBindingSource)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2332,6 +2338,7 @@
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.BindingSource cutOilGroupContentEntityBindingSource;
     }
 }
 

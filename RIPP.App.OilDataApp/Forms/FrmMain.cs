@@ -1,5 +1,6 @@
 ﻿using RIPP.App.OilDataApp.Outputs.RefineryAssays;
 using RIPP.Lib;
+using RIPP.OilDB;
 using RIPP.OilDB.BLL;
 using RIPP.OilDB.Data;
 using RIPP.OilDB.Data.DataCheck;
@@ -7,6 +8,7 @@ using RIPP.OilDB.Model;
 using RIPP.OilDB.UI.GridOil;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -19,6 +21,11 @@ namespace RIPP.App.OilDataApp.Forms
     {
         #region 私有变量
         private OutLib _outLib = null;//导入的B库文件
+
+        /// <summary>
+        /// 油种列表中所包含原油信息
+        /// </summary>
+        private BindingList<CutOilGroupContentEntity> _cutOilGroupContents = new BindingList<CutOilGroupContentEntity>();
 
         /// <summary>
         /// 原油ID和混合比例
@@ -862,24 +869,21 @@ namespace RIPP.App.OilDataApp.Forms
                 this.gridListAdd.RowHeadersDefaultCellStyle.ForeColor,
                 TextFormatFlags.VerticalCenter | TextFormatFlags.Right);
         }
+        public void SetGroupContentHeader(DataGridView dgv)
+        {
+            dgv.Columns.Clear();
+            dgv.Columns.Add(new DataGridViewCheckBoxColumn() { Name = "Check", HeaderText = "选择", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
+            dgv.Columns.Add(new DataGridViewTextBoxColumn() { Name = "原油名称", HeaderText = "原油名称", ReadOnly = true, AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
+            dgv.Columns.Add(new DataGridViewTextBoxColumn() { Name = "英文名称", HeaderText = "英文名称", ReadOnly = true, AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
+            dgv.Columns.Add(new DataGridViewTextBoxColumn() { Name = "原油编号", HeaderText = "原油编号", ReadOnly = true, AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
+            dgv.Columns.Add(new DataGridViewTextBoxColumn() { Name = "评价日期", HeaderText = "评价日期", ReadOnly = true, AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
+            dgv.Columns.Add(new DataGridViewTextBoxColumn() { Name = "混炼加工量", HeaderText = "混炼加工量", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
+            dgv.Columns.Add(new DataGridViewTextBoxColumn() { Name = "混兑比例", HeaderText = "混兑比例%", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
+        }
+
         private void GridListAddBind()
         {
-            dgvHeader.SetAppDataBaseBColHeader(this.gridListAdd);
-            gridListAdd.Columns.Insert(0, new DataGridViewCheckBoxColumn() { Name = "Check", HeaderText = "选择", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
-            gridListAdd.Columns[1].ReadOnly = true;
-            gridListAdd.Columns[2].ReadOnly = true;
-            gridListAdd.Columns[3].ReadOnly = true;
-            gridListAdd.Columns[5].Visible = false;
-            gridListAdd.Columns[6].Visible = false;
-            gridListAdd.Columns[7].Visible = false;
-            gridListAdd.Columns[8].Visible = false;
-            gridListAdd.Columns[9].Visible = false;
-            gridListAdd.Columns[10].Visible = false;
-            gridListAdd.Columns[11].Visible = false;
-            gridListAdd.Columns[12].Visible = false;
-            gridListAdd.Columns[13].Visible = false;
-            gridListAdd.Columns.Add(new DataGridViewTextBoxColumn() { Name = "混炼加工量", HeaderText = "混炼加工量", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
-            gridListAdd.Columns.Add(new DataGridViewTextBoxColumn() { Name = "混兑比例", HeaderText = "混兑比例%",  AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
+            SetGroupContentHeader(this.gridListAdd);
             this.gridListAdd.Rows.Clear();
         }
 
@@ -890,22 +894,27 @@ namespace RIPP.App.OilDataApp.Forms
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var rows = new List<DataGridViewRow>();
+            //var rows = new List<DataGridViewRow>();
+            
             foreach (DataGridViewRow row in this.gridListSelect.Rows)
             {
+                CutOilGroupContentEntity list = new CutOilGroupContentEntity(row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString(), row.Cells[4].Value.ToString(),row.Cells[7].Value.ToString(), 0, 0);
+                
                 if ((bool?)row.Cells["Check"].Value == true)
                 {
-                    rows.Add(row);
+                    _cutOilGroupContents.Add(list);
                 }
             }
-            if (rows.Any() != true)
+            if (_cutOilGroupContents.Any()==false)
             {
                 MessageBox.Show("请先勾选原油！");
                 return;
             }
+            gridListAdd.DataSource = _cutOilGroupContents;
+
             //已经存在的原油
             var exists = new List<string>();
-            foreach (DataGridViewRow rowSlect in gridListAdd.Rows)
+           /* foreach (DataGridViewRow rowSlect in gridListAdd.Rows)
             {
                 exists.Add(rowSlect.Cells["ID"].Value.ToString());
             }
@@ -928,7 +937,7 @@ namespace RIPP.App.OilDataApp.Forms
                     row.Cells.Add(c2);
                 }
                 this.gridListAdd.Rows.Add(row);
-            }
+            }*/
         }
 
         /// <summary>
@@ -990,10 +999,48 @@ namespace RIPP.App.OilDataApp.Forms
             frmNewGroup.Location = new Point(700, 400);
             frmNewGroup.TransfEvent += frmNewGroup_TransfEvent;
             frmNewGroup.Show();
+
+            if (gridListSelect.Rows.Count > 0)
+            {
+                var rows = new List<DataGridViewRow>();
+                foreach (DataGridViewRow row in gridListSelect.Rows)
+                {
+                    if ((bool?)row.Cells["Check"].Value == true)
+                    {
+                        rows.Add(row);
+                    }
+                }
+                var exists = new List<string>();
+                foreach (DataGridViewRow rowAdd in gridListAdd.Rows)
+                {
+                    exists.Add(rowAdd.Cells["ID"].Value.ToString());
+                }
+                foreach (var r in rows)
+                {
+                    var id = r.Cells["ID"].Value?.ToString();
+                    if (exists.Contains(id))
+                        continue;
+
+                    DataGridViewRow row = new DataGridViewRow();
+                    foreach (DataGridViewCell c in r.Cells)
+                    {
+                        var c2 = c.Clone() as DataGridViewCell;
+                        c2.Value = c.Value;
+                        if (c.OwningColumn.Name == "Check")
+                        {
+                            var t = c2 as DataGridViewCheckBoxCell;
+                            t.Value = false;
+                        }
+
+                        row.Cells.Add(c2);
+                    }
+                    this.gridListAdd.Rows.Add(row);
+                }
+            }
         }
         void frmNewGroup_TransfEvent(string groupName, String groupRemark)
         {
-            gridListGroup.Rows.Add(groupName, gridListSelect.RowCount, DateTime.Now.ToString(), groupRemark);
+            gridListGroup.Rows.Add(groupName, gridListAdd.RowCount, DateTime.Now.ToString(), groupRemark);
         }
     }
 }
