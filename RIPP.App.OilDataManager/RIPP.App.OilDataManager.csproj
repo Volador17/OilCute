@@ -91,7 +91,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="log4net">
-      <Version>2.0.8</Version>
+      <Version>2.0.10</Version>
     </PackageReference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
